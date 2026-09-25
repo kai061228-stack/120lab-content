@@ -5,7 +5,8 @@
   "scripts": {
     "render": "node scripts/render.js",
     "preview": "node scripts/preview.js",
-    "all": "node scripts/render-all.js"
+    "all": "node scripts/render-all.js",
+    "queue": "node scripts/queue.js"
   },
   "dependencies": {
     "playwright": "^1.56.0"

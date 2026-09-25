@@ -8,7 +8,7 @@
 
 「〇〇について投稿を作って」と頼まれたら、次の順で進めてください。
 
-1. `posts/YYYY-MM-DD-英数字の短い名前/post.json` を作る（日付は投稿予定日。指定がなければ翌日）
+1. `posts/YYYY-MM-DD-英数字の短い名前/post.json` を作る（日付は作った日。投稿の順番は自動で決まるので、投稿日ではない）
 2. 形式は `posts/2026-09-26-tsumazuki/post.json` と同じにする
 3. `npm run render -- posts/フォルダ名` を実行する（全投稿をまとめて作り直すときは `npm run all`）
 4. できた `images/` のPNGを自分で開いて確認し、文字のはみ出しや不自然な改行があれば post.json を直して再実行する
@@ -65,10 +65,15 @@
 
 ## Instagram 自動投稿（GitHub Actions）
 
-- GitHub に push すると、毎日 19:03（日本時間）に「その日の日付」で始まる投稿フォルダが自動で Instagram に投稿される
-  - 例：`posts/2026-09-28-hiza-taisou` は 2026年9月28日の19時すぎに投稿される
+- 毎朝8時ごろ（GitHub の起動は 7:47、混雑で少し遅れることがある）に1日1件、自動で Instagram に投稿される
+- カテゴリーは「運動 → 知識 → 啓発 → 運動 …」の順に1日ずつ回る
+  - 同じカテゴリーの中では、フォルダ名の順（古いもの）から出る
+  - その日のカテゴリーのストックがないときは、次のカテゴリーから繰り上げて出す
+  - どうしてもこの日に出したい投稿は、post.json に "publishDate": "YYYY-MM-DD" を書く（その日に優先して出る）
+- `npm run queue` で、2週間分の投稿予定とカテゴリーごとのストック数を確認できる。投稿を作ったら最後にこれを実行して、予定を報告する
+- ストックは各カテゴリー3件以上（合計9件＝9日分以上）を目安にする。足りないカテゴリーがあれば報告する
 - 投稿には `images/` の JPEG（01.jpg〜）と `caption.txt` を使う。`npm run render` で PNG と一緒に JPEG も作られる
-- 投稿が終わると、そのフォルダに `posted.json` が自動で追加される（二重投稿の防止）。PC側では投稿後に `git pull` してから作業する
-- 投稿を作ったら、`npm run render` → 画像確認 → `git add -A` → `git commit` → `git push` まで行う（push しないと投稿されない）
-- 投稿日を変えたいときは、フォルダ名の日付を変えて push する
+- 投稿が終わると、そのフォルダに `posted.json` が自動で追加される（二重投稿の防止）。PC側では作業の前に `git pull` する
+- 投稿を作ったら、`npm run render` → 画像確認 → `npm run queue` → `git add -A` → `git commit` → `git push` まで行う（push しないと投稿されない）
+- 投稿済み（posted.json がある）フォルダは、名前を変えたり消したりしない
 - アクセストークンは GitHub の Secrets（IG_ACCESS_TOKEN / IG_USER_ID）にだけ保存する。ファイルやチャットには絶対に書かない

@@ -1,6 +1,6 @@
 // Instagram 自動投稿スクリプト（GitHub Actions から実行）
 // 使い方:
-//   node scripts/publish.js                 … 今日（日本時間）の日付の投稿フォルダを投稿
+//   node scripts/publish.js                 … ローテーション（運動→知識→啓発）で今日の1件を投稿
 //   node scripts/publish.js 2026-09-28-hiza-taisou   … 指定フォルダを投稿
 //   DRY_RUN=1 を付けると、投稿せずに内容の確認だけ行う
 // 必要な環境変数: IG_USER_ID, IG_ACCESS_TOKEN, GITHUB_REPOSITORY, GITHUB_SHA（Actions では自動で入る）
@@ -11,9 +11,9 @@ const API = 'https://graph.instagram.com/v25.0';
 const ROOT = path.join(__dirname, '..');
 const POSTS = path.join(ROOT, 'posts');
 const DRY = process.env.DRY_RUN === '1' || process.env.DRY_RUN === 'true';
+const { loadPosts, lastPosted, pick, jstDate, LABEL } = require('./queue-lib');
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const todayJst = () => new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
 
 async function api(method, pathname, params) {
   const url = new URL(API + pathname);
@@ -44,13 +44,21 @@ async function waitReady(id) {
 }
 
 function duePosts(arg) {
-  const all = fs.readdirSync(POSTS, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name).sort();
+  const posts = loadPosts();
   if (arg) {
-    if (!all.includes(arg)) throw new Error('投稿フォルダが見つかりません: posts/' + arg);
+    if (!posts.find((p) => p.folder === arg)) throw new Error('投稿フォルダが見つかりません: posts/' + arg);
     return [arg];
   }
-  const today = todayJst();
-  return all.filter((n) => n.startsWith(today) && !fs.existsSync(path.join(POSTS, n, 'posted.json')));
+  const today = jstDate();
+  const last = lastPosted(posts);
+  if (last && jstDate(new Date(last.posted.postedAt)) === today) {
+    console.log(`今日（${today}）はすでに投稿済みです: ${last.folder}`);
+    return [];
+  }
+  const r = pick(posts, today, last ? last.category : null);
+  if (!r) return [];
+  console.log(`今日のカテゴリー：${LABEL[r.post.category]}（${r.reason}）`);
+  return [r.post.folder];
 }
 
 async function publish(folder) {
@@ -118,7 +126,7 @@ async function publish(folder) {
     }
   }
   const targets = duePosts(process.argv[2]);
-  if (!targets.length) { console.log(`今日（${todayJst()}）投稿する予定のフォルダはありません`); return; }
+  if (!targets.length) { console.log(`今日（${jstDate()}）投稿できるストックがありません（npm run queue で確認できます）`); return; }
   let failed = 0;
   for (const f of targets) {
     try { await publish(f); } catch (e) { failed++; console.error('✖ ' + f + ': ' + e.message); }

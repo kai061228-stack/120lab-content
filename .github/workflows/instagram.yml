@@ -2,12 +2,12 @@ name: Instagram 自動投稿
 
 on:
   schedule:
-    # 毎日 19:03（日本時間）に、その日の日付の投稿フォルダを投稿します
-    - cron: '3 10 * * *'
+    # 毎朝 7:47（日本時間）に起動。GitHub側の混雑で数分〜数十分遅れることがあるため、8時ごろの投稿になります
+    - cron: '47 22 * * *'
   workflow_dispatch:
     inputs:
       folder:
-        description: '投稿するフォルダ名（空欄なら今日の日付のもの）例: 2026-09-28-hiza-taisou'
+        description: '投稿するフォルダ名（空欄ならローテーションで今日の1件）例: 2026-09-28-hiza-taisou'
         required: false
         default: ''
       dry_run:
