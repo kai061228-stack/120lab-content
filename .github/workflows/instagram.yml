@@ -1,0 +1,45 @@
+name: Instagram 自動投稿
+
+on:
+  schedule:
+    # 毎日 19:03（日本時間）に、その日の日付の投稿フォルダを投稿します
+    - cron: '3 10 * * *'
+  workflow_dispatch:
+    inputs:
+      folder:
+        description: '投稿するフォルダ名（空欄なら今日の日付のもの）例: 2026-09-28-hiza-taisou'
+        required: false
+        default: ''
+      dry_run:
+        description: '確認だけして投稿しない'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 投稿する
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: node scripts/publish.js "${{ inputs.folder }}"
+      - name: 投稿済みの記録を保存する
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add posts/*/posted.json 2>/dev/null || true
+          if git diff --cached --quiet; then echo "記録の変更なし"; else git commit -m "投稿済みの記録を追加" && git push; fi

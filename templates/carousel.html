@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  /* 色はカテゴリーごとに下の THEMES で切り替わります */
+  :root {
+    --cover: #1E5A40;
+    --cover-track: #2D6E51;
+    --cover-sub: #F5B82E;
+    --cover-brand: #BFD8CB;
+    --head: #1E5A40;
+    --paper: #F4F8F5;
+    --mist: #DCEAE2;
+    --check: #2F7A57;
+    --dot: #F5B82E;
+    --ink: #1C2E26;
+    --muted: #4A5F55;
+    --font: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Meiryo", "Noto Sans CJK JP", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; font-family: var(--font); }
+  .slide { position: absolute; inset: 0; display: none; padding: 120px 100px 0; background: var(--paper); color: var(--ink); }
+  .slide.active { display: block; }
+
+  /* 上部：ページ番号とアカウント名 */
+  .page { position: absolute; left: 100px; top: 52px; font-size: 38px; font-weight: 700; color: var(--muted); }
+  .brand { position: absolute; right: 100px; top: 52px; font-size: 38px; font-weight: 700; color: var(--head); }
+
+  /* 表紙 */
+  .cover { background: var(--cover); color: #fff; padding-top: 200px; }
+  .cover .page { color: var(--cover-brand); }
+  .cover .brand { color: var(--cover-brand); }
+  .cover .tag { display: inline-block; font-size: 44px; font-weight: 700; color: var(--cover); background: #fff; padding: 10px 34px; border-radius: 999px; margin-bottom: 36px; }
+  .cover .sub { font-size: 56px; font-weight: 700; color: var(--cover-sub); margin-bottom: 40px; }
+  .cover h1 { font-size: 128px; font-weight: 900; line-height: 1.3; letter-spacing: 0.02em; white-space: pre-line; }
+  .cover.with-char { padding-top: 150px; }
+  .cover.with-char h1 { font-size: 120px; }
+  .cover .char { position: absolute; left: 150px; bottom: 40px; height: 600px; z-index: 2; }
+  .cover .swipe { position: absolute; right: 100px; bottom: 190px; font-size: 44px; font-weight: 700; color: #fff; z-index: 3; }
+  .cover.with-char .swipe { bottom: 230px; }
+
+  /* ポイント */
+  .num { display: inline-flex; align-items: center; justify-content: center; width: 120px; height: 120px; border-radius: 50%; background: var(--dot); color: var(--ink); font-size: 64px; font-weight: 900; margin-bottom: 56px; }
+  .point h2 { font-size: 108px; font-weight: 900; line-height: 1.35; color: var(--head); white-space: pre-line; margin-bottom: 48px; }
+  .point p { font-size: 60px; font-weight: 700; line-height: 1.65; max-width: 880px; white-space: pre-line; }
+
+  /* ポイント（画像あり）：文字を少し小さくして画像の場所を空ける */
+  .point.has-img .num { width: 96px; height: 96px; font-size: 52px; margin-bottom: 28px; }
+  .point.has-img h2 { font-size: 84px; margin-bottom: 24px; }
+  .point.has-img p { font-size: 50px; line-height: 1.5; }
+  .point .photo { position: absolute; left: 100px; right: 100px; bottom: 190px; height: 380px; border-radius: 32px; overflow: hidden; background: var(--mist); }
+  .point .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .point .photo.contain img { object-fit: contain; }
+
+  /* まとめ */
+  .summary h2 { font-size: 84px; font-weight: 900; color: var(--head); margin-bottom: 64px; }
+  .summary ul { list-style: none; }
+  .summary li { font-size: 68px; font-weight: 700; line-height: 1.4; padding: 34px 0 34px 96px; position: relative; border-bottom: 3px solid var(--mist); }
+  .summary li::before { content: ""; position: absolute; left: 0; top: 50%; width: 56px; height: 56px; margin-top: -28px; border-radius: 16px; background: var(--check); }
+  .summary li::after { content: ""; position: absolute; left: 14px; top: 50%; width: 26px; height: 14px; margin-top: -12px; border-left: 7px solid #fff; border-bottom: 7px solid #fff; transform: rotate(-45deg); }
+  .summary .note { font-size: 42px; font-weight: 500; line-height: 1.6; margin-top: 48px; color: var(--muted); }
+  .summary.many h2 { margin-bottom: 40px; }
+  .summary.many li { font-size: 60px; padding: 24px 0 24px 90px; }
+  .summary.lots li { font-size: 52px; padding: 18px 0 18px 84px; }
+  .summary.lots .note { margin-top: 32px; }
+  .summary.lots .cta { margin-top: 36px; }
+  .summary .cta { margin-top: 48px; display: inline-block; white-space: nowrap; font-size: 46px; font-weight: 700; background: var(--dot); color: var(--ink); padding: 22px 40px; border-radius: 999px; }
+
+  /* 下部の「歩く道」：スワイプで点が進む */
+  .path { position: absolute; left: 0; right: 0; bottom: 0; height: 170px; }
+  .path svg { width: 100%; height: 100%; display: block; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+  const POST = /*__POST__*/null;
+  const CHAR = /*__CHAR__*/null;
+  const IMAGES = /*__IMAGES__*/{};
+
+  // アカウント表示名（ここを変えると全スライドに反映されます）
+  const BRAND = '@120歳まで歩くラボ';
+
+  // カテゴリーごとの色とラベル
+  const THEMES = {
+    exercise: {
+      tag: '体操', cover: '#C9531A', coverTrack: '#DA6A33', coverSub: '#FFE3B8', coverBrand: '#FFD9C2',
+      head: '#B2470F', paper: '#FFF7F1', mist: '#FBE1D0', check: '#D9621E', dot: '#F5B82E', muted: '#7A5A48'
+    },
+    knowledge: {
+      tag: 'からだの知識', cover: '#1F4E8C', coverTrack: '#2E62A6', coverSub: '#F5B82E', coverBrand: '#C4D6EE',
+      head: '#1F4E8C', paper: '#F3F7FC', mist: '#DCE6F4', check: '#2F63AB', dot: '#F5B82E', muted: '#4B5B70'
+    },
+    awareness: {
+      tag: '暮らしのヒント', cover: '#1E5A40', coverTrack: '#2D6E51', coverSub: '#F5B82E', coverBrand: '#BFD8CB',
+      head: '#1E5A40', paper: '#F4F8F5', mist: '#DCEAE2', check: '#2F7A57', dot: '#F5B82E', muted: '#4A5F55'
+    }
+  };
+  const ALIAS = { '運動': 'exercise', '運動系': 'exercise', '知識': 'knowledge', '知識系': 'knowledge', '啓発': 'awareness', '啓発系': 'awareness' };
+  const catKey = ALIAS[POST.category] || POST.category;
+  const T = THEMES[catKey] || THEMES.awareness;
+  const rs = document.documentElement.style;
+  rs.setProperty('--cover', T.cover); rs.setProperty('--cover-track', T.coverTrack);
+  rs.setProperty('--cover-sub', T.coverSub); rs.setProperty('--cover-brand', T.coverBrand);
+  rs.setProperty('--head', T.head); rs.setProperty('--paper', T.paper); rs.setProperty('--mist', T.mist);
+  rs.setProperty('--check', T.check); rs.setProperty('--dot', T.dot); rs.setProperty('--muted', T.muted);
+
+  const root = document.getElementById('root');
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  const bodies = [];
+
+  // 表紙
+  const showChar = CHAR && POST.cover.character !== false;
+  const tag = POST.cover.tag === false ? '' : (POST.cover.tag || T.tag);
+  bodies.push({
+    cls: 'cover' + (showChar ? ' with-char' : ''),
+    html: `<div class="fit">` + (tag ? `<p class="tag">${esc(tag)}</p><br>` : '') +
+      `<p class="sub">${esc(POST.cover.subtitle)}</p><h1>${esc(POST.cover.title)}</h1></div>` +
+      (showChar ? `<img class="char" src="${CHAR}" alt="">` : '') +
+      `<span class="swipe">スワイプで見る ›</span>`
+  });
+
+  // ポイント
+  POST.points.forEach((p, i) => {
+    const img = p.image && IMAGES[p.image];
+    bodies.push({
+      cls: 'point' + (img ? ' has-img' : ''),
+      html: `<div class="fit"><div class="num">${i + 1}</div><h2>${esc(p.heading)}</h2><p>${esc(p.body)}</p></div>` +
+        (img ? `<div class="photo${p.imageFit === 'contain' ? ' contain' : ''}"><img src="${img}" alt=""></div>` : '')
+    });
+  });
+
+  // まとめ
+  const s = POST.summary;
+  const sizeCls = s.items.length >= 5 ? ' many lots' : s.items.length === 4 ? ' many' : '';
+  bodies.push({
+    cls: 'summary' + sizeCls,
+    html: `<div class="fit"><h2>${esc(s.title)}</h2><ul>${s.items.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` +
+      (s.note ? `<p class="note">${esc(s.note)}</p>` : '') +
+      (POST.cta ? `<p class="cta">${esc(POST.cta)}</p>` : '') + `</div>`
+  });
+
+  const n = bodies.length;
+  const waveY = (x) => 95 - 30 * Math.sin((x / 1080) * Math.PI * 2);
+  let d = '';
+  for (let x = 0; x <= 1080; x += 20) d += (x === 0 ? 'M' : 'L') + x + ' ' + waveY(x).toFixed(1) + ' ';
+
+  bodies.forEach((b, i) => {
+    const onCover = b.cls.startsWith('cover');
+    const track = onCover ? 'var(--cover-track)' : 'var(--mist)';
+    const dot = onCover ? '#FFFFFF' : 'var(--dot)';
+    const x = 180 + (i / (n - 1)) * 800;
+    const el = document.createElement('section');
+    el.className = 'slide ' + b.cls;
+    el.innerHTML = b.html +
+      `<div class="path"><svg viewBox="0 0 1080 170" preserveAspectRatio="none">
+         <path d="${d}" fill="none" stroke="${track}" stroke-width="18" stroke-linecap="round"/>
+         <circle cx="${x}" cy="${waveY(x)}" r="24" fill="${dot}"/>
+       </svg></div>` +
+      `<span class="page">${i + 1}/${n}</span>` +
+      `<span class="brand">${esc(BRAND)}</span>`;
+    root.appendChild(el);
+  });
+
+  window.slideCount = n;
+  // 文字が多くて下の道やキャラクターに重なるときは、そのスライドだけ自動で少し縮める
+  const limitFor = (el) =>
+    el.classList.contains('with-char') ? 730 :
+    el.classList.contains('cover') ? 1150 :
+    el.classList.contains('has-img') ? 770 : 1165;
+  const fitSlide = (el) => {
+    const fit = el.querySelector('.fit');
+    if (!fit) return;
+    let z = 1;
+    fit.style.zoom = z;
+    while (fit.getBoundingClientRect().bottom > limitFor(el) && z > 0.7) {
+      z = Math.round((z - 0.04) * 100) / 100;
+      fit.style.zoom = z;
+    }
+  };
+  window.showSlide = (i) => {
+    document.querySelectorAll('.slide').forEach((el, k) => el.classList.toggle('active', k === i));
+    fitSlide(document.querySelectorAll('.slide')[i]);
+  };
+  window.showSlide(0);
+</script>
+</body>
+</html>
