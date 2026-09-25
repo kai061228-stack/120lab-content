@@ -68,7 +68,24 @@ async function publish(folder) {
   console.log(`▼ ${folder}（${jpgs.length}枚）`);
   urls.forEach((u) => console.log('  ' + u));
   console.log('  キャプション先頭: ' + caption.split('\n')[0]);
-  if (DRY) { console.log('  DRY_RUN のため投稿しません'); return null; }
+  if (DRY) {
+    // 投稿はせずに、トークンと画像URLが使えるかだけ確かめる
+    for (const u of urls) {
+      const r = await fetch(u, { method: 'HEAD' });
+      const type = r.headers.get('content-type') || '';
+      if (!r.ok || !type.includes('image/jpeg')) throw new Error(`画像を取得できません（${r.status} ${type}）: ${u}`);
+    }
+    console.log('  画像URL：すべて取得できました');
+    if (process.env.IG_ACCESS_TOKEN) {
+      const me = await api('GET', '/me', { fields: 'user_id,username' });
+      console.log(`  トークン：有効です（@${me.username} / ${me.user_id}）`);
+      if (process.env.IG_USER_ID && me.user_id && String(me.user_id) !== String(process.env.IG_USER_ID)) {
+        console.log(`  ⚠ IG_USER_ID（${process.env.IG_USER_ID}）とトークンのアカウント（${me.user_id}）が一致しません`);
+      }
+    }
+    console.log('  DRY_RUN のため投稿しません');
+    return null;
+  }
 
   const uid = process.env.IG_USER_ID;
   let creationId;
