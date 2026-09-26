@@ -94,6 +94,7 @@
 - 投稿済み（posted.json がある）フォルダは、名前を変えたり消したりしない
 - アクセストークンは GitHub の Secrets（IG_ACCESS_TOKEN / IG_USER_ID）にだけ保存する。ファイルやチャットには絶対に書かない
 - カルーセルを投稿したあと、同じ画像を動画にしたリール（BGM付き）も自動で投稿する
+  - 表示時間は表紙3秒・2枚目以降6秒（scripts/reel.js の FIRST と EACH）
   - BGM は assets/bgm/ の exercise.mp3（運動）・knowledge.mp3（知識）・awareness.mp3（啓発）。すべて甘茶の音楽工房の曲
   - リールのキャプションには、ハッシュタグの前に「BGM：甘茶の音楽工房」が自動で入る（カルーセルには入らない）
   - `npm run reel -- posts/フォルダ名` で、PCでもリール動画（reel.mp4）を作って確認できる（ffmpeg が必要。reel.mp4 は git に入れない）
