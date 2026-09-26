@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: instagram-publish
@@ -35,8 +36,8 @@ jobs:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
-          # リールの投稿方法を直すまで止める（'0' でカルーセルだけ投稿）
-          REEL: '0'
+          # リール動画を gh-pages に置いて Pages の再構築を頼むのに使う
+          GITHUB_TOKEN: ${{ github.token }}
         run: node scripts/publish.js "${{ inputs.folder }}"
       - name: 投稿済みの記録を保存する
         if: always()
