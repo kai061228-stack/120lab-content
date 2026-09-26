@@ -1,3 +1,5 @@
 node_modules/
 preview.html
 assets/*.png.png
+assets/bgm/*.mp3.mp3
+posts/*/reel.mp4

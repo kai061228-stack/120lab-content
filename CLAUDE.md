@@ -93,3 +93,7 @@
 - 投稿を作ったら、`npm run render` → 画像確認 → `npm run queue` → `git add -A` → `git commit` → `git push` まで行う（push しないと投稿されない）
 - 投稿済み（posted.json がある）フォルダは、名前を変えたり消したりしない
 - アクセストークンは GitHub の Secrets（IG_ACCESS_TOKEN / IG_USER_ID）にだけ保存する。ファイルやチャットには絶対に書かない
+- カルーセルを投稿したあと、同じ画像を動画にしたリール（BGM付き）も自動で投稿する
+  - BGM は assets/bgm/ の exercise.mp3（運動）・knowledge.mp3（知識）・awareness.mp3（啓発）。すべて甘茶の音楽工房の曲
+  - リールのキャプションには、ハッシュタグの前に「BGM：甘茶の音楽工房」が自動で入る（カルーセルには入らない）
+  - `npm run reel -- posts/フォルダ名` で、PCでもリール動画（reel.mp4）を作って確認できる（ffmpeg が必要。reel.mp4 は git に入れない）

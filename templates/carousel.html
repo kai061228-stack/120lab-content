@@ -154,7 +154,8 @@
     const onCover = b.cls.startsWith('cover');
     const track = onCover ? 'var(--cover-track)' : 'var(--mist)';
     const dot = onCover ? '#FFFFFF' : 'var(--dot)';
-    const x = 180 + (i / (n - 1)) * 800;
+    // 表紙はキャラクターに隠れないよう左端に、2枚目以降は右へ進む
+    const x = i === 0 ? 70 : 180 + (i / (n - 1)) * 800;
     const el = document.createElement('section');
     el.className = 'slide ' + b.cls;
     el.innerHTML = b.html +
