@@ -114,3 +114,10 @@
   - 各500字以内。トピックタグ（#）は3投稿を通して1つだけ。「詳しくは〇〇で」などの誘導は入れない
 - 実行：`gh workflow run threads-thread.yml -f folder=フォルダ名 -f dry_run=true`（確認）→ `-f dry_run=false`（本番）
 - 投稿後は threads-posted.json が追加される（二重投稿の防止。途中で失敗したら続きから投稿される）
+
+## トークンの延長（自動）
+
+- ワークフロー「トークンの延長」（.github/workflows/refresh-tokens.yml・scripts/refresh-tokens.js）が、毎月1日と15日の10:30に IG_ACCESS_TOKEN と THREADS_ACCESS_TOKEN を延長し、GitHub Secrets を新しいトークンに書き換える
+- Secrets の書き換えには、GitHub のトークン（Secrets: Read and write）を SECRETS_UPDATER_TOKEN という名前で Secrets に登録しておく必要がある
+- 手動実行：`gh workflow run refresh-tokens.yml`（初期値は確認だけ）→ 延長するときは `-f dry_run=false`（`-f target=instagram` などで片方だけも可）
+- トークンは作成（または前回の延長）から24時間たたないと延長できない。期限（約60日）が切れると延長できないので、失敗の通知が来たら早めに確認する

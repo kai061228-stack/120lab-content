@@ -1,0 +1,44 @@
+name: トークンの延長
+
+# Instagram / Threads の長期アクセストークン（有効期限 約60日）を延長し、GitHub Secrets を書き換える
+# 毎朝の投稿（instagram.yml）とは別のワークフロー
+on:
+  schedule:
+    # 毎月1日と15日の 10:30（日本時間）。月2回にして、1回失敗しても期限までに次の実行が来るようにする
+    - cron: '30 1 1,15 * *'
+  workflow_dispatch:
+    inputs:
+      target:
+        description: '延長するトークン'
+        type: choice
+        options: [both, instagram, threads]
+        default: both
+      dry_run:
+        description: '確認だけして延長しない（今のトークンが使えるかだけ確かめる）'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+# 投稿中にトークンを書き換えないように、毎朝の投稿と同じグループで順番に動かす
+concurrency:
+  group: instagram-publish
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: トークンを延長して Secrets を更新する
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.SECRETS_UPDATER_TOKEN }}
+          TARGET: ${{ inputs.target || 'both' }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: node scripts/refresh-tokens.js
