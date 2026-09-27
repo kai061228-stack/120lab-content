@@ -99,3 +99,14 @@
   - リールのキャプションには、ハッシュタグの前に「BGM：甘茶の音楽工房」が自動で入る（カルーセルには入らない）
   - `npm run reel -- posts/フォルダ名` で、PCでもリール動画（reel.mp4）を作って確認できる（ffmpeg が必要。reel.mp4 は git に入れない）
   - Actions ではリール動画を gh-pages ブランチ（GitHub Pages）に置き、その公開URLを Instagram に渡す。gh-pages は毎回その日の動画1本だけに上書きされるので、手で編集しない
+
+## Threads 連投（手動）
+
+- 毎朝の自動投稿とは別に、手動のワークフロー「Threads 連投」（.github/workflows/threads-thread.yml）で投稿する
+- 文章は posts/フォルダ名/threads.json に3つの配列で書く
+  - 1投稿目：リール動画＋冒頭の問いかけ＋結論。最後の行は「BGM：甘茶の音楽工房」
+  - 2投稿目：理由・根拠（1投稿目への返信）。最後に「参考：〇〇」
+  - 3投稿目：今日からできること（2投稿目への返信）
+  - 各500字以内。トピックタグ（#）は3投稿を通して1つだけ。「詳しくは〇〇で」などの誘導は入れない
+- 実行：`gh workflow run threads-thread.yml -f folder=フォルダ名 -f dry_run=true`（確認）→ `-f dry_run=false`（本番）
+- 投稿後は threads-posted.json が追加される（二重投稿の防止。途中で失敗したら続きから投稿される）

@@ -1,0 +1,45 @@
+name: Threads 連投
+
+# 手動実行のみ。posts/フォルダ名/threads.json の3つの文章を、リール動画付きの連投で投稿する
+on:
+  workflow_dispatch:
+    inputs:
+      folder:
+        description: '投稿するフォルダ名（例: 2026-09-25-hai-ntm）'
+        required: true
+      dry_run:
+        description: '確認だけして投稿しない'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+
+# gh-pages（動画の置き場所）を Instagram の投稿と同時に書き換えないように、同じグループで順番に動かす
+concurrency:
+  group: instagram-publish
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Threads に連投する
+        env:
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+          FOLDER: ${{ inputs.folder }}
+        run: node scripts/threads-thread.js "$FOLDER"
+      - name: 投稿済みの記録を保存する
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add posts/*/threads-posted.json 2>/dev/null || true
+          if git diff --cached --quiet; then echo "記録の変更なし"; else git commit -m "Threads 投稿済みの記録を追加" && git pull --rebase && git push; fi
