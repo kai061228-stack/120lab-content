@@ -100,9 +100,13 @@
   - `npm run reel -- posts/フォルダ名` で、PCでもリール動画（reel.mp4）を作って確認できる（ffmpeg が必要。reel.mp4 は git に入れない）
   - Actions ではリール動画を gh-pages ブランチ（GitHub Pages）に置き、その公開URLを Instagram に渡す。gh-pages は毎回その日の動画1本だけに上書きされるので、手で編集しない
 
-## Threads 連投（手動）
+## Threads 連投
 
-- 毎朝の自動投稿とは別に、手動のワークフロー「Threads 連投」（.github/workflows/threads-thread.yml）で投稿する
+- 毎朝の Instagram 投稿のあと、同じワークフローの中で Threads にも自動で連投する（scripts/threads-auto.js）
+  - Instagram の投稿と記録の保存が終わってから動く。Threads が失敗しても Instagram の投稿やワークフローは止まらない
+  - threads.json がなければ、post.json から自動で作る（scripts/threads-lib.js）。キャプション冒頭の問いかけ・ポイントの見出しと本文・参考・まとめ・注意書きを組み立てるだけで、新しい内容は足さない
+  - 自動の文章を直したいときは、投稿日の前に threads.json を手で書いて push する（あれば手書きを優先）
+- 手動で出すときは、ワークフロー「Threads 連投」（.github/workflows/threads-thread.yml）を使う
 - 文章は posts/フォルダ名/threads.json に3つの配列で書く
   - 1投稿目：リール動画＋冒頭の問いかけ＋結論。最後の行は「BGM：甘茶の音楽工房」
   - 2投稿目：理由・根拠（1投稿目への返信）。最後に「参考：〇〇」
