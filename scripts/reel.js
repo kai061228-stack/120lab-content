@@ -11,7 +11,7 @@ const PAD = { exercise: '0xC9531A', knowledge: '0x1F4E8C', awareness: '0x1E5A40'
 const FIRST = 3;      // 表紙の表示秒数
 const EACH = 6;       // 2枚目以降の表示秒数（読む時間）
 const FADE = 0.5;     // 切り替えのフェード秒数
-const VOLUME = 0.6;   // BGMの音量
+const VOLUME = 0.3;   // BGMの音量（元の曲を1としたときの倍率）
 
 function ensureFfmpeg() {
   try { execSync('ffmpeg -version', { stdio: 'ignore' }); return; } catch (_) {}
