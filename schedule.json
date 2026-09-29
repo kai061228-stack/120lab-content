@@ -27,7 +27,8 @@
     "2026-09-30": {
       "folder": "2026-09-26-taifu-sonae",
       "category": "啓発",
-      "reason": "日付指定"
+      "reason": "日付指定",
+      "posted": true
     },
     "2026-10-01": {
       "folder": "2026-09-26-shitsunai-taiso",
