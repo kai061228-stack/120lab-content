@@ -81,12 +81,19 @@
 
 ## Instagram 自動投稿（GitHub Actions）
 
-- 毎朝8時ごろ（GitHub の起動は 7:47、混雑で少し遅れることがある）に1日1件、自動で Instagram に投稿される
-- カテゴリーは「運動 → 知識 → 啓発 → 運動 …」の順に1日ずつ回る
+- 毎朝5時ごろに1日1件、自動で Instagram に投稿される（本命は外部サービスからの 5:00 の起動。予備として GitHub の定時起動が 5:20。何回起動しても二重投稿はしない）
+- 投稿する日は、予定表 `schedule.json`（日付 → フォルダ）で決まる。毎朝の投稿は「今日（日本時間）の予定」を出す。予定がない日は投稿しない
+- 予定表の決め方（scripts/schedule-lib.js）
+  - カテゴリーは「運動 → 知識 → 啓発 → 運動 …」の順に1日ずつ回る
   - 同じカテゴリーの中では、フォルダ名の順（古いもの）から出る
   - その日のカテゴリーのストックがないときは、次のカテゴリーから繰り上げて出す
-  - どうしてもこの日に出したい投稿は、post.json に "publishDate": "YYYY-MM-DD" を書く（その日に優先して出る）
-- `npm run queue` で、2週間分の投稿予定とカテゴリーごとのストック数を確認できる。投稿を作ったら最後にこれを実行して、予定を報告する
+  - どうしてもこの日に出したい投稿は、post.json に "publishDate": "YYYY-MM-DD" を書く（その日に優先して出る。その日に自動で入っていた投稿は、空いている一番早い日に移る）
+  - 一度決まった日付は、新しい投稿を足しても動かない（空いている日だけ埋める）。今日より前と、予定が入っている今日は変わらない
+  - 投稿済みの投稿は、実際に投稿した日に固定される（予定日より前にフォルダ指定で手動投稿すると、その日に移り、元の予定日はストックから埋める）
+  - 投稿されずに日付が過ぎた予定は missed として記録に残り、その投稿はストックに戻って空いている日に入り直す
+- `npm run queue` で予定表と app-feed/feed.json を作り直し、2週間分の投稿予定とカテゴリーごとのストック数を確認できる。投稿を作ったら最後にこれを実行して、予定を報告する
+- schedule.json と app-feed/feed.json は、push するとワークフロー「投稿予定表の更新」（.github/workflows/schedule.yml）が自動で作り直してコミットする（毎朝の投稿のあとにも動く）。PC で作り忘れても大丈夫。手で編集しない
+- 予定の確認（投稿はしない）：PC では `node scripts/publish.js --which --date YYYY-MM-DD`。Actions では `gh workflow run instagram.yml -f dry_run=true -f date=YYYY-MM-DD`（date は空欄なら今日。dry_run のときだけ使える）
 - ストックは各カテゴリー3件以上（合計9件＝9日分以上）を目安にする。足りないカテゴリーがあれば報告する
 - 投稿には `images/` の JPEG（01.jpg〜）と `caption.txt` を使う。`npm run render` で PNG と一緒に JPEG も作られる
 - 投稿が終わると、そのフォルダに `posted.json` が自動で追加される（二重投稿の防止）。PC側では作業の前に `git pull` する
@@ -100,9 +107,18 @@
   - `npm run reel -- posts/フォルダ名` で、PCでもリール動画（reel.mp4）を作って確認できる（ffmpeg が必要。reel.mp4 は git に入れない）
   - Actions ではリール動画を gh-pages ブランチ（GitHub Pages）に置き、その公開URLを Instagram に渡す。gh-pages は毎回その日の動画1本だけに上書きされるので、手で編集しない
 
+## 健康アプリ（kenko_app）用のデータ
+
+- `app-feed/feed.json` に、今日から7日先までの「今日の健康情報」（Instagram と同じ日に同じ投稿）を入れている
+  - 各日：date、post（予定がない日は null）。post にはカテゴリー、表紙タイトル・サブタイトル、画像URL（表示順）、まとめ、参考の機関名（sources）と参考の行（sourcesText）
+  - 画像URLは main の画像を最後にコミットした SHA で固定した raw.githubusercontent.com のURL（gh-pages は使わない）
+- アプリが読むURL：https://raw.githubusercontent.com/kai061228-stack/120lab-content/main/app-feed/feed.json（`?t=時刻` を付けて読む）
+- アプリは端末の日付（日本時間）と同じ date の項目を表示する。0時に切り替わっても、7日分入っているので更新を待たなくてよい
+
 ## Threads 連投
 
 - 毎朝の Instagram 投稿のあと、同じワークフローの中で Threads にも自動で連投する（scripts/threads-auto.js）
+  - 予定表の今日のフォルダが Instagram に投稿済みのときだけ出す（threads-posted.json があれば何もしない）
   - Instagram の投稿と記録の保存が終わってから動く。Threads が失敗しても Instagram の投稿やワークフローは止まらない
   - threads.json がなければ、post.json から自動で作る（scripts/threads-lib.js）。キャプション冒頭の問いかけ・ポイントの見出しと本文・参考・まとめ・注意書きを組み立てるだけで、新しい内容は足さない
   - 自動の文章を直したいときは、投稿日の前に threads.json を手で書いて push する（あれば手書きを優先）

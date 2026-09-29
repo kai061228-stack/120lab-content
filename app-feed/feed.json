@@ -1,0 +1,270 @@
+{
+  "version": 1,
+  "timezone": "Asia/Tokyo",
+  "from": "2026-09-29",
+  "days": [
+    {
+      "date": "2026-09-29",
+      "post": {
+        "folder": "2026-09-26-kisetsu-kawarime",
+        "category": "知識",
+        "categoryKey": "knowledge",
+        "title": "季節の変わり目\n体調管理のコツ",
+        "subtitle": "寒暖差・水分・睡眠",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-kisetsu-kawarime/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-kisetsu-kawarime/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-kisetsu-kawarime/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-kisetsu-kawarime/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-kisetsu-kawarime/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-kisetsu-kawarime/images/06.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "脱ぎ着しやすい服",
+            "こまめに水分",
+            "寝床は8時間まで",
+            "日中は体を動かす"
+          ],
+          "note": "体調がすぐれない日が続く方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "日本気象協会 tenki.jp",
+          "国土交通省",
+          "厚生労働省"
+        ],
+        "sourcesText": "参考：日本気象協会 tenki.jp「寒暖差による体調不良」、国土交通省「健康のため水を飲もう」推進運動、厚生労働省「健康づくりのための睡眠ガイド2023」"
+      }
+    },
+    {
+      "date": "2026-09-30",
+      "post": {
+        "folder": "2026-09-26-taifu-sonae",
+        "category": "啓発",
+        "categoryKey": "awareness",
+        "title": "台風の前に\nできる備え",
+        "subtitle": "高齢の方とご家族へ",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-taifu-sonae/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-taifu-sonae/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-taifu-sonae/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-taifu-sonae/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-taifu-sonae/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-taifu-sonae/images/06.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "レベル3で避難",
+            "持病の薬を準備",
+            "懐中電灯を手元に",
+            "水と食料3日分"
+          ],
+          "note": "お住まいの地域のハザードマップも\n確認しておきましょう。"
+        },
+        "sources": [
+          "首相官邸",
+          "総務省消防庁"
+        ],
+        "sourcesText": "参考：首相官邸「防災気象情報と警戒レベル」「災害が起きる前にできること」、総務省消防庁「非常用持出品チェックシート」"
+      }
+    },
+    {
+      "date": "2026-10-01",
+      "post": {
+        "folder": "2026-09-26-shitsunai-taiso",
+        "category": "運動",
+        "categoryKey": "exercise",
+        "title": "雨の日の\n室内体操",
+        "subtitle": "家の中で体を動かそう",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-shitsunai-taiso/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-shitsunai-taiso/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-shitsunai-taiso/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-shitsunai-taiso/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-shitsunai-taiso/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-shitsunai-taiso/images/06.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "その場で足ぶみ",
+            "いすから立ち座り",
+            "かかと上げ下げ",
+            "ときどき立つ"
+          ],
+          "note": "痛みやふらつきがある方は、無理をせず、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "厚生労働省"
+        ],
+        "sourcesText": "参考：厚生労働省「健康づくりのための身体活動・運動ガイド2023」"
+      }
+    },
+    {
+      "date": "2026-10-02",
+      "post": {
+        "folder": "2026-09-26-influenza",
+        "category": "知識",
+        "categoryKey": "knowledge",
+        "title": "今から\nインフル対策",
+        "subtitle": "ワクチンの時期と予防",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-influenza/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-influenza/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-influenza/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-influenza/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-influenza/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-influenza/images/06.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "12月中旬までに接種",
+            "手洗いと加湿",
+            "休養と栄養",
+            "具合が悪ければ受診"
+          ],
+          "note": "接種や体調については、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "厚生労働省"
+        ],
+        "sourcesText": "参考：厚生労働省「インフルエンザQ&A」"
+      }
+    },
+    {
+      "date": "2026-10-03",
+      "post": {
+        "folder": "2026-09-26-aki-mikaku",
+        "category": "啓発",
+        "categoryKey": "awareness",
+        "title": "秋の味覚で\n体調管理",
+        "subtitle": "旬の食材で栄養をとろう",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-aki-mikaku/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-aki-mikaku/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-aki-mikaku/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-aki-mikaku/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-aki-mikaku/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-aki-mikaku/images/06.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "柿でビタミンC",
+            "魚ときのこを食卓に",
+            "日光を浴びる",
+            "バランスよく食べる"
+          ],
+          "note": "食事制限や持病がある方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "文部科学省",
+          "長寿科学振興財団 健康長寿ネット"
+        ],
+        "sourcesText": "参考：文部科学省「日本食品標準成分表（八訂）増補2023年」、長寿科学振興財団 健康長寿ネット「ビタミンDの働きと1日の摂取量」"
+      }
+    },
+    {
+      "date": "2026-10-04",
+      "post": {
+        "folder": "2026-09-26-sanpo",
+        "category": "運動",
+        "categoryKey": "exercise",
+        "title": "涼しい季節は\n外を歩こう",
+        "subtitle": "散歩のすすめ",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-sanpo/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-sanpo/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-sanpo/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-sanpo/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-sanpo/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-sanpo/images/06.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "1日40分が目安",
+            "できることから",
+            "筋トレは週2〜3日",
+            "歩きやすい靴で"
+          ],
+          "note": "持病や痛みがある方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "厚生労働省"
+        ],
+        "sourcesText": "参考：厚生労働省「健康づくりのための身体活動・運動ガイド2023」"
+      }
+    },
+    {
+      "date": "2026-10-05",
+      "post": {
+        "folder": "2026-09-26-frailty",
+        "category": "知識",
+        "categoryKey": "knowledge",
+        "title": "フレイルって\nなに？",
+        "subtitle": "健康と介護のあいだの状態",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-frailty/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-frailty/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-frailty/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-frailty/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-frailty/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-frailty/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-frailty/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "変化に早く気づく",
+            "人と話す・出かける",
+            "早めに対策する",
+            "3食バランスよく",
+            "今より10分多く動く"
+          ],
+          "note": "体を動かすときは無理をせず、\n気になる方はかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "厚生労働省",
+          "健康長寿ネット（長寿科学振興財団）"
+        ],
+        "sourcesText": "参考：厚生労働省「地域がいきいき 集まろう！通いの場」、健康長寿ネット（長寿科学振興財団）「フレイルとは」"
+      }
+    },
+    {
+      "date": "2026-10-06",
+      "post": {
+        "folder": "2026-09-26-tsumazuki",
+        "category": "啓発",
+        "categoryKey": "awareness",
+        "title": "つまずかない\n歩き方のコツ",
+        "subtitle": "理学療法士が教える3つのポイント",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tsumazuki/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tsumazuki/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tsumazuki/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tsumazuki/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tsumazuki/images/05.jpg"
+        ],
+        "summary": {
+          "title": "今日から意識すること",
+          "items": [
+            "かかとから着地する",
+            "目線は少し先に",
+            "足元の物を片付ける"
+          ],
+          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "消費者庁",
+          "東京消防庁",
+          "桐生市"
+        ],
+        "sourcesText": "参考：消費者庁「高齢者の転倒事故に注意しましょう！」（2020年）、東京消防庁「救急搬送データからみる高齢者の事故」、桐生市「ウォーキングの歩き方のコツ」"
+      }
+    }
+  ]
+}

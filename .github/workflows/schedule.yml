@@ -1,0 +1,51 @@
+name: 投稿予定表の更新
+
+# schedule.json（日付 → 投稿フォルダ）と app-feed/feed.json（健康アプリ用）を作り直してコミットする
+# ・投稿を push したとき（PC で npm run queue を忘れても大丈夫なように）
+# ・毎朝の Instagram 投稿のあと（instagram.yml から起動）
+# ボットの push ではこのワークフローはもう一度動かないので、繰り返しにはならない
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'posts/**'
+      - 'scripts/**'
+      - 'schedule.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# 同時に2つ動かさない（待っている間に新しい起動が来たら、新しい方だけが動く。どちらも最新から作り直すので問題ない）
+concurrency:
+  group: schedule-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      # 画像を最後にコミットした SHA を調べるため、履歴もすべて取る
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 予定表とアプリ用データを作り直して保存する
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for i in 1 2 3; do
+            node scripts/schedule.js
+            git add schedule.json app-feed
+            if git diff --cached --quiet; then echo "変更なし"; exit 0; fi
+            git commit -q -m "投稿予定表とアプリ用データを更新"
+            if git push -q origin HEAD:main; then echo "保存しました"; exit 0; fi
+            # ほかの push（投稿の記録など）とぶつかったときは、最新を取り直して作り直す
+            echo "push できなかったため、最新を取り直して作り直します（${i}回目）"
+            git fetch -q origin main
+            git reset -q --hard origin/main
+          done
+          exit 1

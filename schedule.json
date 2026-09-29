@@ -1,0 +1,138 @@
+{
+  "days": {
+    "2026-09-26": {
+      "folder": "2026-09-25-hai-ntm",
+      "category": "知識",
+      "reason": "投稿済み",
+      "posted": true
+    },
+    "2026-09-27": {
+      "folder": "2026-09-26-kansen-shukan",
+      "category": "啓発",
+      "reason": "投稿済み",
+      "posted": true
+    },
+    "2026-09-28": {
+      "folder": "2026-09-26-kokyu-taisou",
+      "category": "運動",
+      "reason": "投稿済み",
+      "posted": true
+    },
+    "2026-09-29": {
+      "folder": "2026-09-26-kisetsu-kawarime",
+      "category": "知識",
+      "reason": "投稿済み",
+      "posted": true
+    },
+    "2026-09-30": {
+      "folder": "2026-09-26-taifu-sonae",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-10-01": {
+      "folder": "2026-09-26-shitsunai-taiso",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-10-02": {
+      "folder": "2026-09-26-influenza",
+      "category": "知識",
+      "reason": "日付指定"
+    },
+    "2026-10-03": {
+      "folder": "2026-09-26-aki-mikaku",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-10-04": {
+      "folder": "2026-09-26-sanpo",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-10-05": {
+      "folder": "2026-09-26-frailty",
+      "category": "知識",
+      "reason": "ローテーション"
+    },
+    "2026-10-06": {
+      "folder": "2026-09-26-tsumazuki",
+      "category": "啓発",
+      "reason": "ローテーション"
+    },
+    "2026-10-07": {
+      "folder": "2026-09-28-hiza-taisou",
+      "category": "運動",
+      "reason": "ローテーション"
+    },
+    "2026-10-08": {
+      "folder": "2026-09-26-hone-kansetsu",
+      "category": "知識",
+      "reason": "日付指定"
+    },
+    "2026-10-09": {
+      "folder": "2026-09-26-ie-tento",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-10-10": {
+      "folder": "2026-09-26-balance",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-10-11": {
+      "folder": "2026-09-26-tanpakushitsu",
+      "category": "知識",
+      "reason": "日付指定"
+    },
+    "2026-10-12": {
+      "folder": "2026-09-26-tsunagari",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-10-13": {
+      "folder": "2026-09-26-ashiyubi",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-10-14": {
+      "folder": "2026-09-26-oral-frailty",
+      "category": "知識",
+      "reason": "日付指定"
+    },
+    "2026-10-15": {
+      "folder": "2026-09-26-okusuri",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-10-16": {
+      "folder": "2026-09-26-nemae-stretch",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-10-17": {
+      "folder": "2026-09-26-genen",
+      "category": "知識",
+      "reason": "日付指定"
+    },
+    "2026-10-18": {
+      "folder": "2026-09-26-mimamori",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-10-19": {
+      "folder": "2026-09-26-tachiagari",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-10-20": {
+      "folder": "2026-09-26-kotsusosho",
+      "category": "知識",
+      "reason": "日付指定"
+    },
+    "2026-11-15": {
+      "folder": "2026-09-26-heat-shock",
+      "category": "啓発",
+      "reason": "日付指定"
+    }
+  }
+}

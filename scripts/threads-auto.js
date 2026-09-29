@@ -1,8 +1,9 @@
 // 毎朝の Instagram 投稿のあとに、同じ投稿を Threads に連投する（instagram.yml から実行）
 // 使い方:
-//   node scripts/threads-auto.js                 … 今日（日本時間）Instagram に投稿したフォルダを Threads に連投
+//   node scripts/threads-auto.js                 … 予定表（schedule.json）の今日（日本時間）のフォルダを Threads に連投
+//                                                  （Instagram に投稿済みのときだけ。DRY_RUN のときは投稿前でも確認できる）
 //   node scripts/threads-auto.js フォルダ名       … 指定フォルダを連投（手動実行・確認用）
-//   DRY_RUN=1 を付けると、文章と動画の確認だけで投稿しない
+//   DRY_RUN=1 を付けると、文章と動画の確認だけで投稿しない（環境変数 DATE=YYYY-MM-DD でその日の予定を確認できる）
 // threads.json がなければ post.json から自動で作る（あれば手書きのものを使う）
 // 投稿は scripts/threads-thread.js に任せる（二重投稿の防止・途中からの再開もそちら）
 const fs = require('fs');
@@ -12,25 +13,22 @@ const { buildThreadTexts } = require('./threads-lib');
 
 const ROOT = path.join(__dirname, '..');
 const POSTS = path.join(ROOT, 'posts');
-const jst = (d) => new Date(new Date(d).getTime() + 9 * 3600 * 1000).toISOString().slice(0, 10);
+const { jstDate } = require('./queue-lib');
+const { buildSchedule } = require('./schedule-lib');
 
-// 今日（日本時間）Instagram に投稿したフォルダ
-function todaysFolder() {
-  const today = jst(Date.now());
-  const hits = fs.readdirSync(POSTS).filter((f) => {
-    const rec = path.join(POSTS, f, 'posted.json');
-    if (!fs.existsSync(rec)) return false;
-    const { postedAt } = JSON.parse(fs.readFileSync(rec, 'utf8'));
-    return postedAt && jst(postedAt) === today;
-  });
-  return hits.sort().pop() || null;
+// 予定表の、その日（日本時間）のフォルダ
+function scheduledFolder(date) {
+  const e = buildSchedule({ today: jstDate() }).schedule.days[date];
+  return e && !e.missed ? e.folder : null;
 }
 
 function main() {
-  const folder = process.argv[2] || todaysFolder();
-  if (!folder) { console.log('今日 Instagram に投稿したフォルダがないため、Threads には投稿しません'); return; }
-  const dir = path.join(POSTS, folder);
   const dry = process.env.DRY_RUN === '1' || process.env.DRY_RUN === 'true';
+  if (process.env.DATE && !dry) throw new Error('日付の指定（DATE）は確認モード（DRY_RUN）のときだけ使えます');
+  const date = process.env.DATE || jstDate();
+  const folder = process.argv[2] || scheduledFolder(date);
+  if (!folder) { console.log(`${date} は予定表に投稿がないため、Threads には投稿しません`); return; }
+  const dir = path.join(POSTS, folder);
   if (!dry && !fs.existsSync(path.join(dir, 'posted.json'))) {
     console.log(`▼ ${folder}：Instagram にまだ投稿されていないため、Threads には投稿しません`);
     return;

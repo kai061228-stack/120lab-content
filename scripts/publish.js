@@ -1,8 +1,10 @@
 // Instagram 自動投稿スクリプト（GitHub Actions から実行）
 // 使い方:
-//   node scripts/publish.js                 … ローテーション（運動→知識→啓発）で今日の1件を投稿
+//   node scripts/publish.js                 … 予定表（schedule.json）の今日（日本時間）の1件を投稿
 //   node scripts/publish.js 2026-09-28-hiza-taisou   … 指定フォルダを投稿（カルーセル投稿済みならリールだけ）
 //   DRY_RUN=1 を付けると、Instagram には投稿せずに確認だけ行う（リール動画は作って Pages の公開URLまで確認する）
+//   DRY_RUN=1 のときだけ --date 2026-09-30（または環境変数 DATE）で、その日の予定を確認できる
+//   --which を付けると、選ばれるフォルダを表示するだけで終わる（PC での確認用。例: node scripts/publish.js --which --date 2026-09-30）
 //   カルーセルを投稿したあと、同じ内容のリール（BGM付き動画）も投稿する。REEL=0 でリールを止められる
 //   リール動画は gh-pages ブランチ（GitHub Pages）に置き、その公開URLを Instagram に渡す
 // 必要な環境変数: IG_USER_ID, IG_ACCESS_TOKEN, GITHUB_REPOSITORY, GITHUB_SHA, GITHUB_TOKEN（Actions では自動で入る）
@@ -15,7 +17,8 @@ const API = 'https://graph.instagram.com/v25.0';
 const ROOT = path.join(__dirname, '..');
 const POSTS = path.join(ROOT, 'posts');
 const DRY = process.env.DRY_RUN === '1' || process.env.DRY_RUN === 'true';
-const { loadPosts, lastPosted, pick, jstDate, LABEL } = require('./queue-lib');
+const { loadPosts, jstDate, isYmd } = require('./queue-lib');
+const { buildSchedule, report } = require('./schedule-lib');
 const { makeReel } = require('./reel');
 const BGM_CREDIT = 'BGM：甘茶の音楽工房';
 
@@ -146,22 +149,39 @@ async function publishReel(dir, folder, caption) {
   return done.id;
 }
 
-function duePosts(arg) {
-  const posts = loadPosts();
-  if (arg) {
-    if (!posts.find((p) => p.folder === arg)) throw new Error('投稿フォルダが見つかりません: posts/' + arg);
-    return [arg];
+// 引数: [フォルダ名] [--date YYYY-MM-DD]
+function parseArgs(argv) {
+  const out = { folder: '', date: process.env.DATE || '', which: false };
+  for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === '--date') out.date = argv[++i] || '';
+    else if (argv[i] === '--which') out.which = true;
+    else if (argv[i]) out.folder = argv[i];
+  }
+  return out;
+}
+
+// 予定表（今日の日付で作り直したもの）から、その日の投稿を選ぶ
+function duePosts({ folder, date }) {
+  if (folder) {
+    if (!loadPosts().find((p) => p.folder === folder)) throw new Error('投稿フォルダが見つかりません: posts/' + folder);
+    return [folder];
   }
   const today = jstDate();
-  const last = lastPosted(posts);
-  if (last && jstDate(new Date(last.posted.postedAt)) === today) {
-    console.log(`今日（${today}）はすでに投稿済みです: ${last.folder}`);
+  const target = date || today;
+  const r = buildSchedule({ today });
+  report(r);
+  const e = r.schedule.days[target];
+  if (!e || e.missed) {
+    console.log(`${target === today ? '今日' : '指定日'}（${target}）は予定表に投稿がありません。投稿しません（npm run queue で確認できます）`);
     return [];
   }
-  const r = pick(posts, today, last ? last.category : null);
-  if (!r) return [];
-  console.log(`今日のカテゴリー：${LABEL[r.post.category]}（${r.reason}）`);
-  return [r.post.folder];
+  console.log(`予定表：${target} → ${e.folder}（${e.category}・${e.reason}）`);
+  return [e.folder];
+}
+
+// 取ってきたコミットの SHA（画像URLに使う。起動時の SHA ではなく、実際に取ってきた main の最新）
+function headSha() {
+  try { return execFileSync('git', ['rev-parse', 'HEAD'], { cwd: ROOT }).toString().trim(); } catch (_) { return process.env.GITHUB_SHA || 'main'; }
 }
 
 async function publish(folder) {
@@ -192,7 +212,7 @@ async function publish(folder) {
   }
 
   const repo = process.env.GITHUB_REPOSITORY;
-  const ref = process.env.GITHUB_SHA || 'main';
+  const ref = headSha();
   const urls = jpgs.map((f) => `https://raw.githubusercontent.com/${repo}/${ref}/posts/${encodeURIComponent(folder)}/images/${f}`);
 
   console.log(`▼ ${folder}（${jpgs.length}枚）`);
@@ -258,13 +278,18 @@ async function publish(folder) {
 }
 
 (async () => {
-  if (!DRY) {
+  if (!DRY && !process.argv.includes('--which')) {
     for (const k of ['IG_USER_ID', 'IG_ACCESS_TOKEN', 'GITHUB_REPOSITORY']) {
       if (!process.env[k]) throw new Error(`環境変数 ${k} がありません（GitHub の Secrets を確認してください）`);
     }
   }
-  const targets = duePosts(process.argv[2]);
-  if (!targets.length) { console.log(`今日（${jstDate()}）投稿できるストックがありません（npm run queue で確認できます）`); return; }
+  const args = parseArgs(process.argv.slice(2));
+  if (args.date) {
+    if (!DRY && !args.which) throw new Error('日付の指定（--date / DATE）は確認モード（DRY_RUN）のときだけ使えます');
+    if (!isYmd(args.date)) throw new Error('日付は YYYY-MM-DD の形で指定してください: ' + args.date);
+  }
+  const targets = duePosts(args);
+  if (!targets.length || args.which) return;
   let failed = 0;
   for (const f of targets) {
     try { await publish(f); } catch (e) { failed++; console.error('✖ ' + f + ': ' + e.message); }
