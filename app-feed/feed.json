@@ -1,41 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-09-30",
+  "from": "2026-10-01",
   "days": [
-    {
-      "date": "2026-09-30",
-      "post": {
-        "folder": "2026-09-26-taifu-sonae",
-        "category": "啓発",
-        "categoryKey": "awareness",
-        "title": "台風の前に\nできる備え",
-        "subtitle": "高齢の方とご家族へ",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-taifu-sonae/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-taifu-sonae/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-taifu-sonae/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-taifu-sonae/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-taifu-sonae/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-taifu-sonae/images/06.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "レベル3で避難",
-            "持病の薬を準備",
-            "懐中電灯を手元に",
-            "水と食料3日分"
-          ],
-          "note": "お住まいの地域のハザードマップも\n確認しておきましょう。"
-        },
-        "sources": [
-          "首相官邸",
-          "総務省消防庁"
-        ],
-        "sourcesText": "参考：首相官邸「防災気象情報と警戒レベル」「災害が起きる前にできること」、総務省消防庁「非常用持出品チェックシート」"
-      }
-    },
     {
       "date": "2026-10-01",
       "post": {
@@ -263,6 +230,42 @@
           "南島原市"
         ],
         "sourcesText": "参考：日本理学療法士協会「理学療法ハンドブック」、南島原市「自宅でできる運動（座って編）」"
+      }
+    },
+    {
+      "date": "2026-10-08",
+      "post": {
+        "folder": "2026-09-26-hone-kansetsu",
+        "category": "知識",
+        "categoryKey": "knowledge",
+        "title": "骨と関節の日\nロコモを知る",
+        "subtitle": "10月8日は骨と関節の日",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-hone-kansetsu/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-hone-kansetsu/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-hone-kansetsu/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-hone-kansetsu/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-hone-kansetsu/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-hone-kansetsu/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-hone-kansetsu/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "ロコモを知る",
+            "ロコチェックをする",
+            "階段は手すりを",
+            "歩く前に足踏み",
+            "運動と食事を続ける"
+          ],
+          "note": "関節の痛みや腫れがある方は、\n整形外科にご相談ください。"
+        },
+        "sources": [
+          "日本整形外科学会",
+          "日本臨床整形外科学会",
+          "日本理学療法士協会"
+        ],
+        "sourcesText": "参考：日本整形外科学会「ロコモONLINE」、日本臨床整形外科学会、日本理学療法士協会「理学療法ハンドブック」"
       }
     }
   ]
