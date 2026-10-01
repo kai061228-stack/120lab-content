@@ -13,14 +13,29 @@ const EACH = 6;       // 2枚目以降の表示秒数（読む時間）
 const FADE = 0.5;     // 切り替えのフェード秒数
 const VOLUME = 0.3;   // BGMの音量（元の曲を1としたときの倍率）
 
+// Actions では apt-get が遅いことがあるため、GitHub Releases の静的ビルドを使う（失敗したら apt-get）
+// 入れた場所は GITHUB_PATH にも書くので、同じジョブのあとのステップでも使える
+const FFMPEG_URL = 'https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz';
+const hasFfmpeg = () => { try { execSync('ffmpeg -version', { stdio: 'ignore' }); return true; } catch (_) { return false; } };
+
 function ensureFfmpeg() {
-  try { execSync('ffmpeg -version', { stdio: 'ignore' }); return; } catch (_) {}
-  if (process.env.GITHUB_ACTIONS) {
-    console.log('ffmpeg をインストールします…');
-    execSync('sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg', { stdio: 'inherit' });
-    return;
+  if (hasFfmpeg()) return;
+  if (!process.env.GITHUB_ACTIONS) {
+    throw new Error('ffmpeg が見つかりません。PCで試す場合は PowerShell で winget install ffmpeg を実行してください');
   }
-  throw new Error('ffmpeg が見つかりません。PCで試す場合は PowerShell で winget install ffmpeg を実行してください');
+  const dir = path.join(process.env.RUNNER_TEMP || require('os').tmpdir(), 'ffmpeg');
+  const bin = path.join(dir, 'bin');
+  try {
+    console.log('ffmpeg をダウンロードします…');
+    fs.mkdirSync(dir, { recursive: true });
+    execSync(`curl -fsSL --retry 3 --connect-timeout 20 --max-time 300 -o "${dir}.tar.xz" "${FFMPEG_URL}" && tar -xJf "${dir}.tar.xz" -C "${dir}" --strip-components=1`, { stdio: 'inherit' });
+    process.env.PATH = `${bin}${path.delimiter}${process.env.PATH}`;
+    if (process.env.GITHUB_PATH) fs.appendFileSync(process.env.GITHUB_PATH, bin + '\n');
+  } catch (e) {
+    console.log('  ダウンロードできませんでした（' + e.message.split('\n')[0] + '）。apt-get で入れます…');
+  }
+  if (hasFfmpeg()) { console.log('  ffmpeg を用意しました'); return; }
+  execSync('sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg', { stdio: 'inherit' });
 }
 
 function bgmFile(cat) {
@@ -74,7 +89,7 @@ function makeReel(postDir) {
   return out;
 }
 
-module.exports = { makeReel };
+module.exports = { makeReel, ensureFfmpeg };
 if (require.main === module) {
   const dir = process.argv[2];
   if (!dir) { console.error('例: node scripts/reel.js posts/2026-09-26-kansen-shukan'); process.exit(1); }

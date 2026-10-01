@@ -81,14 +81,13 @@ jobs:
       # ここから YouTube ショート。Threads のあとに、同じ実行でリール用に作った mp4 をそのままアップロードする
       # 失敗してもワークフローは失敗にしない（ログと posted.json の youtubeError に残す）
       # リールが投稿済みで動画をまだ作っていない実行（YouTube だけ出すとき）のために、ffmpeg を先に入れておく
-      # （YouTube のステップの5分に、インストールの時間を含めないため）
+      # （YouTube のステップの5分に、用意の時間を含めないため）
       - name: ffmpeg を用意する
         if: always()
         continue-on-error: true
-        timeout-minutes: 15
-        run: |
-          if command -v ffmpeg >/dev/null; then echo "ffmpeg は入っています"; else
-            sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg; fi
+        timeout-minutes: 10
+        # GitHub Releases の静的ビルドを使う（apt-get は遅いことがあるため。失敗したときだけ apt-get）
+        run: node -e "require('./scripts/reel').ensureFfmpeg()"
       - name: YouTube ショートにアップロードする
         if: always()
         continue-on-error: true
