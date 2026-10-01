@@ -118,7 +118,7 @@
 - フォルダを指定して実行すると、Instagram・Threads が投稿済みなら YouTube だけ出る：`gh workflow run instagram.yml -f folder=フォルダ名`
 - 確認だけ：`-f dry_run=true`（タイトル・説明・動画の長さを表示するだけ）
 - 各実行の成果物（Artifacts の youtube-shorts）から、その日の mp4・title.txt・description.txt をダウンロードできる（手動投稿用。14日で消える）
-- 認証：PC で `npm run youtube-auth` → 表示された値を Secrets（YT_CLIENT_ID・YT_CLIENT_SECRET・YT_REFRESH_TOKEN）に登録。クライアント情報のファイルはリポジトリに入れない
+- 認証：PC で `npm run youtube-auth`（gh にログインしておく）→ ブラウザで許可すると、Secrets（YT_CLIENT_ID・YT_CLIENT_SECRET・YT_REFRESH_TOKEN）に直接登録される（値は画面に出さない）。クライアント情報のファイルはリポジトリに入れない
 
 ## 健康アプリ（kenko_app）用のデータ
 

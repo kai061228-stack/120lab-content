@@ -1,17 +1,36 @@
 // YouTube にアップロードするためのリフレッシュトークンを取得する（PC で1回だけ実行）
 // 使い方: npm run youtube-auth
-//   ブラウザで Google にログインして許可すると、GitHub Secrets に登録する3つの値が画面に表示される
-// クライアント情報は下の CLIENT_FILE から読む（リポジトリにはコピーしない）。別の場所なら YT_CLIENT_FILE で指定できる
+//   ブラウザで Google にログインして許可すると、3つの値（YT_CLIENT_ID・YT_CLIENT_SECRET・YT_REFRESH_TOKEN）を
+//   gh secret set で GitHub Secrets に直接登録する（値は画面に表示しない。gh にログインしておくこと）
+// YT_CLIENT_ID・YT_CLIENT_SECRET は下の CLIENT_FILE から読む（リポジトリにはコピーしない）。別の場所なら YT_CLIENT_FILE で指定できる
 // スコープは youtube.upload のみ（動画のアップロードだけ）
 const fs = require('fs');
 const http = require('http');
 const crypto = require('crypto');
-const { execFile } = require('child_process');
+const path = require('path');
+const { execFile, execFileSync } = require('child_process');
 
 const CLIENT_FILE = process.env.YT_CLIENT_FILE || 'C:\\Users\\81905\\Documents\\keys\\youtube_client_secret.json';
 const SCOPE = 'https://www.googleapis.com/auth/youtube.upload';
 const PORT = Number(process.env.YT_AUTH_PORT || 8765);
 const REDIRECT = `http://127.0.0.1:${PORT}`;
+const ROOT = path.join(__dirname, '..');
+
+// gh が使えるか、ログインの前に確かめる
+function checkGh() {
+  try { execFileSync('gh', ['auth', 'status'], { cwd: ROOT, stdio: 'ignore' }); } catch (_) {
+    throw new Error('gh が使えません。gh auth login で GitHub にログインしてから、もう一度実行してください');
+  }
+}
+
+// 値はコマンドの引数ではなく標準入力で渡す（画面やプロセス一覧に出さない）
+function setSecret(name, value) {
+  try {
+    execFileSync('gh', ['secret', 'set', name], { cwd: ROOT, input: value, stdio: ['pipe', 'ignore', 'pipe'] });
+  } catch (e) {
+    throw new Error(`${name} を登録できませんでした: ${(e.stderr || '').toString().trim()}`);
+  }
+}
 
 function loadClient() {
   if (!fs.existsSync(CLIENT_FILE)) throw new Error('クライアント情報のファイルが見つかりません: ' + CLIENT_FILE);
@@ -56,6 +75,7 @@ function waitCode(state) {
 async function main() {
   // ブラウザでのログインは PC だけ。Actions などでは動かさない
   if (process.env.GITHUB_ACTIONS || process.env.CI) throw new Error('npm run youtube-auth は PC で実行してください（Actions ではブラウザでのログインはできません）');
+  checkGh();
   const client = loadClient();
   const state = crypto.randomBytes(16).toString('hex');
   const verifier = crypto.randomBytes(32).toString('base64url');
@@ -83,26 +103,10 @@ async function main() {
   if (!res.ok) throw new Error(`トークンを取得できませんでした: ${json.error || res.status} ${json.error_description || ''}`);
   if (!json.refresh_token) throw new Error('リフレッシュトークンが返ってきませんでした。https://myaccount.google.com/permissions でこのアプリのアクセスを削除してから、もう一度実行してください');
 
-  console.log('認証できました。次の3つを GitHub の Secrets に登録してください（この値はファイルやチャットに残さないでください）。\n');
-  console.log('  YT_CLIENT_ID      = ' + client.client_id);
-  console.log('  YT_CLIENT_SECRET  = ' + client.client_secret);
-  console.log('  YT_REFRESH_TOKEN  = ' + json.refresh_token);
-  console.log(`
-【登録のしかた（どちらか）】
- A. ブラウザで：GitHub のリポジトリ → Settings → Secrets and variables → Actions
-    → 「New repository secret」で、上の名前と値を1つずつ登録する
- B. ターミナルで（1つずつ実行し、聞かれたら値を貼り付けて Enter）:
-    gh secret set YT_CLIENT_ID
-    gh secret set YT_CLIENT_SECRET
-    gh secret set YT_REFRESH_TOKEN
-
-【公開設定（変数 YT_PRIVACY）】
- 何も設定しなければ private（非公開）でアップロードされます。
- 審査が通ったら、Settings → Secrets and variables → Actions → 「Variables」タブで
- YT_PRIVACY を public にする（または: gh variable set YT_PRIVACY --body public）
-
-※ Google Cloud の「OAuth 同意画面」が「テスト」のままだと、リフレッシュトークンは7日で切れます。
-  「本番環境」に公開してから、このコマンドを実行してください。`);
+  setSecret('YT_CLIENT_ID', client.client_id.trim());
+  setSecret('YT_CLIENT_SECRET', client.client_secret.trim());
+  setSecret('YT_REFRESH_TOKEN', json.refresh_token.trim());
+  console.log('3つ登録しました');
 }
 
 main().catch((e) => { console.error('✖ ' + e.message); process.exitCode = 1; });
