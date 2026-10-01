@@ -26,6 +26,8 @@ const TITLE_MAX = 100;
 const SHORTS = ' #Shorts';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// 通信ごとの待ち時間の上限（応答がないまま止まらないように）
+const wait = (sec) => AbortSignal.timeout(sec * 1000);
 const len = (s) => [...s].length;
 // YouTube のタイトル・説明では < と > が使えないため、全角に置き換える
 const clean = (s) => s.replace(/</g, '＜').replace(/>/g, '＞');
@@ -90,9 +92,11 @@ function writeOutputs(folder, file, title, description) {
   console.log('  成果物（動画・タイトル・説明文）を書き出しました: ' + out);
 }
 
+// リフレッシュトークンだけで認証する（ブラウザでのログインには切り替えない）。だめなら、すぐエラーで終わる
 async function accessToken() {
   const res = await fetch('https://oauth2.googleapis.com/token', {
     method: 'POST',
+    signal: wait(30),
     body: new URLSearchParams({
       client_id: process.env.YT_CLIENT_ID,
       client_secret: process.env.YT_CLIENT_SECRET,
@@ -115,6 +119,7 @@ async function apiError(res) {
 }
 
 // 再開可能アップロード（videos.insert）。途中で切れたら、届いた位置から送り直す
+// 動画IDが返ってきたら終わり（YouTube 側の処理完了は待たない）
 async function upload(file, meta, token) {
   const data = fs.readFileSync(file);
   const size = data.length;
@@ -127,18 +132,19 @@ async function upload(file, meta, token) {
       'X-Upload-Content-Type': 'video/mp4',
     },
     body: JSON.stringify(meta),
+    signal: wait(30),
   });
   if (!init.ok) throw new Error('アップロードの開始に失敗しました: ' + await apiError(init));
   const session = init.headers.get('location');
   if (!session) throw new Error('アップロード先のURLが返ってきませんでした');
 
   let offset = 0;
-  for (let attempt = 1; attempt <= 6; attempt++) {
+  for (let attempt = 1; attempt <= 3; attempt++) {
     let res = null;
     try {
       const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'video/mp4' };
       if (offset > 0) headers['Content-Range'] = `bytes ${offset}-${size - 1}/${size}`;
-      res = await fetch(session, { method: 'PUT', headers, body: data.subarray(offset) });
+      res = await fetch(session, { method: 'PUT', headers, body: data.subarray(offset), signal: wait(90) });
     } catch (e) {
       console.log(`  送信が途中で切れました（${e.message}）`);
     }
@@ -147,10 +153,11 @@ async function upload(file, meta, token) {
       throw new Error('アップロードに失敗しました: ' + await apiError(res));
     }
     if (res) console.log(`  送信が完了しませんでした（HTTP ${res.status}）`);
-    await sleep(Math.min(2 ** attempt, 30) * 1000);
+    await sleep(2 ** attempt * 1000);
     // どこまで届いたかを問い合わせて、続きから送る
     const q = await fetch(session, {
       method: 'PUT', headers: { Authorization: `Bearer ${token}`, 'Content-Range': `bytes */${size}`, 'Content-Length': '0' },
+      signal: wait(30),
     }).catch(() => null);
     if (q && (q.status === 200 || q.status === 201)) return (await q.json()).id;
     if (q && q.status === 308) {
@@ -207,7 +214,10 @@ async function main() {
     status: { privacyStatus: status, selfDeclaredMadeForKids: false },
   };
   try {
-    const id = await upload(file, meta, await accessToken());
+    console.log('  認証しています（リフレッシュトークン）…');
+    const token = await accessToken();
+    console.log(`  アップロードしています（${(fs.statSync(file).size / 1e6).toFixed(1)}MB）…`);
+    const id = await upload(file, meta, token);
     // ほかのステップが書いた記録を消さないよう、読み直してから追記する
     const latest = JSON.parse(fs.readFileSync(postedFile, 'utf8'));
     Object.assign(latest, { youtubeId: id, youtubeAt: new Date().toISOString(), youtubePrivacy: status });

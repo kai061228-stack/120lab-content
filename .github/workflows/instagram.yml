@@ -80,9 +80,19 @@ jobs:
           if git diff --cached --quiet; then echo "記録の変更なし"; else git commit -m "Threads 投稿済みの記録を追加" && git pull --rebase && git push; fi
       # ここから YouTube ショート。Threads のあとに、同じ実行でリール用に作った mp4 をそのままアップロードする
       # 失敗してもワークフローは失敗にしない（ログと posted.json の youtubeError に残す）
+      # リールが投稿済みで動画をまだ作っていない実行（YouTube だけ出すとき）のために、ffmpeg を先に入れておく
+      # （YouTube のステップの5分に、インストールの時間を含めないため）
+      - name: ffmpeg を用意する
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 15
+        run: |
+          if command -v ffmpeg >/dev/null; then echo "ffmpeg は入っています"; else
+            sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg; fi
       - name: YouTube ショートにアップロードする
         if: always()
         continue-on-error: true
+        timeout-minutes: 5
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}

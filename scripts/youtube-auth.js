@@ -54,6 +54,8 @@ function waitCode(state) {
 }
 
 async function main() {
+  // ブラウザでのログインは PC だけ。Actions などでは動かさない
+  if (process.env.GITHUB_ACTIONS || process.env.CI) throw new Error('npm run youtube-auth は PC で実行してください（Actions ではブラウザでのログインはできません）');
   const client = loadClient();
   const state = crypto.randomBytes(16).toString('hex');
   const verifier = crypto.randomBytes(32).toString('base64url');

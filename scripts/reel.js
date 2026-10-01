@@ -17,7 +17,7 @@ function ensureFfmpeg() {
   try { execSync('ffmpeg -version', { stdio: 'ignore' }); return; } catch (_) {}
   if (process.env.GITHUB_ACTIONS) {
     console.log('ffmpeg をインストールします…');
-    execSync('sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg', { stdio: 'inherit' });
+    execSync('sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg', { stdio: 'inherit' });
     return;
   }
   throw new Error('ffmpeg が見つかりません。PCで試す場合は PowerShell で winget install ffmpeg を実行してください');
