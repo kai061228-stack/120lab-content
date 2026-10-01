@@ -98,9 +98,9 @@ async function accessToken() {
     method: 'POST',
     signal: wait(30),
     body: new URLSearchParams({
-      client_id: process.env.YT_CLIENT_ID,
-      client_secret: process.env.YT_CLIENT_SECRET,
-      refresh_token: process.env.YT_REFRESH_TOKEN,
+      client_id: (process.env.YT_CLIENT_ID || '').trim(),
+      client_secret: (process.env.YT_CLIENT_SECRET || '').trim(),
+      refresh_token: (process.env.YT_REFRESH_TOKEN || '').trim(),
       grant_type: 'refresh_token',
     }),
   });
