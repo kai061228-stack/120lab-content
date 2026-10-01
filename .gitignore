@@ -3,3 +3,5 @@ preview.html
 assets/*.png.png
 assets/bgm/*.mp3.mp3
 posts/*/reel.mp4
+client_secret*.json
+*token*.json

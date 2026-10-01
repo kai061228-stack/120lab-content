@@ -78,6 +78,38 @@ jobs:
         run: |
           git add posts/*/threads.json posts/*/threads-posted.json 2>/dev/null || true
           if git diff --cached --quiet; then echo "記録の変更なし"; else git commit -m "Threads 投稿済みの記録を追加" && git pull --rebase && git push; fi
+      # ここから YouTube ショート。Threads のあとに、同じ実行でリール用に作った mp4 をそのままアップロードする
+      # 失敗してもワークフローは失敗にしない（ログと posted.json の youtubeError に残す）
+      - name: YouTube ショートにアップロードする
+        if: always()
+        continue-on-error: true
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          # 公開設定。Settings → Variables の YT_PRIVACY（private / unlisted / public）。なければ private
+          YT_PRIVACY: ${{ vars.YT_PRIVACY || 'private' }}
+          YT_OUT_DIR: ${{ runner.temp }}/youtube
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+          DATE: ${{ inputs.date }}
+          FOLDER: ${{ inputs.folder }}
+        run: node scripts/youtube.js $FOLDER
+      - name: YouTube の記録を保存する
+        if: always() && !inputs.dry_run
+        continue-on-error: true
+        run: |
+          git add posts/*/posted.json 2>/dev/null || true
+          if git diff --cached --quiet; then echo "記録の変更なし"; else git commit -m "YouTube 投稿済みの記録を追加" && git pull --rebase && git push; fi
+      # 審査が通るまでの手動投稿用：その日の mp4・タイトル・説明文を成果物（Artifacts）に置く
+      - name: YouTube 用の動画と文章を成果物に置く
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: youtube-shorts
+          path: ${{ runner.temp }}/youtube
+          if-no-files-found: ignore
+          retention-days: 14
       # 予定表（schedule.json）とアプリ用データ（app-feed/feed.json）の書き換えは「投稿予定表の更新」だけが行う
       # （投稿の記録が増えたときと、アプリ用データの日付を1日進めるため、毎回起動する）
       - name: 投稿予定表の更新を起動する

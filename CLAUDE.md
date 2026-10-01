@@ -107,6 +107,19 @@
   - `npm run reel -- posts/フォルダ名` で、PCでもリール動画（reel.mp4）を作って確認できる（ffmpeg が必要。reel.mp4 は git に入れない）
   - Actions ではリール動画を gh-pages ブランチ（GitHub Pages）に置き、その公開URLを Instagram に渡す。gh-pages は毎回その日の動画1本だけに上書きされるので、手で編集しない
 
+## YouTube ショート
+
+- 毎朝の投稿の順番：カルーセル → リール → Threads → YouTube ショート（scripts/youtube.js）
+  - その日のリール用に作った reel.mp4 を、同じ実行の中でそのままアップロードする（YouTube Data API v3 の videos.insert・再開可能アップロード）
+  - タイトル：表紙タイトル（＋サブタイトル）＋「 #Shorts」（100文字以内）。説明：リールのキャプションと同じ（参考・BGM表記・ハッシュタグ入り）
+  - カテゴリーは「教育」、子ども向けではない。公開設定は GitHub の変数 YT_PRIVACY（private / unlisted / public。なければ private）
+- Instagram に投稿済み（posted.json がある）のときだけ出す。成功すると posted.json に youtubeId が入り、あれば二度と出さない
+- YouTube が失敗しても Instagram・Threads は失敗扱いにしない（ログと posted.json の youtubeError に残る）
+- フォルダを指定して実行すると、Instagram・Threads が投稿済みなら YouTube だけ出る：`gh workflow run instagram.yml -f folder=フォルダ名`
+- 確認だけ：`-f dry_run=true`（タイトル・説明・動画の長さを表示するだけ）
+- 各実行の成果物（Artifacts の youtube-shorts）から、その日の mp4・title.txt・description.txt をダウンロードできる（手動投稿用。14日で消える）
+- 認証：PC で `npm run youtube-auth` → 表示された値を Secrets（YT_CLIENT_ID・YT_CLIENT_SECRET・YT_REFRESH_TOKEN）に登録。クライアント情報のファイルはリポジトリに入れない
+
 ## 健康アプリ（kenko_app）用のデータ
 
 - `app-feed/feed.json` に、今日から7日先までの「今日の健康情報」（Instagram と同じ日に同じ投稿）を入れている

@@ -277,7 +277,9 @@ async function publish(folder) {
   return record;
 }
 
-(async () => {
+// youtube.js から reelCaption を使うため、直接実行したときだけ投稿する
+module.exports = { reelCaption };
+if (require.main === module) (async () => {
   if (!DRY && !process.argv.includes('--which')) {
     for (const k of ['IG_USER_ID', 'IG_ACCESS_TOKEN', 'GITHUB_REPOSITORY']) {
       if (!process.env[k]) throw new Error(`環境変数 ${k} がありません（GitHub の Secrets を確認してください）`);
