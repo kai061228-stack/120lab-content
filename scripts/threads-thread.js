@@ -11,6 +11,7 @@ const os = require('os');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const { makeReel } = require('./reel');
+const { copySite } = require('./site-lib');
 
 const API = 'https://graph.threads.net/v1.0';
 const ROOT = path.join(__dirname, '..');
@@ -48,7 +49,7 @@ async function waitReady(id) {
   throw new Error('投稿の準備が時間内に終わりませんでした: ' + id);
 }
 
-// reel.mp4 を gh-pages に置き、公開URLを返す（publish.js と同じ方式。gh-pages は毎回動画1本だけに上書き）
+// reel.mp4 を gh-pages に置き、公開URLを返す（publish.js と同じ方式。gh-pages は毎回動画1本＋site/ のページに上書き）
 function uploadToPages(file, folder) {
   const [owner, repo] = (process.env.GITHUB_REPOSITORY || '').split('/');
   if (!owner || !repo) throw new Error('GITHUB_REPOSITORY がないため、動画の公開URLを作れません');
@@ -63,8 +64,8 @@ function uploadToPages(file, folder) {
     git(['rm', '-rf', '--quiet', '.'], tmp);
     fs.mkdirSync(path.join(tmp, 'reels'), { recursive: true });
     fs.copyFileSync(file, path.join(tmp, name));
-    fs.writeFileSync(path.join(tmp, '.nojekyll'), '');
-    fs.writeFileSync(path.join(tmp, 'index.html'), '<!doctype html><meta charset="utf-8"><title>120lab reels</title>\n');
+    // ホームページ・プライバシーポリシー（site/）も毎回置き直す
+    copySite(tmp);
     git(['add', '-A'], tmp);
     git(['-c', 'user.name=github-actions[bot]', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
       'commit', '--quiet', '-m', `Threads用リール動画: ${folder}`], tmp);

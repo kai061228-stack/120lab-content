@@ -20,6 +20,7 @@ const DRY = process.env.DRY_RUN === '1' || process.env.DRY_RUN === 'true';
 const { loadPosts, jstDate, isYmd } = require('./queue-lib');
 const { buildSchedule, report } = require('./schedule-lib');
 const { makeReel } = require('./reel');
+const { copySite } = require('./site-lib');
 const BGM_CREDIT = 'BGM：甘茶の音楽工房';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -73,7 +74,7 @@ async function waitVideo(id) {
 
 // reel.mp4 を GitHub Pages（gh-pages ブランチ）に置き、公開URLを返す
 // Instagram ログインの API では動画を直接アップロードできないため、公開URL（video_url）で渡す
-// gh-pages は毎回「今回の動画1本だけ」の状態で上書きする（履歴や容量が増えないように）
+// gh-pages は毎回「今回の動画1本＋site/ のページ」の状態で上書きする（履歴や容量が増えないように）
 function uploadToPages(file, folder) {
   const [owner, repo] = (process.env.GITHUB_REPOSITORY || '').split('/');
   if (!owner || !repo) throw new Error('GITHUB_REPOSITORY がないため、動画の公開URLを作れません');
@@ -88,8 +89,8 @@ function uploadToPages(file, folder) {
     git(['rm', '-rf', '--quiet', '.'], tmp);
     fs.mkdirSync(path.join(tmp, 'reels'), { recursive: true });
     fs.copyFileSync(file, path.join(tmp, name));
-    fs.writeFileSync(path.join(tmp, '.nojekyll'), '');
-    fs.writeFileSync(path.join(tmp, 'index.html'), '<!doctype html><meta charset="utf-8"><title>120lab reels</title>\n');
+    // ホームページ・プライバシーポリシー（site/）も毎回置き直す
+    copySite(tmp);
     git(['add', '-A'], tmp);
     git(['-c', 'user.name=github-actions[bot]', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
       'commit', '--quiet', '-m', `リール動画: ${folder}`], tmp);
