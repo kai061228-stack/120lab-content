@@ -1,40 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-10-02",
+  "from": "2026-10-03",
   "days": [
-    {
-      "date": "2026-10-02",
-      "post": {
-        "folder": "2026-09-26-influenza",
-        "category": "知識",
-        "categoryKey": "knowledge",
-        "title": "今から\nインフル対策",
-        "subtitle": "ワクチンの時期と予防",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-influenza/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-influenza/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-influenza/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-influenza/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-influenza/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-influenza/images/06.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "12月中旬までに接種",
-            "手洗いと加湿",
-            "休養と栄養",
-            "具合が悪ければ受診"
-          ],
-          "note": "接種や体調については、\nかかりつけ医にご相談ください。"
-        },
-        "sources": [
-          "厚生労働省"
-        ],
-        "sourcesText": "参考：厚生労働省「インフルエンザQ&A」"
-      }
-    },
     {
       "date": "2026-10-03",
       "post": {
@@ -269,6 +237,42 @@
           "日本理学療法士協会"
         ],
         "sourcesText": "参考：消費者庁「高齢者の転倒事故に注意しましょう！」（2020年）、日本理学療法士協会「理学療法ハンドブック 転倒予防」"
+      }
+    },
+    {
+      "date": "2026-10-10",
+      "post": {
+        "folder": "2026-09-26-balance",
+        "category": "運動",
+        "categoryKey": "exercise",
+        "title": "転倒予防の日\nバランス体操",
+        "subtitle": "10月10日は転倒予防の日",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-balance/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-balance/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-balance/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-balance/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-balance/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-balance/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-balance/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "転倒予防の日を知る",
+            "つかまって片脚立ち",
+            "足踏み＋言葉",
+            "前後ステップ",
+            "無理をしない"
+          ],
+          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "日本転倒予防学会",
+          "日本整形外科学会",
+          "日本理学療法士協会"
+        ],
+        "sourcesText": "参考：日本転倒予防学会、日本整形外科学会「ロコモONLINE」、日本理学療法士協会「理学療法ハンドブック 転倒予防」"
       }
     }
   ]
