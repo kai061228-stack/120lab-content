@@ -57,7 +57,8 @@
     "2026-10-05": {
       "folder": "2026-09-26-frailty",
       "category": "知識",
-      "reason": "ローテーション"
+      "reason": "ローテーション",
+      "posted": true
     },
     "2026-10-06": {
       "folder": "2026-09-26-tsumazuki",

@@ -1,40 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-10-04",
+  "from": "2026-10-05",
   "days": [
-    {
-      "date": "2026-10-04",
-      "post": {
-        "folder": "2026-09-26-sanpo",
-        "category": "運動",
-        "categoryKey": "exercise",
-        "title": "涼しい季節は\n外を歩こう",
-        "subtitle": "散歩のすすめ",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-sanpo/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-sanpo/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-sanpo/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-sanpo/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-sanpo/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-sanpo/images/06.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "1日40分が目安",
-            "できることから",
-            "筋トレは週2〜3日",
-            "歩きやすい靴で"
-          ],
-          "note": "持病や痛みがある方は、\nかかりつけ医にご相談ください。"
-        },
-        "sources": [
-          "厚生労働省"
-        ],
-        "sourcesText": "参考：厚生労働省「健康づくりのための身体活動・運動ガイド2023」"
-      }
-    },
     {
       "date": "2026-10-05",
       "post": {
@@ -275,6 +243,40 @@
           "健康長寿ネット（長寿科学振興財団）"
         ],
         "sourcesText": "参考：厚生労働省 e-ヘルスネット「サルコペニア」、健康長寿ネット（長寿科学振興財団）「サルコペニアに対する栄養」"
+      }
+    },
+    {
+      "date": "2026-10-12",
+      "post": {
+        "folder": "2026-09-26-tsunagari",
+        "category": "啓発",
+        "categoryKey": "awareness",
+        "title": "つながりが\n元気をつくる",
+        "subtitle": "社会参加と介護予防",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tsunagari/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tsunagari/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tsunagari/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tsunagari/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tsunagari/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tsunagari/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tsunagari/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "趣味の集まりに参加",
+            "人と会う予定を",
+            "通いの場に行く",
+            "動く・食べる・話す",
+            "窓口で聞いてみる"
+          ],
+          "note": "外出が不安な方は、\nご家族や窓口にご相談ください。"
+        },
+        "sources": [
+          "厚生労働省"
+        ],
+        "sourcesText": "参考：厚生労働省「地域がいきいき 集まろう！通いの場」「認知症に関する相談先」"
       }
     }
   ]
