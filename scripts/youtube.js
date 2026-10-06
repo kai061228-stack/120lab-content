@@ -13,7 +13,7 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const { jstDate } = require('./queue-lib');
-const { buildSchedule } = require('./schedule-lib');
+const { buildSchedule, slotDays } = require('./schedule-lib');
 const { makeReel } = require('./reel');
 const { reelCaption } = require('./publish');
 
@@ -59,7 +59,8 @@ function buildDescription(caption) {
 
 // 予定表の、その日（日本時間）のフォルダ
 function scheduledFolder(date) {
-  const e = buildSchedule({ today: jstDate() }).schedule.days[date];
+  // SLOT=evening のときは18時の枠（なければ朝5時の枠）
+  const e = slotDays(buildSchedule({ today: jstDate() }).schedule, process.env.SLOT || 'morning')[date];
   return e && !e.missed ? e.folder : null;
 }
 

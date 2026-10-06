@@ -141,5 +141,12 @@
       "category": "啓発",
       "reason": "日付指定"
     }
+  },
+  "evening": {
+    "2026-10-12": {
+      "folder": "2026-10-07-vitamin-01-a",
+      "category": "栄養",
+      "reason": "日付指定"
+    }
   }
 }

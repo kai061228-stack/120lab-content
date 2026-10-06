@@ -11,10 +11,18 @@
 //      ・運動 → 知識 → 啓発 の順（前の日のカテゴリーの次）。カテゴリー内はフォルダ名の順（古いもの）から
 //      ・その日のカテゴリーのストックがなければ、次のカテゴリーから繰り上げ
 //      ・publishDate がまだ先の投稿は使わない
+//
+// 18時の枠（運動・知識・啓発以外のイレギュラー発信。栄養枠・○○week など）は、別の予定（schedule.json の evening）にする
+//   ・投稿済みは、実際に投稿した日に固定する。今日より前で投稿されなかった予定は missed として記録に残す
+//   ・まだの投稿は、post.json の "publishDate" の日にだけ入れる（ローテーションや繰り上げはしない）
+//   ・publishDate がない・過ぎている・同じ日にほかの投稿があるときは、予定に入れずに知らせる
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const { POSTS, ORDER, LABEL, CAT, jstDate, addDays, isYmd, loadPosts } = require('./queue-lib');
+
+// 枠 → schedule.json の中の場所
+const SLOT_KEY = { morning: 'days', evening: 'evening' };
 
 const ROOT = path.join(__dirname, '..');
 const SCHEDULE_FILE = path.join(ROOT, 'schedule.json');
@@ -50,7 +58,8 @@ function prevCategory(days, d) {
 }
 
 // 予定表を作る（ファイルには書かない）。warnings は運営者に知らせること、moves は日付が変わった投稿
-function buildSchedule({ today = jstDate(), prev = readSchedule(), posts = loadPosts() } = {}) {
+function buildSchedule({ today = jstDate(), prev = readSchedule(), posts: allPosts = loadPosts() } = {}) {
+  const posts = allPosts.filter((p) => p.slot === 'morning');
   const byFolder = new Map(posts.map((p) => [p.folder, p]));
   const prevDays = prev.days || {};
   const days = {};
@@ -145,9 +154,58 @@ function buildSchedule({ today = jstDate(), prev = readSchedule(), posts = loadP
     if (now !== d) moves.push({ folder: pe.folder, from: d, to: now || null });
   }
 
+  const evening = buildEvening({ today, prevDays: prev.evening || {}, posts: allPosts.filter((p) => p.slot === 'evening'), warnings });
+  return { schedule: { days: sortKeys(days), evening }, warnings, moves };
+}
+
+function sortKeys(obj) {
   const sorted = {};
-  Object.keys(days).sort().forEach((d) => { sorted[d] = days[d]; });
-  return { schedule: { days: sorted }, warnings, moves };
+  Object.keys(obj).sort().forEach((k) => { sorted[k] = obj[k]; });
+  return sorted;
+}
+
+// 18時の枠の予定を作る（決め方はファイルの先頭）
+function buildEvening({ today, prevDays, posts, warnings }) {
+  const days = {};
+  const entry = (p, reason, extra = {}) => ({ folder: p.folder, category: p.label, reason, ...extra });
+
+  // 投稿済み：実際に投稿した日に固定
+  const postedByDay = {};
+  for (const p of posts) {
+    if (p.posted && p.posted.postedAt) (postedByDay[jstDate(p.posted.postedAt)] ||= []).push(p);
+  }
+  for (const [d, list] of Object.entries(postedByDay)) {
+    list.sort((a, b) => String(a.posted.postedAt).localeCompare(String(b.posted.postedAt)));
+    days[d] = entry(list[0], list[0].publishDate === d ? '日付指定' : '投稿済み', { posted: true });
+    const extra = list.slice(1).map((p) => p.folder);
+    if (extra.length) days[d].extra = extra;
+  }
+
+  // 今日より前：記録として残す（投稿されなかった予定は missed）
+  for (const [d, pe] of Object.entries(prevDays)) {
+    if (d >= today || days[d]) continue;
+    const { posted, extra, ...rest } = pe;
+    days[d] = { ...rest, missed: true };
+  }
+
+  // まだの投稿：publishDate の日に入れる
+  for (const p of posts) {
+    if (p.posted) continue;
+    const P = p.publishDate;
+    if (!p.post.category) warnings.push(`${p.folder}：post.json に "category" がありません（18時の枠として扱います）`);
+    if (!isYmd(P)) { warnings.push(`${p.folder}：18時の枠の投稿には "publishDate" が必要です（予定に入っていません）`); continue; }
+    if (P < today) { warnings.push(`${p.folder}：publishDate（${P}）を過ぎています。新しい日付を書いてください`); continue; }
+    if (days[P]) { warnings.push(`${p.folder}：${P} の18時には ${days[P].folder} が入っているため、予定に入れられません`); continue; }
+    days[P] = entry(p, '日付指定');
+  }
+  return sortKeys(days);
+}
+
+// 予定表の、その日のその枠の項目（なければ null）
+function slotDays(schedule, slot = 'morning') {
+  const key = SLOT_KEY[slot];
+  if (!key) throw new Error(`枠の指定が正しくありません: ${slot}（morning か evening）`);
+  return schedule[key] || {};
 }
 
 // ---- アプリ用データ ----
@@ -207,6 +265,7 @@ function feedPost(folder) {
   };
 }
 
+// アプリの「今日の学び」は朝5時の枠（schedule.days）だけ。18時の枠（schedule.evening）は載せない
 function buildFeed(schedule, today = jstDate()) {
   const days = [];
   for (let i = 0; i < FEED_DAYS; i++) {
@@ -237,4 +296,4 @@ function report({ warnings, moves }) {
   warnings.forEach((w) => console.log(`  ⚠ ${w}`));
 }
 
-module.exports = { SCHEDULE_FILE, FEED_FILE, readSchedule, buildSchedule, buildFeed, updateFiles, report, parseSources };
+module.exports = { SCHEDULE_FILE, FEED_FILE, readSchedule, buildSchedule, slotDays, buildFeed, updateFiles, report, parseSources };

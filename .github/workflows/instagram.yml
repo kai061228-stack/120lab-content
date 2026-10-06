@@ -5,8 +5,17 @@ on:
     # 予備の定時起動：毎朝 5:20（日本時間）。本命は外部サービスから 5:00 に workflow_dispatch で起動する
     # 何回起動しても、予定表の今日の投稿が投稿済みなら何もしない
     - cron: '20 20 * * *'
+    # 18時の枠（栄養枠などのイレギュラー発信）：18:00 と、予備の 18:40（日本時間）
+    # GitHub の定時起動は遅れることがあるため、外部サービスからも 18:00 に slot=evening で起動するとよい
+    - cron: '0 9 * * *'
+    - cron: '40 9 * * *'
   workflow_dispatch:
     inputs:
+      slot:
+        description: '投稿する枠（morning＝朝5時の枠、evening＝18時の枠。外部サービスからの朝の起動は空欄のままでよい）'
+        type: choice
+        options: [morning, evening]
+        default: morning
       folder:
         description: '投稿するフォルダ名（空欄なら予定表の今日の1件）例: 2026-09-28-hiza-taisou'
         required: false
@@ -33,6 +42,9 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      # 枠：手動・外部サービスの起動は slot の入力（空欄なら morning）、GitHub の定時起動は 9時台（UTC）の cron なら evening
+      SLOT: ${{ inputs.slot || (startsWith(github.event.schedule, '20 20') && 'morning') || (github.event.schedule && 'evening') || 'morning' }}
     steps:
       # 起動したときのコミットではなく、main の最新を取る
       # （前の実行がまだ動いている間に起動した場合でも、その実行の投稿記録を見て二重投稿しないように）

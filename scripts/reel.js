@@ -6,8 +6,9 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const CAT = { '運動': 'exercise', '運動系': 'exercise', '知識': 'knowledge', '知識系': 'knowledge', '啓発': 'awareness', '啓発系': 'awareness' };
-const PAD = { exercise: '0xC9531A', knowledge: '0x1F4E8C', awareness: '0x1E5A40' };
+const { catKey, ORDER } = require('./queue-lib');
+// 縦長（9:16）にするときの上下の余白の色（表紙の色。栄養以外のイレギュラー発信も栄養と同じ黄色）
+const PAD = { exercise: '0xC9531A', knowledge: '0x1F4E8C', awareness: '0x1E5A40', nutrition: '0xF2B705', special: '0xF2B705' };
 const FIRST = 3;      // 表紙の表示秒数
 const EACH = 6;       // 2枚目以降の表示秒数（読む時間）
 const FADE = 0.5;     // 切り替えのフェード秒数
@@ -38,19 +39,21 @@ function ensureFfmpeg() {
   execSync('sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg', { stdio: 'inherit' });
 }
 
+// BGM は assets/bgm/カテゴリーの英語キー.mp3（運動 exercise・知識 knowledge・啓発 awareness・栄養 nutrition）
+// 18時の枠（栄養など）で専用の曲がまだないときは、運動と同じ exercise.mp3 を使う
+// （専用の曲に替えるときは、assets/bgm/nutrition.mp3 のように置くだけでよい）
 function bgmFile(cat) {
   const dir = path.join(ROOT, 'assets', 'bgm');
-  for (const name of [`${cat}.mp3`, `${cat}.mp3.mp3`]) {
-    const f = path.join(dir, name);
-    if (fs.existsSync(f)) return f;
-  }
-  return null;
+  const names = [`${cat}.mp3`];
+  if (!ORDER.includes(cat)) names.push('exercise.mp3');
+  const f = names.map((n) => path.join(dir, n)).find((x) => fs.existsSync(x));
+  return f || null;
 }
 
 function makeReel(postDir) {
   ensureFfmpeg();
   const post = JSON.parse(fs.readFileSync(path.join(postDir, 'post.json'), 'utf8'));
-  const cat = CAT[post.category] || post.category || 'awareness';
+  const cat = catKey(post.category);
   const imgDir = path.join(postDir, 'images');
   const imgs = fs.readdirSync(imgDir).filter((f) => f.endsWith('.jpg')).sort().map((f) => path.join(imgDir, f));
   if (!imgs.length) throw new Error('JPEG画像がありません: ' + imgDir);

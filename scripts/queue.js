@@ -1,5 +1,5 @@
 // 使い方: npm run queue
-// 予定表（schedule.json）とアプリ用データを作り直し、これから2週間の投稿予定とカテゴリーごとのストック数を表示します
+// 予定表（schedule.json）とアプリ用データを作り直し、これから2週間の投稿予定（朝5時・18時）とカテゴリーごとのストック数を表示します
 const { loadPosts, jstDate, addDays, ORDER, LABEL } = require('./queue-lib');
 const { updateFiles, report } = require('./schedule-lib');
 
@@ -8,7 +8,7 @@ const r = updateFiles({ today });
 const posts = loadPosts();
 console.log('■ ストック（未投稿）');
 for (const c of ORDER) {
-  const n = posts.filter((p) => !p.posted && p.category === c).length;
+  const n = posts.filter((p) => !p.posted && p.slot === 'morning' && p.category === c).length;
   console.log(`  ${LABEL[c]}：${n}件${n < 3 ? '　← 足りません（3件以上が目安）' : ''}`);
 }
 if (r.moves.length || r.warnings.length) {
@@ -25,4 +25,17 @@ for (let i = 0; i < 14; i++) {
   const tags = [['ローテーション', '投稿済み'].includes(e.reason) ? '' : e.reason, e.posted ? '投稿済み' : '', e.extra ? `ほかに ${e.extra.join('・')}` : '']
     .filter(Boolean).join('・');
   console.log(`  ${day}(${w})  ${e.category}  ${e.folder}${tags ? `（${tags}）` : ''}`);
+}
+
+// 18時の枠（栄養枠などのイレギュラー発信）：publishDate を書いた日にだけ出る。予定がない日は何も出ない
+const evening = r.schedule.evening || {};
+const eveDays = Object.keys(evening).filter((d) => d >= today && !evening[d].missed);
+const waiting = posts.filter((p) => !p.posted && p.slot === 'evening').length;
+console.log(`
+■ 18時の枠（schedule.json の evening・未投稿 ${waiting}件）`);
+if (!eveDays.length) console.log('  予定なし');
+for (const day of eveDays) {
+  const e = evening[day];
+  const w = week[new Date(day + 'T00:00:00Z').getUTCDay()];
+  console.log(`  ${day}(${w})  ${e.category}  ${e.folder}${e.posted ? '（投稿済み）' : ''}`);
 }

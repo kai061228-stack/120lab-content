@@ -1,6 +1,8 @@
 // Instagram 自動投稿スクリプト（GitHub Actions から実行）
 // 使い方:
 //   node scripts/publish.js                 … 予定表（schedule.json）の今日（日本時間）の1件を投稿
+//   SLOT=evening（または --slot evening）を付けると、18時の枠（栄養枠などのイレギュラー発信）の1件を投稿する（なければ朝5時の枠）
+//     例: node scripts/publish.js --which --slot evening --date 2026-10-12
 //   node scripts/publish.js 2026-09-28-hiza-taisou   … 指定フォルダを投稿（カルーセル投稿済みならリールだけ）
 //   DRY_RUN=1 を付けると、Instagram には投稿せずに確認だけ行う（リール動画は作って Pages の公開URLまで確認する）
 //   DRY_RUN=1 のときだけ --date 2026-09-30（または環境変数 DATE）で、その日の予定を確認できる
@@ -16,8 +18,9 @@ const API = 'https://graph.instagram.com/v25.0';
 const ROOT = path.join(__dirname, '..');
 const POSTS = path.join(ROOT, 'posts');
 const DRY = process.env.DRY_RUN === '1' || process.env.DRY_RUN === 'true';
-const { loadPosts, jstDate, isYmd } = require('./queue-lib');
-const { buildSchedule, report } = require('./schedule-lib');
+const { loadPosts, jstDate, isYmd, SLOTS } = require('./queue-lib');
+const { buildSchedule, slotDays, report } = require('./schedule-lib');
+
 const { makeReel } = require('./reel');
 const { publishToPages } = require('./pages-lib');
 const BGM_CREDIT = 'BGM：甘茶の音楽工房';
@@ -92,17 +95,18 @@ async function publishReel(dir, folder, caption) {
 
 // 引数: [フォルダ名] [--date YYYY-MM-DD]
 function parseArgs(argv) {
-  const out = { folder: '', date: process.env.DATE || '', which: false };
+  const out = { folder: '', date: process.env.DATE || '', which: false, slot: process.env.SLOT || 'morning' };
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === '--date') out.date = argv[++i] || '';
     else if (argv[i] === '--which') out.which = true;
+    else if (argv[i] === '--slot') out.slot = argv[++i] || '';
     else if (argv[i]) out.folder = argv[i];
   }
   return out;
 }
 
 // 予定表（今日の日付で作り直したもの）から、その日の投稿を選ぶ
-function duePosts({ folder, date }) {
+function duePosts({ folder, date, slot }) {
   if (folder) {
     if (!loadPosts().find((p) => p.folder === folder)) throw new Error('投稿フォルダが見つかりません: posts/' + folder);
     return [folder];
@@ -111,12 +115,12 @@ function duePosts({ folder, date }) {
   const target = date || today;
   const r = buildSchedule({ today });
   report(r);
-  const e = r.schedule.days[target];
+  const e = slotDays(r.schedule, slot)[target];
   if (!e || e.missed) {
-    console.log(`${target === today ? '今日' : '指定日'}（${target}）は予定表に投稿がありません。投稿しません（npm run queue で確認できます）`);
+    console.log(`${target === today ? '今日' : '指定日'}（${target}）の${SLOTS[slot]}の枠は予定表に投稿がありません。投稿しません（npm run queue で確認できます）`);
     return [];
   }
-  console.log(`予定表：${target} → ${e.folder}（${e.category}・${e.reason}）`);
+  console.log(`予定表（${SLOTS[slot]}の枠）：${target} → ${e.folder}（${e.category}・${e.reason}）`);
   return [e.folder];
 }
 
