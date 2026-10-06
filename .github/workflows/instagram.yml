@@ -37,11 +37,11 @@ jobs:
       # 起動したときのコミットではなく、main の最新を取る
       # （前の実行がまだ動いている間に起動した場合でも、その実行の投稿記録を見て二重投稿しないように）
       # 画像を最後にコミットした SHA を調べるため、履歴もすべて取る
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: main
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '20'
       - name: 投稿する
@@ -51,7 +51,7 @@ jobs:
           DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
           DATE: ${{ inputs.date }}
           FOLDER: ${{ inputs.folder }}
-          # リール動画を gh-pages に置いて Pages の再構築を頼むのに使う
+          # リール動画を gh-pages に置いたあと、Pages の反映が始まったか確かめる（始まらないときだけ再構築を頼む）のに使う
           GITHUB_TOKEN: ${{ github.token }}
         run: node scripts/publish.js "$FOLDER"
       - name: 投稿済みの記録を保存する
@@ -113,7 +113,7 @@ jobs:
       - name: YouTube 用の動画と文章を成果物に置く
         if: always()
         continue-on-error: true
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: youtube-shorts
           path: ${{ runner.temp }}/youtube

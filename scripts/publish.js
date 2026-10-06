@@ -9,7 +9,6 @@
 //   リール動画は gh-pages ブランチ（GitHub Pages）に置き、その公開URLを Instagram に渡す
 // 必要な環境変数: IG_USER_ID, IG_ACCESS_TOKEN, GITHUB_REPOSITORY, GITHUB_SHA, GITHUB_TOKEN（Actions では自動で入る）
 const fs = require('fs');
-const os = require('os');
 const path = require('path');
 const { execFileSync } = require('child_process');
 
@@ -20,7 +19,7 @@ const DRY = process.env.DRY_RUN === '1' || process.env.DRY_RUN === 'true';
 const { loadPosts, jstDate, isYmd } = require('./queue-lib');
 const { buildSchedule, report } = require('./schedule-lib');
 const { makeReel } = require('./reel');
-const { copySite } = require('./site-lib');
+const { publishToPages } = require('./pages-lib');
 const BGM_CREDIT = 'BGM：甘茶の音楽工房';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -72,70 +71,11 @@ async function waitVideo(id) {
   throw new Error('動画の処理が時間内に終わりませんでした: ' + id);
 }
 
-// reel.mp4 を GitHub Pages（gh-pages ブランチ）に置き、公開URLを返す
-// Instagram ログインの API では動画を直接アップロードできないため、公開URL（video_url）で渡す
-// gh-pages は毎回「今回の動画1本＋site/ のページ」の状態で上書きする（履歴や容量が増えないように）
-function uploadToPages(file, folder) {
-  const [owner, repo] = (process.env.GITHUB_REPOSITORY || '').split('/');
-  if (!owner || !repo) throw new Error('GITHUB_REPOSITORY がないため、動画の公開URLを作れません');
-  const name = `reels/${folder}-${Date.now()}.mp4`;
-  const tmp = path.join(os.tmpdir(), 'gh-pages-reel');
-  const git = (args, cwd = ROOT) => execFileSync('git', args, { cwd, stdio: 'pipe' });
-  fs.rmSync(tmp, { recursive: true, force: true });
-  git(['worktree', 'prune']);
-  git(['worktree', 'add', '--detach', tmp]);
-  try {
-    git(['checkout', '--orphan', 'gh-pages-reel'], tmp);
-    git(['rm', '-rf', '--quiet', '.'], tmp);
-    fs.mkdirSync(path.join(tmp, 'reels'), { recursive: true });
-    fs.copyFileSync(file, path.join(tmp, name));
-    // ホームページ・プライバシーポリシー（site/）も毎回置き直す
-    copySite(tmp);
-    git(['add', '-A'], tmp);
-    git(['-c', 'user.name=github-actions[bot]', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
-      'commit', '--quiet', '-m', `リール動画: ${folder}`], tmp);
-    git(['push', '--force', '--quiet', 'origin', 'HEAD:refs/heads/gh-pages'], tmp);
-  } finally {
-    git(['worktree', 'remove', '--force', tmp]);
-    try { git(['branch', '-D', 'gh-pages-reel']); } catch (_) {}
-  }
-  return `https://${owner}.github.io/${repo}/${name}`;
-}
-
-// Pages の再構築を頼む（GITHUB_TOKEN がある場合。失敗しても続ける）
-async function requestPagesBuild() {
-  const token = process.env.GITHUB_TOKEN;
-  if (!token) return;
-  const res = await fetch(`https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/pages/builds`, {
-    method: 'POST', headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' },
-  }).catch(() => null);
-  if (res && !res.ok) console.log(`  （Pages の再構築依頼: HTTP ${res.status}。自動の反映を待ちます）`);
-}
-
-// 公開URLが 200 で video/mp4 を返すようになるまで待つ（最大10分）
-async function waitPublicUrl(url) {
-  let last = '';
-  for (let i = 0; i < 60; i++) {
-    const res = await fetch(url, { method: 'HEAD', cache: 'no-store' }).catch(() => null);
-    const type = res ? res.headers.get('content-type') || '' : '';
-    last = res ? `HTTP ${res.status} ${type}` : '接続できません';
-    if (res && res.status === 200 && type.startsWith('video/mp4')) {
-      console.log(`  動画の公開URLを確認しました（${last}）: ${url}`);
-      return;
-    }
-    if (i % 6 === 0) console.log(`  動画の公開を待っています…（${last}）`);
-    await sleep(10000);
-  }
-  throw new Error(`動画の公開URLが10分以内に使えるようになりませんでした（最後: ${last}）: ${url}`);
-}
-
 // リール動画を作り、公開URLで見られる状態にする
+// Instagram ログインの API では動画を直接アップロードできないため、gh-pages に置いた公開URL（video_url）で渡す
 async function prepareReel(dir, folder) {
   const file = makeReel(dir);
-  const url = uploadToPages(file, folder);
-  await requestPagesBuild();
-  await waitPublicUrl(url);
-  return url;
+  return publishToPages(file, folder, folder, `リール動画: ${folder}`);
 }
 
 async function publishReel(dir, folder, caption) {

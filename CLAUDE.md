@@ -135,6 +135,7 @@
 - 毎朝の Instagram 投稿のあと、同じワークフローの中で Threads にも自動で連投する（scripts/threads-auto.js）
   - 予定表の今日のフォルダが Instagram に投稿済みのときだけ出す（threads-posted.json があれば何もしない）
   - Instagram の投稿と記録の保存が終わってから動く。Threads が失敗しても Instagram の投稿やワークフローは止まらない
+  - 1投稿目の動画は、同じ実行で Instagram のリールに使った公開URLを使い回す（gh-pages を push し直さない）。その実行でリール動画の公開（Pages の反映）が間に合わなかったときは、Threads はすぐやめて次の実行（予備の定時起動など）に任せる
   - threads.json がなければ、post.json から自動で作る（scripts/threads-lib.js）。キャプション冒頭の問いかけ・ポイントの見出しと本文・参考・まとめ・注意書きを組み立てるだけで、新しい内容は足さない
   - 自動の文章を直したいときは、投稿日の前に threads.json を手で書いて push する（あれば手書きを優先）
 - 手動で出すときは、ワークフロー「Threads 連投」（.github/workflows/threads-thread.yml）を使う

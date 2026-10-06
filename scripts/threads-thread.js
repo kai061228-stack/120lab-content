@@ -7,11 +7,9 @@
 // 投稿後は posts/フォルダ名/threads-posted.json に記録する（二重投稿の防止。途中で失敗したら続きから再開する）
 // 必要な環境変数: THREADS_ACCESS_TOKEN, GITHUB_REPOSITORY, GITHUB_TOKEN（Actions では自動で入る）
 const fs = require('fs');
-const os = require('os');
 const path = require('path');
-const { execFileSync } = require('child_process');
 const { makeReel } = require('./reel');
-const { copySite } = require('./site-lib');
+const { publishToPages, isPublic, loadRecord } = require('./pages-lib');
 
 const API = 'https://graph.threads.net/v1.0';
 const ROOT = path.join(__dirname, '..');
@@ -49,66 +47,20 @@ async function waitReady(id) {
   throw new Error('投稿の準備が時間内に終わりませんでした: ' + id);
 }
 
-// reel.mp4 を gh-pages に置き、公開URLを返す（publish.js と同じ方式。gh-pages は毎回動画1本＋site/ のページに上書き）
-function uploadToPages(file, folder) {
-  const [owner, repo] = (process.env.GITHUB_REPOSITORY || '').split('/');
-  if (!owner || !repo) throw new Error('GITHUB_REPOSITORY がないため、動画の公開URLを作れません');
-  const name = `reels/threads-${folder}-${Date.now()}.mp4`;
-  const tmp = path.join(os.tmpdir(), 'gh-pages-threads');
-  const git = (args, cwd = ROOT) => execFileSync('git', args, { cwd, stdio: 'pipe' });
-  fs.rmSync(tmp, { recursive: true, force: true });
-  git(['worktree', 'prune']);
-  git(['worktree', 'add', '--detach', tmp]);
-  try {
-    git(['checkout', '--orphan', 'gh-pages-threads'], tmp);
-    git(['rm', '-rf', '--quiet', '.'], tmp);
-    fs.mkdirSync(path.join(tmp, 'reels'), { recursive: true });
-    fs.copyFileSync(file, path.join(tmp, name));
-    // ホームページ・プライバシーポリシー（site/）も毎回置き直す
-    copySite(tmp);
-    git(['add', '-A'], tmp);
-    git(['-c', 'user.name=github-actions[bot]', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
-      'commit', '--quiet', '-m', `Threads用リール動画: ${folder}`], tmp);
-    git(['push', '--force', '--quiet', 'origin', 'HEAD:refs/heads/gh-pages'], tmp);
-  } finally {
-    git(['worktree', 'remove', '--force', tmp]);
-    try { git(['branch', '-D', 'gh-pages-threads']); } catch (_) {}
-  }
-  return `https://${owner}.github.io/${repo}/${name}`;
-}
-
-async function requestPagesBuild() {
-  const token = process.env.GITHUB_TOKEN;
-  if (!token) return;
-  const res = await fetch(`https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/pages/builds`, {
-    method: 'POST', headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' },
-  }).catch(() => null);
-  if (res && !res.ok) console.log(`  （Pages の再構築依頼: HTTP ${res.status}。自動の反映を待ちます）`);
-}
-
-// 公開URLが 200 で video/mp4 を返すようになるまで待つ（最大10分）
-async function waitPublicUrl(url) {
-  let last = '';
-  for (let i = 0; i < 60; i++) {
-    const res = await fetch(url, { method: 'HEAD', cache: 'no-store' }).catch(() => null);
-    const type = res ? res.headers.get('content-type') || '' : '';
-    last = res ? `HTTP ${res.status} ${type}` : '接続できません';
-    if (res && res.status === 200 && type.startsWith('video/mp4')) {
-      console.log(`  動画の公開URLを確認しました（${last}）: ${url}`);
-      return;
-    }
-    if (i % 6 === 0) console.log(`  動画の公開を待っています…（${last}）`);
-    await sleep(10000);
-  }
-  throw new Error(`動画の公開URLが10分以内に使えるようになりませんでした（最後: ${last}）: ${url}`);
-}
-
+// 1投稿目の動画の公開URLを用意する
+// 同じ実行で Instagram のリールに使った動画が公開中なら、そのURLを使い回す（gh-pages を push し直さない）
+// 同じ実行でリール動画の公開が間に合わなかったときは、もう一度待っても同じなので、すぐやめて次の実行に任せる
+// それ以外（手動実行など）は、reel.mp4 を作って gh-pages に置く（publish.js と同じ方式）
 async function prepareVideo(dir, folder) {
+  const rec = loadRecord(folder);
+  if (rec && !rec.ok) throw new Error(`この実行ではリール動画の公開が間に合わなかったため、Threads は次の実行に任せます（${rec.error}）`);
+  if (rec && rec.ok) {
+    const r = await isPublic(rec.url);
+    if (r.ok) { console.log(`  リールと同じ動画の公開URLを使います: ${rec.url}`); return rec.url; }
+    console.log(`  リールの動画URLが使えなくなっていたため（${r.last}）、動画を置き直します`);
+  }
   const file = makeReel(dir);
-  const url = uploadToPages(file, folder);
-  await requestPagesBuild();
-  await waitPublicUrl(url);
-  return url;
+  return publishToPages(file, folder, `threads-${folder}`, `Threads用リール動画: ${folder}`);
 }
 
 // 文章のチェック（3投稿・各500字以内・トピックタグは全体で1つ・1投稿目の最後はBGMクレジット）
