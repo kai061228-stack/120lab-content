@@ -25,6 +25,8 @@
   - 知識：青。体のしくみ・病気の予防の知識など
   - 啓発：緑。暮らし方・心がけ・環境づくりなど
 - 表紙のキャラクターはカテゴリーに合わせて自動で入る（assets/character-exercise.png、character-knowledge.png、character-awareness.png）
+- 運動・知識・啓発以外のイレギュラー発信（栄養枠、ビタミンweek などの○○week）は、表紙（1枚目）のかいたろ君をすべて assets/character-special.png（赤ペンを持ってガッツポーズ）にする
+  - category に運動・知識・啓発以外（例："栄養"）を書くと自動でこの画像になる。カテゴリーごとに新しいキャラクター画像は作らない
 - キャラクターを入れたくない投稿は cover に "character": false を書く
 - 表紙のラベル（体操・からだの知識・暮らしのヒント）を変えたいときは cover に "tag": "文字" を書く。消すときは "tag": false
 

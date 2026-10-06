@@ -20,8 +20,9 @@ const CAT = { '運動': 'exercise', '運動系': 'exercise', '知識': 'knowledg
   const post = JSON.parse(fs.readFileSync(path.join(postDir, 'post.json'), 'utf8'));
   const tpl = fs.readFileSync(path.join(ROOT, 'templates', 'carousel.html'), 'utf8');
 
-  // 表紙のキャラクター：カテゴリー専用の画像があればそれを、なければ共通の character.png を使う
-  const cat = CAT[post.category] || post.category || 'awareness';
+  // 表紙のキャラクター：運動・知識・啓発はカテゴリー専用の画像、
+  // それ以外のイレギュラー発信（栄養枠・○○week など）はすべて character-special.png。なければ共通の character.png を使う
+  const cat = CAT[post.category] || 'special';
   const candidates = [
     post.cover && typeof post.cover.characterFile === 'string' ? path.join(postDir, post.cover.characterFile) : null,
     path.join(ROOT, 'assets', `character-${cat}.png`),
