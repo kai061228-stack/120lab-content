@@ -69,7 +69,8 @@
     "2026-10-07": {
       "folder": "2026-09-28-hiza-taisou",
       "category": "運動",
-      "reason": "ローテーション"
+      "reason": "ローテーション",
+      "posted": true
     },
     "2026-10-08": {
       "folder": "2026-09-26-hone-kansetsu",
