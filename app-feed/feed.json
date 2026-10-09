@@ -1,43 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-10-09",
+  "from": "2026-10-10",
   "days": [
-    {
-      "date": "2026-10-09",
-      "post": {
-        "folder": "2026-09-26-ie-tento",
-        "category": "啓発",
-        "categoryKey": "awareness",
-        "title": "家の中の\n転倒を防ぐ",
-        "subtitle": "浴室・夜のトイレ・足元",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-ie-tento/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-ie-tento/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-ie-tento/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-ie-tento/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-ie-tento/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-ie-tento/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-ie-tento/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "家の中を見直す",
-            "浴室に滑り止め",
-            "夜はゆっくり動く",
-            "脱げない履物",
-            "手すりは早めに"
-          ],
-          "note": "ふらつきがある方は、\nかかりつけ医にご相談ください。"
-        },
-        "sources": [
-          "消費者庁",
-          "日本理学療法士協会"
-        ],
-        "sourcesText": "参考：消費者庁「高齢者の転倒事故に注意しましょう！」（2020年）、日本理学療法士協会「理学療法ハンドブック 転倒予防」"
-      }
-    },
     {
       "date": "2026-10-10",
       "post": {
@@ -283,6 +248,41 @@
           "南島原市"
         ],
         "sourcesText": "参考：厚生労働省「健康づくりのための睡眠ガイド2023」、e-ヘルスネット、南島原市"
+      }
+    },
+    {
+      "date": "2026-10-17",
+      "post": {
+        "folder": "2026-09-26-genen",
+        "category": "知識",
+        "categoryKey": "knowledge",
+        "title": "今日から\nできる減塩",
+        "subtitle": "食塩のとりすぎと血圧",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-genen/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-genen/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-genen/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-genen/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-genen/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-genen/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-genen/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "目標量を知る",
+            "今の量を知る",
+            "とりすぎに注意",
+            "計量して控えめに",
+            "酸味・薬味を活用"
+          ],
+          "note": "食事の指導を受けている方は、\n医師の指示に従ってください。"
+        },
+        "sources": [
+          "農林水産省",
+          "船橋市"
+        ],
+        "sourcesText": "参考：農林水産省「食塩の取りすぎに注意」、船橋市「減塩のすすめ」"
       }
     }
   ]
