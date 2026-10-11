@@ -261,9 +261,69 @@
       "category": "知識",
       "reason": "日付指定"
     },
+    "2026-11-14": {
+      "folder": "2026-10-11-chiiki-houkatsu",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
     "2026-11-15": {
       "folder": "2026-09-26-heat-shock",
       "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-11-16": {
+      "folder": "2026-10-11-kenkoukotsu",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-11-17": {
+      "folder": "2026-10-11-nousocchu",
+      "category": "知識",
+      "reason": "日付指定"
+    },
+    "2026-11-18": {
+      "folder": "2026-10-11-kaigo-hoken",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-11-19": {
+      "folder": "2026-10-11-kaidan",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-11-20": {
+      "folder": "2026-10-11-hiza-oa",
+      "category": "知識",
+      "reason": "日付指定"
+    },
+    "2026-11-21": {
+      "folder": "2026-10-11-fuyu-heya",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-11-22": {
+      "folder": "2026-10-11-youtsu-taisou",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-11-23": {
+      "folder": "2026-10-11-kotsubantei",
+      "category": "知識",
+      "reason": "日付指定"
+    },
+    "2026-11-24": {
+      "folder": "2026-10-11-oosouji",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-11-25": {
+      "folder": "2026-10-11-sesuji",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-11-26": {
+      "folder": "2026-10-11-tounyou-undou",
+      "category": "知識",
       "reason": "日付指定"
     }
   },
