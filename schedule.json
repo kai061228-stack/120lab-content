@@ -201,6 +201,66 @@
       "category": "知識",
       "reason": "日付指定"
     },
+    "2026-11-02": {
+      "folder": "2026-10-11-suimin",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-11-03": {
+      "folder": "2026-10-11-kataashi",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-11-04": {
+      "folder": "2026-10-11-sarcopenia",
+      "category": "知識",
+      "reason": "日付指定"
+    },
+    "2026-11-05": {
+      "folder": "2026-10-11-benpi",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-11-06": {
+      "folder": "2026-10-11-ashikubi",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-11-07": {
+      "folder": "2026-10-11-goen-haien",
+      "category": "知識",
+      "reason": "日付指定"
+    },
+    "2026-11-08": {
+      "folder": "2026-10-11-ashi-tsume",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-11-09": {
+      "folder": "2026-10-11-hohaba",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-11-10": {
+      "folder": "2026-10-11-ninchisho",
+      "category": "知識",
+      "reason": "日付指定"
+    },
+    "2026-11-11": {
+      "folder": "2026-10-11-fuyu-gaishutsu",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-11-12": {
+      "folder": "2026-10-11-okiagari",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-11-13": {
+      "folder": "2026-10-11-parkinson",
+      "category": "知識",
+      "reason": "日付指定"
+    },
     "2026-11-15": {
       "folder": "2026-09-26-heat-shock",
       "category": "啓発",
