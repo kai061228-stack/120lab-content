@@ -152,6 +152,66 @@
       "folder": "2026-10-07-vitamin-01-a",
       "category": "栄養",
       "reason": "日付指定"
+    },
+    "2026-10-13": {
+      "folder": "2026-10-11-vitamin-02-c",
+      "category": "栄養",
+      "reason": "日付指定"
+    },
+    "2026-10-14": {
+      "folder": "2026-10-11-vitamin-03-e",
+      "category": "栄養",
+      "reason": "日付指定"
+    },
+    "2026-10-15": {
+      "folder": "2026-10-11-vitamin-04-b1",
+      "category": "栄養",
+      "reason": "日付指定"
+    },
+    "2026-10-16": {
+      "folder": "2026-10-11-vitamin-05-b2",
+      "category": "栄養",
+      "reason": "日付指定"
+    },
+    "2026-10-17": {
+      "folder": "2026-10-11-vitamin-06-b6",
+      "category": "栄養",
+      "reason": "日付指定"
+    },
+    "2026-10-18": {
+      "folder": "2026-10-11-vitamin-07-niacin",
+      "category": "栄養",
+      "reason": "日付指定"
+    },
+    "2026-10-19": {
+      "folder": "2026-10-11-vitamin-08-d",
+      "category": "栄養",
+      "reason": "日付指定"
+    },
+    "2026-10-20": {
+      "folder": "2026-10-11-vitamin-09-k",
+      "category": "栄養",
+      "reason": "日付指定"
+    },
+    "2026-10-21": {
+      "folder": "2026-10-11-vitamin-10-b12",
+      "category": "栄養",
+      "reason": "日付指定"
+    },
+    "2026-10-22": {
+      "folder": "2026-10-11-vitamin-11-folate",
+      "category": "栄養",
+      "reason": "日付指定"
+    },
+    "2026-10-23": {
+      "folder": "2026-10-11-vitamin-12-pantothenic",
+      "category": "栄養",
+      "reason": "日付指定"
+    },
+    "2026-10-24": {
+      "folder": "2026-10-11-vitamin-13-biotin",
+      "category": "栄養",
+      "reason": "日付指定"
     }
   }
 }
