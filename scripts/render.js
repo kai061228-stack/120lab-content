@@ -24,7 +24,9 @@ const CAT = { '運動': 'exercise', '運動系': 'exercise', '知識': 'knowledg
   // それ以外のイレギュラー発信（栄養枠・○○week など）はすべて character-special.png。なければ共通の character.png を使う
   const cat = CAT[post.category] || 'special';
   const candidates = [
+    // cover.characterFile は投稿フォルダからの場所、またはリポジトリからの場所（例：assets/character-special.png）
     post.cover && typeof post.cover.characterFile === 'string' ? path.join(postDir, post.cover.characterFile) : null,
+    post.cover && typeof post.cover.characterFile === 'string' ? path.join(ROOT, post.cover.characterFile) : null,
     path.join(ROOT, 'assets', `character-${cat}.png`),
     path.join(ROOT, 'assets', 'character.png'),
   ].filter(Boolean);

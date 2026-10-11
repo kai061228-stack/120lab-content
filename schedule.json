@@ -161,6 +161,46 @@
       "category": "啓発",
       "reason": "日付指定"
     },
+    "2026-10-25": {
+      "folder": "2026-10-11-tsue-tsukikata",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-10-26": {
+      "folder": "2026-10-11-ketsuatsu-suuchi",
+      "category": "知識",
+      "reason": "日付指定"
+    },
+    "2026-10-27": {
+      "folder": "2026-10-11-hie-suwatte",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-10-28": {
+      "folder": "2026-10-11-hokouki-erabikata",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-10-29": {
+      "folder": "2026-10-11-myakuhaku",
+      "category": "知識",
+      "reason": "日付指定"
+    },
+    "2026-10-30": {
+      "folder": "2026-10-11-nikkouyoku",
+      "category": "啓発",
+      "reason": "日付指定"
+    },
+    "2026-10-31": {
+      "folder": "2026-10-11-hokouki-tsukaikata",
+      "category": "運動",
+      "reason": "日付指定"
+    },
+    "2026-11-01": {
+      "folder": "2026-10-11-taijuu",
+      "category": "知識",
+      "reason": "日付指定"
+    },
     "2026-11-15": {
       "folder": "2026-09-26-heat-shock",
       "category": "啓発",

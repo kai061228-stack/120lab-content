@@ -4,7 +4,8 @@
   "cover": {
     "title": "杖の長さを\n合わせよう",
     "subtitle": "長さの目安と選び方",
-    "tag": "歩く道具"
+    "tag": "歩く道具",
+    "characterFile": "assets/character-special.png"
   },
   "points": [
     {
