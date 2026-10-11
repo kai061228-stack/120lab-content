@@ -1,43 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-10-11",
+  "from": "2026-10-12",
   "days": [
-    {
-      "date": "2026-10-11",
-      "post": {
-        "folder": "2026-09-26-tanpakushitsu",
-        "category": "知識",
-        "categoryKey": "knowledge",
-        "title": "たんぱく質で\n筋肉を守る",
-        "subtitle": "知っておきたいサルコペニア",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tanpakushitsu/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tanpakushitsu/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tanpakushitsu/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tanpakushitsu/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tanpakushitsu/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tanpakushitsu/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tanpakushitsu/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "筋肉の変化に気づく",
-            "よく体を動かす",
-            "体重1kgに1g以上",
-            "3食でたんぱく質",
-            "運動と一緒に"
-          ],
-          "note": "食事の指導を受けている方は、\nかかりつけ医にご相談ください。"
-        },
-        "sources": [
-          "厚生労働省 e-ヘルスネット",
-          "健康長寿ネット（長寿科学振興財団）"
-        ],
-        "sourcesText": "参考：厚生労働省 e-ヘルスネット「サルコペニア」、健康長寿ネット（長寿科学振興財団）「サルコペニアに対する栄養」"
-      }
-    },
     {
       "date": "2026-10-12",
       "post": {
@@ -282,6 +247,41 @@
           "厚生労働省"
         ],
         "sourcesText": "参考：国民生活センター「高齢者の消費者被害」、厚生労働省「認知症に関する相談先」"
+      }
+    },
+    {
+      "date": "2026-10-19",
+      "post": {
+        "folder": "2026-09-26-tachiagari",
+        "category": "運動",
+        "categoryKey": "exercise",
+        "title": "立ち上がりが\n楽になるコツ",
+        "subtitle": "足を引いて、おじぎをして",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tachiagari/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tachiagari/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tachiagari/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tachiagari/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tachiagari/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tachiagari/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tachiagari/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "浅く座り直す",
+            "足を手前に引く",
+            "おじぎして立つ",
+            "支えを使う",
+            "立ち座りの練習"
+          ],
+          "note": "ひざや腰に痛みがある方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "福祉医療機構 WAM NET",
+          "日本整形外科学会"
+        ],
+        "sourcesText": "参考：福祉医療機構 WAM NET「立ち上がり動作」、日本整形外科学会「ロコモONLINE」"
       }
     }
   ]
