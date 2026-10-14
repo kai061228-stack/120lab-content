@@ -117,7 +117,8 @@
     "2026-10-15": {
       "folder": "2026-09-26-okusuri",
       "category": "啓発",
-      "reason": "日付指定"
+      "reason": "日付指定",
+      "posted": true
     },
     "2026-10-16": {
       "folder": "2026-09-26-nemae-stretch",
