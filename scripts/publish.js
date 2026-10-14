@@ -1,7 +1,7 @@
 // Instagram 自動投稿スクリプト（GitHub Actions から実行）
 // 使い方:
 //   node scripts/publish.js                 … 予定表（schedule.json）の今日（日本時間）の1件を投稿
-//   SLOT=evening（または --slot evening）を付けると、18時の枠（栄養枠などのイレギュラー発信）の1件を投稿する（なければ朝5時の枠）
+//   SLOT=evening（または --slot evening）を付けると、20時の枠（栄養枠などのイレギュラー発信）の1件を投稿する（なければ朝5時の枠）
 //     例: node scripts/publish.js --which --slot evening --date 2026-10-12
 //   node scripts/publish.js 2026-09-28-hiza-taisou   … 指定フォルダを投稿（カルーセル投稿済みならリールだけ）
 //   DRY_RUN=1 を付けると、Instagram には投稿せずに確認だけ行う（リール動画は作って Pages の公開URLまで確認する）

@@ -8,14 +8,14 @@ const POSTS = path.join(__dirname, '..', 'posts');
 const ORDER = ['exercise', 'knowledge', 'awareness'];
 const LABEL = { exercise: '運動', knowledge: '知識', awareness: '啓発', nutrition: '栄養' };
 const CAT = { '運動': 'exercise', '運動系': 'exercise', '知識': 'knowledge', '知識系': 'knowledge', '啓発': 'awareness', '啓発系': 'awareness' };
-// 18時の枠：運動・知識・啓発以外のイレギュラー発信（栄養枠・○○week など）。色やBGMを決めてあるものはここに書く
+// 20時の枠：運動・知識・啓発以外のイレギュラー発信（栄養枠・○○week など）。色やBGMを決めてあるものはここに書く
 const SPECIAL = { '栄養': 'nutrition' };
 
 // カテゴリー名 → 英語キー（運動・知識・啓発と SPECIAL 以外は 'special'）
 const catKey = (category) => CAT[category] || SPECIAL[category] || 'special';
-// 投稿する枠：'morning'（朝5時）か 'evening'（18時）
+// 投稿する枠：'morning'（朝5時）か 'evening'（20時）
 const slotOf = (category) => (CAT[category] ? 'morning' : 'evening');
-const SLOTS = { morning: '朝5時', evening: '18時' };
+const SLOTS = { morning: '朝5時', evening: '20時' };
 
 const jstDate = (d = new Date()) => new Date(new Date(d).getTime() + 9 * 3600 * 1000).toISOString().slice(0, 10);
 const addDays = (ymd, n) => { const d = new Date(ymd + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };

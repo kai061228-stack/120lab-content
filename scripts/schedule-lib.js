@@ -12,7 +12,7 @@
 //      ・その日のカテゴリーのストックがなければ、次のカテゴリーから繰り上げ
 //      ・publishDate がまだ先の投稿は使わない
 //
-// 18時の枠（運動・知識・啓発以外のイレギュラー発信。栄養枠・○○week など）は、別の予定（schedule.json の evening）にする
+// 20時の枠（運動・知識・啓発以外のイレギュラー発信。栄養枠・○○week など）は、別の予定（schedule.json の evening）にする
 //   ・投稿済みは、実際に投稿した日に固定する。今日より前で投稿されなかった予定は missed として記録に残す
 //   ・まだの投稿は、post.json の "publishDate" の日にだけ入れる（ローテーションや繰り上げはしない）
 //   ・publishDate がない・過ぎている・同じ日にほかの投稿があるときは、予定に入れずに知らせる
@@ -164,7 +164,7 @@ function sortKeys(obj) {
   return sorted;
 }
 
-// 18時の枠の予定を作る（決め方はファイルの先頭）
+// 20時の枠の予定を作る（決め方はファイルの先頭）
 function buildEvening({ today, prevDays, posts, warnings }) {
   const days = {};
   const entry = (p, reason, extra = {}) => ({ folder: p.folder, category: p.label, reason, ...extra });
@@ -192,10 +192,10 @@ function buildEvening({ today, prevDays, posts, warnings }) {
   for (const p of posts) {
     if (p.posted) continue;
     const P = p.publishDate;
-    if (!p.post.category) warnings.push(`${p.folder}：post.json に "category" がありません（18時の枠として扱います）`);
-    if (!isYmd(P)) { warnings.push(`${p.folder}：18時の枠の投稿には "publishDate" が必要です（予定に入っていません）`); continue; }
+    if (!p.post.category) warnings.push(`${p.folder}：post.json に "category" がありません（20時の枠として扱います）`);
+    if (!isYmd(P)) { warnings.push(`${p.folder}：20時の枠の投稿には "publishDate" が必要です（予定に入っていません）`); continue; }
     if (P < today) { warnings.push(`${p.folder}：publishDate（${P}）を過ぎています。新しい日付を書いてください`); continue; }
-    if (days[P]) { warnings.push(`${p.folder}：${P} の18時には ${days[P].folder} が入っているため、予定に入れられません`); continue; }
+    if (days[P]) { warnings.push(`${p.folder}：${P} の20時には ${days[P].folder} が入っているため、予定に入れられません`); continue; }
     days[P] = entry(p, '日付指定');
   }
   return sortKeys(days);
@@ -265,7 +265,7 @@ function feedPost(folder) {
   };
 }
 
-// アプリの「今日の学び」は朝5時の枠（schedule.days）だけ。18時の枠（schedule.evening）は載せない
+// アプリの「今日の学び」は朝5時の枠（schedule.days）だけ。20時の枠（schedule.evening）は載せない
 function buildFeed(schedule, today = jstDate()) {
   const days = [];
   for (let i = 0; i < FEED_DAYS; i++) {

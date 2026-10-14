@@ -24,13 +24,13 @@
   - 運動：オレンジ。体操・ストレッチなど体を動かす内容
   - 知識：青。体のしくみ・病気の予防の知識など
   - 啓発：緑。暮らし方・心がけ・環境づくりなど
-- イレギュラー発信（18時の枠）は「栄養」など、運動・知識・啓発以外を書く（下の「18時の枠」を参照）
+- イレギュラー発信（20時の枠）は「栄養」など、運動・知識・啓発以外を書く（下の「20時の枠」を参照）
   - 栄養：黄色。表紙の文字は濃い茶色、ラベルは「栄養」
   - ほかの○○week など、色を決めていないカテゴリーも黄色になり、ラベルはカテゴリー名になる（色を分けたいときは templates/carousel.html の THEMES と scripts/queue-lib.js の SPECIAL に足す）
 - 表紙のキャラクターはカテゴリーに合わせて自動で入る（assets/character-exercise.png、character-knowledge.png、character-awareness.png）
 - 運動・知識・啓発以外のイレギュラー発信（栄養枠、ビタミンweek などの○○week）は、表紙（1枚目）のかいたろ君をすべて assets/character-special.png（赤ペンを持ってガッツポーズ）にする
   - category に運動・知識・啓発以外（例："栄養"）を書くと自動でこの画像になる。カテゴリーごとに新しいキャラクター画像は作らない
-- テーマで決まっているかいたろ君（朝の枠でも18時の枠でも、カテゴリーの画像より優先する。cover に "characterFile" で指定する）
+- テーマで決まっているかいたろ君（朝の枠でも20時の枠でも、カテゴリーの画像より優先する。cover に "characterFile" で指定する）
   - AI に関する投稿：assets/character-ai.png（ロボットのかいたろ君）
   - 医療・介護保険などの制度の変更に関する投稿：assets/character-system.png（天びんと本を持つかいたろ君）
 - 決まった画像以外にしたいときは cover に "characterFile": "assets/character-special.png" のように書く（投稿フォルダからの場所でもよい）
@@ -92,7 +92,7 @@
 ## Instagram 自動投稿（GitHub Actions）
 
 - 毎朝5時ごろに1日1件、自動で Instagram に投稿される（本命は外部サービスからの 5:00 の起動。予備として GitHub の定時起動が 5:20。何回起動しても二重投稿はしない）
-- 18時の枠（イレギュラー発信）がある日は、18時ごろにもう1件投稿される（下の「18時の枠」を参照）
+- 20時の枠（イレギュラー発信）がある日は、20時ごろにもう1件投稿される（下の「20時の枠」を参照）
 - 投稿する日は、予定表 `schedule.json`（日付 → フォルダ）で決まる。毎朝の投稿は「今日（日本時間）の予定」を出す。予定がない日は投稿しない
 - 予定表の決め方（scripts/schedule-lib.js）
   - カテゴリーは「運動 → 知識 → 啓発 → 運動 …」の順に1日ずつ回る
@@ -104,8 +104,8 @@
   - 投稿されずに日付が過ぎた予定は missed として記録に残り、その投稿はストックに戻って空いている日に入り直す
 - `npm run queue` で予定表と app-feed/feed.json を作り直し、2週間分の投稿予定とカテゴリーごとのストック数を確認できる。投稿を作ったら最後にこれを実行して、予定を報告する
 - schedule.json と app-feed/feed.json は、push するとワークフロー「投稿予定表の更新」（.github/workflows/schedule.yml）が自動で作り直してコミットする（毎朝の投稿のあとにも動く）。PC で作り忘れても大丈夫。手で編集しない
-- 予定の確認（投稿はしない）：PC では `node scripts/publish.js --which --date YYYY-MM-DD`（18時の枠は `--slot evening` を付ける）。Actions では `gh workflow run instagram.yml -f dry_run=true -f date=YYYY-MM-DD`（date は空欄なら今日。dry_run のときだけ使える）
-- ストックは各カテゴリー3件以上（合計9件＝9日分以上）を目安にする。足りないカテゴリーがあれば報告する（18時の枠の投稿は数えない）
+- 予定の確認（投稿はしない）：PC では `node scripts/publish.js --which --date YYYY-MM-DD`（20時の枠は `--slot evening` を付ける）。Actions では `gh workflow run instagram.yml -f dry_run=true -f date=YYYY-MM-DD`（date は空欄なら今日。dry_run のときだけ使える）
+- ストックは各カテゴリー3件以上（合計9件＝9日分以上）を目安にする。足りないカテゴリーがあれば報告する（20時の枠の投稿は数えない）
 - 投稿には `images/` の JPEG（01.jpg〜）と `caption.txt` を使う。`npm run render` で PNG と一緒に JPEG も作られる
 - 投稿が終わると、そのフォルダに `posted.json` が自動で追加される（二重投稿の防止）。PC側では作業の前に `git pull` する
 - 投稿を作ったら、`npm run render` → 画像確認 → `npm run queue` → `git add -A` → `git commit` → `git push` まで行う（push しないと投稿されない）
@@ -114,7 +114,7 @@
 - カルーセルを投稿したあと、同じ画像を動画にしたリール（BGM付き）も自動で投稿する
   - 表示時間は表紙3秒・2枚目以降6秒（scripts/reel.js の FIRST と EACH）
   - BGM は assets/bgm/ の exercise.mp3（運動）・knowledge.mp3（知識）・awareness.mp3（啓発）。すべて甘茶の音楽工房の曲
-  - 栄養（18時の枠）は、専用の曲がないあいだ運動と同じ exercise.mp3 を使う。替えるときは assets/bgm/nutrition.mp3 を置くだけでよい（甘茶の音楽工房以外の曲にするときは、キャプションの「BGM：甘茶の音楽工房」も直す必要がある）
+  - 栄養（20時の枠）は、専用の曲がないあいだ運動と同じ exercise.mp3 を使う。替えるときは assets/bgm/nutrition.mp3 を置くだけでよい（甘茶の音楽工房以外の曲にするときは、キャプションの「BGM：甘茶の音楽工房」も直す必要がある）
   - リールのキャプションには、ハッシュタグの前に「BGM：甘茶の音楽工房」が自動で入る（カルーセルには入らない）
   - `npm run reel -- posts/フォルダ名` で、PCでもリール動画（reel.mp4）を作って確認できる（ffmpeg が必要。reel.mp4 は git に入れない）
   - Actions ではリール動画を gh-pages ブランチ（GitHub Pages）に置き、その公開URLを Instagram に渡す。gh-pages は毎回その日の動画1本＋site/ のページに上書きされるので、手で編集しない
@@ -141,17 +141,17 @@
   - 画像URLは main の画像を最後にコミットした SHA で固定した raw.githubusercontent.com のURL（gh-pages は使わない）
 - アプリが読むURL：https://raw.githubusercontent.com/kai061228-stack/120lab-content/main/app-feed/feed.json（`?t=時刻` を付けて読む）
 - アプリは端末の日付（日本時間）と同じ date の項目を表示する。0時に切り替わっても、7日分入っているので更新を待たなくてよい
-- アプリの「今日の学び」に載せるのは朝5時の枠の投稿だけ。18時の枠（栄養など）は feed.json に入れない
+- アプリの「今日の学び」に載せるのは朝5時の枠の投稿だけ。20時の枠（栄養など）は feed.json に入れない
 
-## 18時の枠（栄養枠・○○week などのイレギュラー発信）
+## 20時の枠（栄養枠・○○week などのイレギュラー発信）
 
-- 運動・知識・啓発のローテーションとは別枠。朝5時の投稿はそのまま続き、予定がある日だけ18時ごろに追加で投稿する
-- category に運動・知識・啓発以外（例："栄養"）を書いた投稿は、自動で18時の枠になる
-- **post.json に "publishDate": "YYYY-MM-DD" を必ず書く**。その日の18時にだけ出る（繰り上げ・ローテーションはしない）
-  - publishDate がない・過ぎている・同じ日にほかの18時の投稿があるときは、予定に入らない（`npm run queue` の「予定の変更・注意」に出る）
+- 運動・知識・啓発のローテーションとは別枠。朝5時の投稿はそのまま続き、予定がある日だけ20時ごろに追加で投稿する
+- category に運動・知識・啓発以外（例："栄養"）を書いた投稿は、自動で20時の枠になる
+- **post.json に "publishDate": "YYYY-MM-DD" を必ず書く**。その日の20時にだけ出る（繰り上げ・ローテーションはしない）
+  - publishDate がない・過ぎている・同じ日にほかの20時の投稿があるときは、予定に入らない（`npm run queue` の「予定の変更・注意」に出る）
   - 投稿されずに日付が過ぎた予定は missed として残る。出し直すときは新しい publishDate を書く
-- 予定表は schedule.json の "evening"（朝の枠は "days"）。`npm run queue` で「18時の枠」として確認できる
-- 起動：GitHub の定時起動が 18:00 と予備の 18:40（日本時間）。GitHub の定時起動は遅れることがあるので、外部サービスからも 18:00 に instagram.yml を inputs `slot=evening` で起動するとよい
+- 予定表は schedule.json の "evening"（朝の枠は "days"）。`npm run queue` で「20時の枠」として確認できる
+- 起動：GitHub の定時起動が 20:00 と予備の 20:40（日本時間）。GitHub の定時起動は遅れることがあるので、外部サービスからも 20:00 に instagram.yml を inputs `slot=evening` で起動するとよい
   - 外部サービスからの朝 5:00 の起動は今までどおり（slot を送らなければ朝の枠）
 - 流れは朝と同じ（カルーセル → リール → Threads → YouTube ショート）
 - 確認（投稿はしない）：`gh workflow run instagram.yml -f slot=evening -f dry_run=true -f date=YYYY-MM-DD`

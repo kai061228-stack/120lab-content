@@ -40,7 +40,7 @@ function ensureFfmpeg() {
 }
 
 // BGM は assets/bgm/カテゴリーの英語キー.mp3（運動 exercise・知識 knowledge・啓発 awareness・栄養 nutrition）
-// 18時の枠（栄養など）で専用の曲がまだないときは、運動と同じ exercise.mp3 を使う
+// 20時の枠（栄養など）で専用の曲がまだないときは、運動と同じ exercise.mp3 を使う
 // （専用の曲に替えるときは、assets/bgm/nutrition.mp3 のように置くだけでよい）
 function bgmFile(cat) {
   const dir = path.join(ROOT, 'assets', 'bgm');

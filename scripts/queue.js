@@ -1,5 +1,5 @@
 // 使い方: npm run queue
-// 予定表（schedule.json）とアプリ用データを作り直し、これから2週間の投稿予定（朝5時・18時）とカテゴリーごとのストック数を表示します
+// 予定表（schedule.json）とアプリ用データを作り直し、これから2週間の投稿予定（朝5時・20時）とカテゴリーごとのストック数を表示します
 const { loadPosts, jstDate, addDays, ORDER, LABEL } = require('./queue-lib');
 const { updateFiles, report } = require('./schedule-lib');
 
@@ -27,12 +27,12 @@ for (let i = 0; i < 14; i++) {
   console.log(`  ${day}(${w})  ${e.category}  ${e.folder}${tags ? `（${tags}）` : ''}`);
 }
 
-// 18時の枠（栄養枠などのイレギュラー発信）：publishDate を書いた日にだけ出る。予定がない日は何も出ない
+// 20時の枠（栄養枠などのイレギュラー発信）：publishDate を書いた日にだけ出る。予定がない日は何も出ない
 const evening = r.schedule.evening || {};
 const eveDays = Object.keys(evening).filter((d) => d >= today && !evening[d].missed);
 const waiting = posts.filter((p) => !p.posted && p.slot === 'evening').length;
 console.log(`
-■ 18時の枠（schedule.json の evening・未投稿 ${waiting}件）`);
+■ 20時の枠（schedule.json の evening・未投稿 ${waiting}件）`);
 if (!eveDays.length) console.log('  予定なし');
 for (const day of eveDays) {
   const e = evening[day];
