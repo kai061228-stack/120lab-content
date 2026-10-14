@@ -3,7 +3,8 @@
   "publishDate": "2026-11-18",
   "cover": {
     "title": "介護保険の\n使い方",
-    "subtitle": "申請からサービス開始まで"
+    "subtitle": "申請からサービス開始まで",
+    "characterFile": "assets/character-system.png"
   },
   "points": [
     {

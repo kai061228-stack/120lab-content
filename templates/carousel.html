@@ -43,6 +43,8 @@
   .cover.with-char { padding-top: 150px; }
   .cover.with-char h1 { font-size: 120px; }
   .cover .char { position: absolute; left: 150px; bottom: 40px; height: 600px; z-index: 2; }
+  /* 正方形に近い画像（端で切れている絵）は下の端につけて、スワイプの文字に重ならない大きさにする */
+  .cover .char.wide { left: 90px; bottom: 0; height: 540px; }
   .cover .swipe { position: absolute; right: 100px; bottom: 190px; font-size: 44px; font-weight: 700; color: var(--cover-ink); z-index: 3; }
   .cover.with-char .swipe { bottom: 230px; }
 
@@ -134,7 +136,7 @@
     cls: 'cover' + (showChar ? ' with-char' : ''),
     html: `<div class="fit">` + (tag ? `<p class="tag">${esc(tag)}</p><br>` : '') +
       `<p class="sub">${esc(POST.cover.subtitle)}</p><h1>${esc(POST.cover.title)}</h1></div>` +
-      (showChar ? `<img class="char" src="${CHAR}" alt="">` : '') +
+      (showChar ? `<img class="char" src="${CHAR}" alt="" onload="if (this.naturalWidth / this.naturalHeight > 0.85) this.classList.add('wide')">` : '') +
       `<span class="swipe">スワイプで見る ›</span>`
   });
 
