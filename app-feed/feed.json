@@ -1,44 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-10-15",
+  "from": "2026-10-16",
   "days": [
-    {
-      "date": "2026-10-15",
-      "post": {
-        "folder": "2026-09-26-okusuri",
-        "category": "啓発",
-        "categoryKey": "awareness",
-        "title": "薬の飲み方と\nお薬手帳",
-        "subtitle": "10月17日から薬と健康の週間",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-okusuri/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-okusuri/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-okusuri/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-okusuri/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-okusuri/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-okusuri/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-okusuri/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "薬を見直す機会に",
-            "薬の数を知る",
-            "ふらつきは相談",
-            "お薬手帳は1冊に",
-            "自己判断でやめない"
-          ],
-          "note": "薬のことで気になる点は、\n医師や薬剤師にご相談ください。"
-        },
-        "sources": [
-          "厚生労働省",
-          "日本薬剤師会",
-          "福生市"
-        ],
-        "sourcesText": "参考：厚生労働省「高齢者の医薬品適正使用の指針」（2018年）、日本薬剤師会「薬と健康の週間」、福生市「お薬を適切に管理しましょう」"
-      }
-    },
     {
       "date": "2026-10-16",
       "post": {
@@ -284,6 +248,41 @@
           "大田区"
         ],
         "sourcesText": "参考：宮城県気仙沼保健福祉事務所「杖の合わせ方」、大田区「福祉用具の貸与と購入の選択制」"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "post": {
+        "folder": "2026-10-11-ketsuatsu-hakarikata",
+        "category": "知識",
+        "categoryKey": "knowledge",
+        "title": "家庭血圧の\n正しい測り方",
+        "subtitle": "朝と晩、座って2回ずつ",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-ketsuatsu-hakarikata/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-ketsuatsu-hakarikata/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-ketsuatsu-hakarikata/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-ketsuatsu-hakarikata/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-ketsuatsu-hakarikata/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-ketsuatsu-hakarikata/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-ketsuatsu-hakarikata/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "上腕式の血圧計",
+            "朝は起きて1時間内",
+            "晩は寝る直前",
+            "座って1〜2分休む",
+            "記録して主治医へ"
+          ],
+          "note": "気になる数値が続くときは、\n主治医にご相談ください。"
+        },
+        "sources": [
+          "日本高血圧学会",
+          "厚生労働省 e-ヘルスネット"
+        ],
+        "sourcesText": "参考：日本高血圧学会「家庭で血圧を測定しましょう」、厚生労働省 e-ヘルスネット「血圧」"
       }
     }
   ]

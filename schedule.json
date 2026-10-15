@@ -359,7 +359,8 @@
     "2026-10-16": {
       "folder": "2026-10-11-vitamin-05-b2",
       "category": "栄養",
-      "reason": "日付指定"
+      "reason": "日付指定",
+      "posted": true
     },
     "2026-10-17": {
       "folder": "2026-10-11-vitamin-06-b6",
