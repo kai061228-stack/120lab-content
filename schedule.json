@@ -123,7 +123,8 @@
     "2026-10-16": {
       "folder": "2026-09-26-nemae-stretch",
       "category": "運動",
-      "reason": "日付指定"
+      "reason": "日付指定",
+      "posted": true
     },
     "2026-10-17": {
       "folder": "2026-09-26-genen",
