@@ -2,7 +2,7 @@
 // （.github/workflows/refresh-tokens.yml から実行。毎朝の投稿の仕組みとは別）
 // 使い方:
 //   TARGET=both|instagram|threads node scripts/refresh-tokens.js
-//   DRY_RUN=1 を付けると、延長はせずに今のトークンが使えるかだけ確かめる
+//   DRY_RUN=1 を付けると、延長はせずに今のトークンと SECRETS_UPDATER_TOKEN が使えるかだけ確かめる
 // 必要な環境変数:
 //   IG_ACCESS_TOKEN / THREADS_ACCESS_TOKEN（今のトークン）
 //   GH_TOKEN（Secrets を書き換えられる GitHub のトークン。Secrets の SECRETS_UPDATER_TOKEN）
@@ -45,7 +45,19 @@ function jstDate(ms) {
   return new Date(ms + 9 * 3600 * 1000).toISOString().slice(0, 10);
 }
 
-async function run(key) {
+// Secrets を書き換える GitHub のトークン（SECRETS_UPDATER_TOKEN）が使えるか確かめる。問題があればその理由を返す
+function checkUpdater() {
+  if (!process.env.GH_TOKEN) return 'SECRETS_UPDATER_TOKEN（Secrets を書き換える GitHub のトークン）が登録されていません';
+  if (!process.env.GITHUB_REPOSITORY) return 'GITHUB_REPOSITORY がありません';
+  try {
+    execFileSync('gh', ['api', `repos/${process.env.GITHUB_REPOSITORY}/actions/secrets/public-key`], { stdio: ['ignore', 'ignore', 'pipe'] });
+    return null;
+  } catch (e) {
+    return 'SECRETS_UPDATER_TOKEN で Secrets を読めません（権限「Secrets: Read and write」・対象リポジトリ・有効期限を確認してください）';
+  }
+}
+
+async function run(key, updaterError) {
   const s = SERVICES[key];
   const token = process.env[s.secret];
   if (!token) throw new Error(`${s.secret} がありません`);
@@ -53,6 +65,7 @@ async function run(key) {
   const me = await getJson(s.me(token));
   console.log(`▼ ${s.label}：今のトークンは使えます（@${me.username}）`);
   if (DRY) { console.log('  DRY_RUN のため延長しません'); return; }
+  if (updaterError) throw new Error('延長しません（SECRETS_UPDATER_TOKEN が使えないため）');
 
   const r = await getJson(s.refresh(token));
   if (!r.access_token) throw new Error('延長の結果に新しいトークンがありません');
@@ -71,13 +84,12 @@ async function run(key) {
 async function main() {
   const keys = TARGET === 'both' ? ['instagram', 'threads'] : [TARGET];
   for (const k of keys) if (!SERVICES[k]) throw new Error('TARGET は both / instagram / threads のどれかにしてください: ' + TARGET);
-  if (!DRY) {
-    if (!process.env.GH_TOKEN) throw new Error('SECRETS_UPDATER_TOKEN（Secrets を書き換える GitHub のトークン）が登録されていません');
-    if (!process.env.GITHUB_REPOSITORY) throw new Error('GITHUB_REPOSITORY がありません');
-  }
-  let failed = 0;
+  // 確認だけのときも確かめる。使えなくても、先に Instagram・Threads のトークンが使えるかはログに出す
+  const updaterError = checkUpdater();
+  console.log(updaterError ? `✖ ${updaterError}` : '▼ SECRETS_UPDATER_TOKEN：Secrets を読み書きできます');
+  let failed = updaterError ? 1 : 0;
   for (const k of keys) {
-    try { await run(k); } catch (e) {
+    try { await run(k, updaterError); } catch (e) {
       failed++;
       console.error(`✖ ${SERVICES[k].label}：${e.message.replace(/access_token=[^&\s]+/g, 'access_token=***')}`);
     }
