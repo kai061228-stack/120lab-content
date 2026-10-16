@@ -1,0 +1,120 @@
+name: 健康ニュースのプレビュー
+
+# スマホ（クラウドの Claude Code）から健康ニュースを push したときに動く
+# ・プルリクエストがなければ作る
+# ・render して画像をブランチにコミットし、dry_run（画像URL・トークンの確認）を行う
+# ・リール動画を作ってプレビュー用のリリース（news-preview-フォルダ名）に置く
+# ・画像・動画のリンク・キャプション・Threads の文を、プルリクエストのコメントに貼る（2回目からは上書き）
+# 健康ニュース（category が "健康ニュース"）のフォルダが変わっていないときは、何もしない
+# ボット（このワークフロー）の push ではもう一度動かないので、繰り返しにはならない
+on:
+  push:
+    # クラウドの Claude Code は claude/ のブランチに push することがあるため、両方を見る
+    branches: ['news/**', 'claude/**']
+    paths: ['posts/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: news-preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BRANCH: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '20'
+      - name: 健康ニュースのフォルダを探す
+        id: find
+        run: |
+          list=$(git diff --name-only origin/main...HEAD | node scripts/news-ci.js folders)
+          echo "見つかったフォルダ: ${list:-なし}"
+          if [ -z "$list" ]; then echo "folder=" >> "$GITHUB_OUTPUT"; exit 0; fi
+          if [ "$(echo "$list" | wc -l)" -gt 1 ]; then echo "::warning::健康ニュースのフォルダが複数あります。最初の1つだけプレビューします"; fi
+          echo "folder=$(echo "$list" | head -1)" >> "$GITHUB_OUTPUT"
+      - name: 準備する（npm・Playwright・日本語フォント）
+        if: steps.find.outputs.folder != ''
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          sudo apt-get install -y -qq --no-install-recommends fonts-noto-cjk
+      - name: render して画像をコミットする
+        if: steps.find.outputs.folder != ''
+        env:
+          FOLDER: ${{ steps.find.outputs.folder }}
+        run: |
+          npm run render -- "posts/$FOLDER"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "posts/$FOLDER/images" "posts/$FOLDER/caption.txt"
+          if git diff --cached --quiet; then echo "画像の変更なし"; else git commit -m "プレビュー：画像を作り直す（$FOLDER）" && git push origin "HEAD:$BRANCH"; fi
+          echo "SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+      - name: プルリクエストを用意する
+        if: steps.find.outputs.folder != ''
+        id: pr
+        env:
+          FOLDER: ${{ steps.find.outputs.folder }}
+        run: |
+          num=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number')
+          if [ -z "$num" ]; then
+            title=$(node -e "const p=require('./posts/$FOLDER/post.json');console.log('健康ニュース：'+p.cover.title.replace(/\n/g,''))")
+            gh pr create --base main --head "$BRANCH" --title "$title" --body "posts/$FOLDER の健康ニュースです。プレビューはコメントに貼ります。マージすると本番で投稿します。"
+            num=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number')
+          fi
+          echo "プルリクエスト #$num"
+          echo "number=$num" >> "$GITHUB_OUTPUT"
+      - name: dry_run（画像URL・トークンの確認。リールは下で別に作る）
+        if: steps.find.outputs.folder != ''
+        id: dry
+        continue-on-error: true
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          DRY_RUN: '1'
+          # dry_run のリールは gh-pages を上書きするため、ここでは作らない
+          REEL: '0'
+          GITHUB_SHA: ${{ env.SHA }}
+        run: node scripts/publish.js "${{ steps.find.outputs.folder }}"
+      - name: リール動画を作ってリリースに置く
+        if: steps.find.outputs.folder != ''
+        continue-on-error: true
+        env:
+          FOLDER: ${{ steps.find.outputs.folder }}
+        run: |
+          node -e "require('./scripts/reel').makeReel('posts/$FOLDER')"
+          tag="news-preview-$FOLDER"
+          cp "posts/$FOLDER/reel.mp4" "$RUNNER_TEMP/$FOLDER.mp4"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" "$RUNNER_TEMP/$FOLDER.mp4" --clobber
+          else
+            gh release create "$tag" "$RUNNER_TEMP/$FOLDER.mp4" --prerelease --target "$SHA" \
+              --title "プレビュー：$FOLDER" --notes "健康ニュースのプレビュー用のリール動画です。投稿が終わると自動で消します。"
+          fi
+          echo "REEL_URL=https://github.com/$GITHUB_REPOSITORY/releases/download/$tag/$FOLDER.mp4" >> "$GITHUB_ENV"
+          echo "RELEASE_URL=https://github.com/$GITHUB_REPOSITORY/releases/tag/$tag" >> "$GITHUB_ENV"
+      - name: プルリクエストにコメントする
+        if: steps.find.outputs.folder != ''
+        env:
+          FOLDER: ${{ steps.find.outputs.folder }}
+          NUM: ${{ steps.pr.outputs.number }}
+          DRY_OK: ${{ steps.dry.outcome }}
+        run: |
+          node scripts/news-ci.js comment "$FOLDER" > "$RUNNER_TEMP/comment.md"
+          id=$(gh api "repos/$GITHUB_REPOSITORY/issues/$NUM/comments" --paginate --jq '.[] | select(.body | startswith("<!-- news-preview -->")) | .id' | head -1)
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$id" -F "body=@$RUNNER_TEMP/comment.md" >/dev/null
+            echo "コメントを上書きしました"
+          else
+            gh pr comment "$NUM" --body-file "$RUNNER_TEMP/comment.md"
+          fi

@@ -187,6 +187,26 @@
   - 1投稿目：問いかけ＋ニュースの見出し・発表元＋最初の「わかったこと」　2投稿目：残りのスライド＋参考　3投稿目：actions＋注意書き
 - リールの上下の余白は黄緑。BGM は assets/bgm/news.mp3（甘茶の音楽工房「夏色のキャンパス」）
 
+## スマホ（クラウドの Claude Code）で健康ニュースを作る
+
+- 使い方：スマホの Claude アプリの Code で、このリポジトリを開いて `/news 出典のURL` と送る（PC でも同じコマンド。手順は .claude/commands/news.md）
+  - PC（gh がある）：画像などを見せて「確認OK」→ dry_run →「本番OK」→ 投稿、の流れ
+  - クラウド（gh がない）：Claude が `news/フォルダ名`（または `claude/` のブランチ）に push するところまで行い、確認はプルリクエストで行う
+- push すると、ワークフロー「健康ニュースのプレビュー」（.github/workflows/news-preview.yml）が自動で動く（5分ほど）
+  - プルリクエストを作る → render して画像をブランチにコミット → 画像URL・トークンの確認（dry_run）→ リール動画を作ってプレビュー用のリリース（news-preview-フォルダ名）に置く
+  - プルリクエストのコメントに、画像・リール動画のリンク・キャプション・Threads 3投稿の文・YouTube のタイトルが貼られる。直して push し直すと、同じコメントが作り直される
+  - 健康ニュース（category が "健康ニュース"）のフォルダが変わっていない push では何もしない
+- プルリクエストの画像と動画を確認して、よければ GitHub のアプリかブラウザで**マージする（＝本番OK）**
+- マージすると、ワークフロー「健康ニュースの本番投稿」（.github/workflows/news-publish.yml）が、そのフォルダだけを投稿する（instagram.yml の slot=evening・folder 指定と同じ）
+  - 投稿する時間（日本時間）：22時〜翌6時にマージ → 翌朝7時／19時30分〜20時30分にマージ → 20時30分／それ以外 → すぐ
+  - 翌朝7時待ちのあいだは、フォルダに news-pending.json が置かれる（7時と予備の7時30分の定時起動で出す。投稿できたら自動で消す）
+  - 終わると、各投稿のリンクがプルリクエストにコメントされ、プレビュー用のリリースは消される
+  - Threads が途中で止まったときは、続きは自動では出さない（コメントで知らせる）。出すときは Actions の「Threads 連投」を folder 指定で実行する
+- クラウドの準備：.claude/settings.json の SessionStart フックが scripts/cloud-setup.sh を動かし、npm ci・Playwright の Chromium・日本語フォントを入れる（PC では何もしない）
+  - Claude アプリの環境設定で、ネットワークのアクセスを「フル」にするか、「カスタム」で次を許可しておく：registry.npmjs.org、cdn.playwright.dev、playwright.download.prss.microsoft.com、fonts.googleapis.com、fonts.gstatic.com、archive.ubuntu.com・security.ubuntu.com、api.github.com、出典の公的機関のサイト
+  - クラウドで render できなくても、プレビューのワークフローが render するので投稿は作れる
+- GitHub の設定「Allow GitHub Actions to create and approve pull requests」（Settings → Actions → General）をオンにしておく（プルリクエストを自動で作るのに必要）
+
 ## Threads 連投
 
 - 毎朝の Instagram 投稿のあと、同じワークフローの中で Threads にも自動で連投する（scripts/threads-auto.js）

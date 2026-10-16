@@ -1,0 +1,121 @@
+name: 健康ニュースの本番投稿
+
+# 健康ニュースのプルリクエスト（news/ か claude/ のブランチ）を main にマージしたら、そのフォルダだけを本番で投稿する
+# （instagram.yml を slot=evening・folder=フォルダ名 で起動するのと同じ。投稿は instagram.yml が行うので、二重投稿の防止もそのまま）
+# 投稿する時間（日本時間）
+#   22:00〜翌6:00 にマージ → 翌朝 7:00（posts/フォルダ名/news-pending.json を置き、7:00 と予備の 7:30 の定時起動で出す）
+#   19:30〜20:30 にマージ → 20:30 まで待ってから
+#   それ以外 → すぐ
+# 健康ニュース以外のプルリクエストでは何もしない
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+  schedule:
+    - cron: '0 22 * * *'
+    - cron: '30 22 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+concurrency:
+  group: news-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.event_name != 'pull_request' || (github.event.pull_request.merged && (startsWith(github.head_ref, 'news/') || startsWith(github.head_ref, 'claude/')))
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '20'
+      - name: 投稿するフォルダと時間を決める
+        id: plan
+        env:
+          NUM: ${{ github.event.pull_request.number }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+            folder=$(gh pr diff "$NUM" --name-only | node scripts/news-ci.js folders | head -1)
+            [ -z "$folder" ] && { echo "健康ニュースのフォルダがないため、何もしません"; echo "folder=" >> "$GITHUB_OUTPUT"; exit 0; }
+            node scripts/news-ci.js timing > "$RUNNER_TEMP/timing.txt"
+            cat "$RUNNER_TEMP/timing.txt" >> "$GITHUB_OUTPUT"
+            action=$(grep '^action=' "$RUNNER_TEMP/timing.txt" | cut -d= -f2)
+            if [ "$action" = "pending" ]; then
+              post_at=$(grep '^post_at=' "$RUNNER_TEMP/timing.txt" | cut -d= -f2)
+              label=$(grep '^label=' "$RUNNER_TEMP/timing.txt" | cut -d= -f2)
+              printf '{\n  "postAt": "%s",\n  "pr": %s\n}\n' "$post_at" "$NUM" > "posts/$folder/news-pending.json"
+              git add "posts/$folder/news-pending.json"
+              git commit -m "健康ニュース：翌朝7時に投稿する（$folder）" && git pull --rebase && git push
+              gh pr comment "$NUM" --body "⏰ 夜中のマージのため、**$label** に投稿します（posts/$folder）。"
+            fi
+            echo "folder=$folder" >> "$GITHUB_OUTPUT"
+            echo "pr=$NUM" >> "$GITHUB_OUTPUT"
+          else
+            # 定時起動・手動起動：翌朝7時待ちで、時刻になったものを出す（1回に1件）
+            folder=$(node scripts/news-ci.js pending | head -1)
+            [ -z "$folder" ] && { echo "投稿を待っている健康ニュースはありません"; echo "folder=" >> "$GITHUB_OUTPUT"; exit 0; }
+            pr=$(node -e "console.log(require('./posts/$folder/news-pending.json').pr || '')")
+            echo "folder=$folder" >> "$GITHUB_OUTPUT"
+            echo "pr=$pr" >> "$GITHUB_OUTPUT"
+            echo "action=now" >> "$GITHUB_OUTPUT"
+          fi
+      - name: 20時30分まで待つ
+        if: steps.plan.outputs.folder != '' && steps.plan.outputs.action == 'wait'
+        run: |
+          echo "${{ steps.plan.outputs.wait }} 秒待ちます（20時の枠との重なりを避けるため）"
+          [ -n "${{ steps.plan.outputs.pr }}" ] && gh pr comment "${{ steps.plan.outputs.pr }}" --body "⏰ 20時の枠と重ならないよう、**20:30** に投稿します。" || true
+          sleep "${{ steps.plan.outputs.wait }}"
+      - name: instagram.yml を起動して終わるのを待つ
+        if: steps.plan.outputs.folder != '' && steps.plan.outputs.action != 'pending'
+        env:
+          FOLDER: ${{ steps.plan.outputs.folder }}
+        run: |
+          before=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          gh workflow run instagram.yml -f slot=evening -f folder="$FOLDER" -f dry_run=false
+          id=""
+          for i in $(seq 1 30); do
+            sleep 10
+            id=$(gh run list --workflow instagram.yml --event workflow_dispatch --limit 10 --json databaseId,createdAt \
+              --jq "[.[] | select(.createdAt >= \"$before\")] | sort_by(.createdAt) | .[0].databaseId // empty")
+            [ -n "$id" ] && break
+          done
+          [ -z "$id" ] && { echo "::error::起動した instagram.yml の実行が見つかりません"; exit 1; }
+          echo "instagram.yml の実行: https://github.com/$GITHUB_REPOSITORY/actions/runs/$id"
+          echo "RUN_ID=$id" >> "$GITHUB_ENV"
+          gh run watch "$id" --interval 30 || true
+      - name: 結果をプルリクエストにコメントし、後片付けをする
+        if: steps.plan.outputs.folder != '' && steps.plan.outputs.action != 'pending'
+        env:
+          FOLDER: ${{ steps.plan.outputs.folder }}
+          PR: ${{ steps.plan.outputs.pr }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: |
+          git pull --rebase -q
+          node scripts/news-ci.js links "$FOLDER" > "$RUNNER_TEMP/links.md"
+          echo "" >> "$RUNNER_TEMP/links.md"
+          echo "<sub>実行のログ：https://github.com/$GITHUB_REPOSITORY/actions/runs/$RUN_ID</sub>" >> "$RUNNER_TEMP/links.md"
+          cat "$RUNNER_TEMP/links.md"
+          [ -n "$PR" ] && gh pr comment "$PR" --body-file "$RUNNER_TEMP/links.md"
+          if [ -f "posts/$FOLDER/posted.json" ]; then
+            # 投稿できたら、プレビュー用のリリースと翌朝7時待ちの印を消す
+            gh release delete "news-preview-$FOLDER" --cleanup-tag -y || true
+            if [ -f "posts/$FOLDER/news-pending.json" ]; then
+              git rm -q "posts/$FOLDER/news-pending.json"
+              git commit -m "健康ニュース：翌朝7時待ちの印を消す（$FOLDER）" && git pull --rebase && git push
+            fi
+          else
+            echo "::error::Instagram に投稿されませんでした"
+            exit 1
+          fi
