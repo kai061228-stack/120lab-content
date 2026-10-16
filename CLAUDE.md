@@ -117,7 +117,7 @@
 - アクセストークンは GitHub の Secrets（IG_ACCESS_TOKEN / IG_USER_ID）にだけ保存する。ファイルやチャットには絶対に書かない
 - カルーセルを投稿したあと、同じ画像を動画にしたリール（BGM付き）も自動で投稿する
   - 表示時間は表紙3秒・2枚目以降6秒（scripts/reel.js の FIRST と EACH）
-  - BGM は assets/bgm/ の exercise.mp3（運動）・knowledge.mp3（知識）・awareness.mp3（啓発）。すべて甘茶の音楽工房の曲
+  - BGM は assets/bgm/ の exercise.mp3（運動）・knowledge.mp3（知識）・awareness.mp3（啓発）・news.mp3（健康ニュース）。すべて甘茶の音楽工房の曲
   - 栄養（20時の枠）は、専用の曲がないあいだ運動と同じ exercise.mp3 を使う。替えるときは assets/bgm/nutrition.mp3 を置くだけでよい（甘茶の音楽工房以外の曲にするときは、キャプションの「BGM：甘茶の音楽工房」も直す必要がある）
   - リールのキャプションには、ハッシュタグの前に「BGM：甘茶の音楽工房」が自動で入る（カルーセルには入らない）
   - `npm run reel -- posts/フォルダ名` で、PCでもリール動画（reel.mp4）を作って確認できる（ffmpeg が必要。reel.mp4 は git に入れない）
@@ -184,7 +184,7 @@
 - キャプションの最初の1行は読者の思い込みや悩みに触れ、次に【気になる健康ニュース】と発表の中身を書く。最後に「参考：機関名「資料名」（年）」
 - Threads は今までどおり3連投。threads.json がなければ slides から自動で作る（scripts/threads-lib.js の buildNewsThreadTexts）
   - 1投稿目：問いかけ＋ニュースの見出し・発表元＋最初の「わかったこと」　2投稿目：残りのスライド＋参考　3投稿目：actions＋注意書き
-- リールの上下の余白は黄緑。BGM は専用の曲がないあいだ exercise.mp3（替えるときは assets/bgm/news.mp3 を置く）
+- リールの上下の余白は黄緑。BGM は assets/bgm/news.mp3（甘茶の音楽工房「夏色のキャンパス」）
 
 ## Threads 連投
 
