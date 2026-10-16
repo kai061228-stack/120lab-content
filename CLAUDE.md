@@ -26,10 +26,14 @@
   - 啓発：緑。暮らし方・心がけ・環境づくりなど
 - イレギュラー発信（20時の枠）は「栄養」など、運動・知識・啓発以外を書く（下の「20時の枠」を参照）
   - 栄養：黄色。表紙の文字は濃い茶色、ラベルは「栄養」
+  - 健康ニュース：鮮やかな黄緑。専用のひな形 templates/news.html を使う（下の「気になる健康ニュース」を参照）
   - ほかの○○week など、色を決めていないカテゴリーも黄色になり、ラベルはカテゴリー名になる（色を分けたいときは templates/carousel.html の THEMES と scripts/queue-lib.js の SPECIAL に足す）
 - 表紙のキャラクターはカテゴリーに合わせて自動で入る（assets/character-exercise.png、character-knowledge.png、character-awareness.png）
 - 運動・知識・啓発以外のイレギュラー発信（栄養枠、ビタミンweek などの○○week）は、表紙（1枚目）のかいたろ君をすべて assets/character-special.png（赤ペンを持ってガッツポーズ）にする
   - category に運動・知識・啓発以外（例："栄養"）を書くと自動でこの画像になる。カテゴリーごとに新しいキャラクター画像は作らない
+  - **例外：健康ニュース**は、運営者が決めた専用の assets/character-news.png（スーツで指し棒を持つかいたろ君）を使う。表紙の右下に置き、指し棒が右（スワイプの方向）を向くようにする。「注目！」シール（assets/sticker-chumoku.png）はかいたろ君の右上
+    - 画像はもともと指し棒が右を向いているので、そのまま使う（左右反転すると左を向く）。左向きの画像に差し替えたときは cover に "characterFlip": true を書く
+    - この例外は健康ニュースだけ。ほかのイレギュラー発信は今までどおり character-special.png
 - テーマで決まっているかいたろ君（朝の枠でも20時の枠でも、カテゴリーの画像より優先する。cover に "characterFile" で指定する）
   - AI に関する投稿：assets/character-ai.png（ロボットのかいたろ君）
   - 医療・介護保険などの制度の変更に関する投稿：assets/character-system.png（天びんと本を持つかいたろ君）
@@ -157,6 +161,30 @@
 - 確認（投稿はしない）：`gh workflow run instagram.yml -f slot=evening -f dry_run=true -f date=YYYY-MM-DD`
 - フォルダ名は作った日＋シリーズ名と番号にする（例：posts/2026-10-07-vitamin-01-a）。表紙のサブタイトルに「ビタミンweek 1/13」のようにシリーズ名と番号を入れる
 - ビタミンweek の素材と決まりごとは docs/vitamin-week.md にある
+
+## 気になる健康ニュース（20時の枠）
+
+- 公的機関などが発表した健康のニュースを、読者向けにかみくだいて伝える枠。内容は「知識」と「啓発」の間くらいになる
+- post.json の "category" は "健康ニュース"。20時の枠なので **"publishDate" を必ず書く**（時事なので、発表からなるべく早い空いている日に）
+- ひな形は templates/news.html（自動で選ばれる。色は鮮やかな黄緑、フォントはほかと同じ Zen Maru Gothic）
+- フォルダ名は作った日＋news-英数字（例：posts/2026-10-16-news-tairyoku）。見本はこのフォルダ
+- post.json の形（points・summary・cta は使わず、slides を書く）
+  - cover："title"（3行まで。最後の行は明るい緑になる）、"subtitle"（発表元。例：国の体力調査（スポーツ庁））、"date"（例：2026年10月11日発表）
+  - slides：2枚目以降。"type" で形を選び、"heading"（上の帯の見出し）と、あれば "lead"（最初の太い文）・"foot"（下の一言）を書く
+    - facts：見出しつきの箇条書き。"items": [{ "label", "value" }]
+    - bars：棒グラフ。"bars": [{ "label", "value"（数の大きさ）, "display"（棒の上の文字）, "color"（gray・green・orange） }]
+    - compare：比べるカード。"cards": [{ "label", "value", "color" }]
+    - bignum：大きな数字。"text"、"number"。人の絵を出すときは "people": { "total": 6, "mark": 1 }
+    - actions：番号つきの「このニュースの活かし方」。"items"、"note"（注意書き）、"source"（参考）。最後のスライドにする
+  - 表紙のシールを替えるときは cover に "sticker": "ファイル名.png"（投稿フォルダか assets/）、消すときは "sticker": false
+- 文字量の目安：表紙タイトル1行6文字×3行、lead は \n で1行18文字以内、actions の1項目は1行14文字以内×3行まで。はみ出しそうなときは自動で縮むが、render した画像で必ず確認する
+- 根拠のルールは「情報の根拠」と同じ。発表資料（報道発表・PDF）の数字だけを使い、資料で確かめられない数字は使わない
+  - 調査の結果を伝えるときは、「関係があった」ことと「効果があった」ことを分けて書く（例：「運動と体力の関係を見た調査で、運動したから体力が上がったとまでは言えません」）
+  - actions の note に「痛みやふらつきがある方は、かかりつけ医にご相談ください。」などの一文を入れる
+- キャプションの最初の1行は読者の思い込みや悩みに触れ、次に【気になる健康ニュース】と発表の中身を書く。最後に「参考：機関名「資料名」（年）」
+- Threads は今までどおり3連投。threads.json がなければ slides から自動で作る（scripts/threads-lib.js の buildNewsThreadTexts）
+  - 1投稿目：問いかけ＋ニュースの見出し・発表元＋最初の「わかったこと」　2投稿目：残りのスライド＋参考　3投稿目：actions＋注意書き
+- リールの上下の余白は黄緑。BGM は専用の曲がないあいだ exercise.mp3（替えるときは assets/bgm/news.mp3 を置く）
 
 ## Threads 連投
 

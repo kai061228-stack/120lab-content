@@ -8,8 +8,7 @@ const MIME = { '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
 const toDataUrl = (file) =>
   'data:' + (MIME[path.extname(file).toLowerCase()] || 'image/png') + ';base64,' + fs.readFileSync(file).toString('base64');
 
-// カテゴリー名（日本語でも英語でも可）→ 英語キー
-const CAT = { '運動': 'exercise', '運動系': 'exercise', '知識': 'knowledge', '知識系': 'knowledge', '啓発': 'awareness', '啓発系': 'awareness' };
+const { catKey, slotOf, TEMPLATE } = require('./queue-lib');
 
 (async () => {
   const postDir = process.argv[2];
@@ -18,20 +17,31 @@ const CAT = { '運動': 'exercise', '運動系': 'exercise', '知識': 'knowledg
     process.exit(1);
   }
   const post = JSON.parse(fs.readFileSync(path.join(postDir, 'post.json'), 'utf8'));
-  const tpl = fs.readFileSync(path.join(ROOT, 'templates', 'carousel.html'), 'utf8');
+  // ひな形：post.json の "template"、なければカテゴリーで決まったもの（健康ニュース → news）、それ以外は carousel
+  const cat = catKey(post.category);
+  const tplName = post.template || TEMPLATE[cat] || 'carousel';
+  const tpl = fs.readFileSync(path.join(ROOT, 'templates', tplName + '.html'), 'utf8');
 
   // 表紙のキャラクター：運動・知識・啓発はカテゴリー専用の画像、
+  // 専用の画像があるイレギュラー発信（健康ニュース → character-news.png）はその画像、
   // それ以外のイレギュラー発信（栄養枠・○○week など）はすべて character-special.png。なければ共通の character.png を使う
-  const cat = CAT[post.category] || 'special';
   const candidates = [
     // cover.characterFile は投稿フォルダからの場所、またはリポジトリからの場所（例：assets/character-special.png）
     post.cover && typeof post.cover.characterFile === 'string' ? path.join(postDir, post.cover.characterFile) : null,
     post.cover && typeof post.cover.characterFile === 'string' ? path.join(ROOT, post.cover.characterFile) : null,
     path.join(ROOT, 'assets', `character-${cat}.png`),
+    slotOf(post.category) === 'evening' ? path.join(ROOT, 'assets', 'character-special.png') : null,
     path.join(ROOT, 'assets', 'character.png'),
   ].filter(Boolean);
   const charFile = candidates.find((f) => fs.existsSync(f));
   const charData = charFile ? JSON.stringify(toDataUrl(charFile)) : 'null';
+
+  // 表紙のシール（news のひな形だけ）：cover.sticker のファイル名。書かなければ「注目！」、false で消す
+  const stickerName = !post.cover || post.cover.sticker === false ? null
+    : post.cover.sticker || (tplName === 'news' ? 'sticker-chumoku.png' : null);
+  const stickerFile = stickerName && [path.join(postDir, stickerName), path.join(ROOT, 'assets', stickerName)].find((x) => fs.existsSync(x));
+  if (stickerName && !stickerFile) console.warn('シールが見つかりません: ' + stickerName + '（シールなしで作ります）');
+  const stickerData = stickerFile ? JSON.stringify(toDataUrl(stickerFile)) : 'null';
 
   // ポイントごとの画像（投稿フォルダ内、または assets/ 内のファイル名）
   const images = {};
@@ -45,6 +55,7 @@ const CAT = { '運動': 'exercise', '運動系': 'exercise', '知識': 'knowledg
   const html = tpl
     .replace('/*__POST__*/null', () => JSON.stringify(post))
     .replace('/*__CHAR__*/null', () => charData)
+    .replace('/*__STICKER__*/null', () => stickerData)
     .replace('/*__IMAGES__*/{}', () => JSON.stringify(images));
 
   const outDir = path.join(postDir, 'images');

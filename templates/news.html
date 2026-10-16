@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  /* 気になる健康ニュース（20時の枠）のひな形。色は鮮やかな黄緑 */
+  :root {
+    --lime: #96D21E;       /* 見出しの帯・ボタン */
+    --lime-soft: #D6EEA0;  /* 表紙のかいたろ君の後ろの丸 */
+    --mint: #F0F9DE;       /* 表紙の地・下の帯・カード */
+    --deep: #185626;       /* 濃い緑の文字 */
+    --green: #2E8428;
+    --orange: #E8801E;
+    --gray: #5B687A;
+    --ink: #1C2434;
+    --muted: #5A667A;
+    --line: #C8D2DE;
+    --font: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Meiryo", "Noto Sans CJK JP", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; font-family: var(--font); }
+  .slide { position: absolute; inset: 0; display: none; overflow: hidden; background: #fff; color: var(--ink); line-break: strict; }
+  .slide.active { display: block; }
+  .pill { display: inline-block; background: var(--orange); color: #fff; font-weight: 900; border-radius: 999px; white-space: nowrap; }
+
+  /* 表紙 */
+  .cover { background: var(--mint); }
+  .cover .bar { position: absolute; left: 0; right: 0; top: 0; height: 24px; background: var(--lime); }
+  .cover .top { position: absolute; left: 60px; top: 70px; width: 960px; }
+  .cover .pill { font-size: 42px; padding: 10px 34px 12px; margin-bottom: 40px; }
+  .cover h1 { font-size: 100px; font-weight: 900; line-height: 1.22; color: var(--deep); white-space: pre-line; margin-bottom: 26px; }
+  .cover h1 .hl { color: var(--green); }
+  .cover .sub { font-size: 40px; font-weight: 700; line-height: 1.4; white-space: pre-line; }
+  .cover .date { font-size: 34px; font-weight: 500; color: var(--muted); margin-top: 6px; }
+  .cover .circle { position: absolute; left: 540px; top: 720px; width: 680px; height: 680px; border-radius: 50%; background: var(--lime-soft); }
+  .cover .stage { position: absolute; right: 40px; bottom: 28px; height: 720px; }
+  .cover .stage .char { height: 100%; display: block; }
+  .cover .stage .char.flip { transform: scaleX(-1); }
+  /* 「注目！」シールはかいたろ君の右上 */
+  .cover .sticker { position: absolute; right: -24px; top: -150px; width: 250px; }
+  .cover .go { position: absolute; left: 60px; top: 1110px; font-size: 38px; font-weight: 900; color: var(--deep); background: var(--lime); padding: 20px 44px 22px; border-radius: 999px; white-space: nowrap; }
+  .cover .brand { position: absolute; left: 60px; top: 1240px; font-size: 30px; font-weight: 700; color: var(--muted); }
+
+  /* 2枚目以降：上の帯・下の帯 */
+  .head { position: absolute; left: 0; right: 0; top: 0; height: 190px; background: var(--lime); padding: 52px 60px 0; }
+  .head .pill { font-size: 34px; padding: 6px 26px 8px; }
+  .head h2 { font-size: 48px; font-weight: 900; color: var(--deep); margin-top: 8px; white-space: nowrap; }
+  .foot { position: absolute; left: 0; right: 0; bottom: 0; height: 90px; background: var(--mint); padding: 0 60px; display: flex; align-items: center; justify-content: space-between; }
+  .foot .brand { font-size: 30px; font-weight: 700; color: var(--muted); }
+  .foot .page { font-size: 32px; font-weight: 900; color: var(--green); }
+  .swipe { position: absolute; right: 60px; top: 1196px; font-size: 34px; font-weight: 900; color: var(--green); }
+  .body { position: absolute; left: 60px; right: 60px; top: 250px; }
+
+  .lead { font-size: 50px; font-weight: 900; line-height: 1.5; white-space: pre-line; }
+  .text { font-size: 44px; font-weight: 700; line-height: 1.5; white-space: pre-line; }
+  .note { font-size: 34px; font-weight: 500; line-height: 1.6; color: var(--muted); white-space: pre-line; }
+  .after { font-size: 42px; font-weight: 900; line-height: 1.5; color: var(--deep); white-space: pre-line; margin-top: 36px; }
+
+  /* facts：見出しつきの箇条書き */
+  .facts { margin-top: 44px; }
+  .facts dt { font-size: 36px; font-weight: 900; color: var(--green); }
+  .facts dd { font-size: 48px; font-weight: 700; line-height: 1.45; margin: 6px 0 40px; white-space: pre-line; }
+
+  /* bars：棒グラフ */
+  .bars { display: flex; justify-content: center; gap: 70px; align-items: flex-end; height: 640px; margin-top: 30px; border-bottom: 5px solid var(--ink); }
+  .bars .col { width: 240px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .bars .val { font-size: 64px; font-weight: 900; margin-bottom: 8px; white-space: nowrap; }
+  .bars .bar { width: 100%; border-radius: 10px 10px 0 0; }
+  .bars-labels { display: flex; justify-content: center; gap: 70px; }
+  .bars-labels span { width: 240px; text-align: center; font-size: 42px; font-weight: 900; padding-top: 14px; }
+
+  /* compare：比べるカード */
+  .cards { margin-top: 50px; }
+  .cards .card { display: flex; align-items: center; gap: 50px; background: var(--mint); border-radius: 30px; padding: 40px 50px; margin-bottom: 36px; }
+  .cards .label { font-size: 52px; font-weight: 900; white-space: nowrap; }
+  .cards .value { font-size: 66px; font-weight: 900; line-height: 1.2; }
+
+  /* bignum：大きな数字（人の絵は people があるときだけ） */
+  .bignum { font-size: 160px; font-weight: 900; line-height: 1.2; color: var(--orange); margin: 20px 0 10px; white-space: pre-line; }
+  .people { display: flex; justify-content: space-between; margin: 30px 10px 30px; }
+  .people .p { width: 104px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .people .p i { width: 64px; height: 64px; border-radius: 50%; background: #BFC9D7; }
+  .people .p b { width: 104px; height: 144px; border-radius: 40px; background: #BFC9D7; }
+  .people .p.on i, .people .p.on b { background: var(--orange); }
+
+  /* actions：番号つきの「活かし方」＋注意書き＋参考 */
+  .actions li { list-style: none; display: flex; gap: 40px; align-items: flex-start; margin-bottom: 46px; }
+  .actions .n { flex: none; width: 92px; height: 92px; border-radius: 50%; background: var(--green); color: #fff; font-size: 56px; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+  .actions .t { font-size: 48px; font-weight: 900; line-height: 1.45; white-space: pre-line; padding-top: 6px; }
+  .actions-end { border-top: 3px solid var(--line); padding-top: 30px; }
+  .actions-end .note + .note { margin-top: 14px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+  const POST = /*__POST__*/null;
+  const CHAR = /*__CHAR__*/null;
+  const STICKER = /*__STICKER__*/null;
+  const IMAGES = /*__IMAGES__*/{};
+
+  // アカウント表示名（templates/carousel.html と同じ）
+  const BRAND = '@120歳まで歩くラボ';
+  // 表紙と各スライドの上に出るラベル。cover.tag で変えられる
+  const TAG = POST.cover.tag || '気になる健康ニュース';
+  // 色の名前（gray・green・orange）か、#から始まる色
+  const COLOR = { gray: 'var(--gray)', green: 'var(--green)', orange: 'var(--orange)', deep: 'var(--deep)' };
+  const color = (c, d = 'green') => COLOR[c] || (/^#[0-9a-f]{3,8}$/i.test(String(c)) ? c : COLOR[d]);
+
+  const root = document.getElementById('root');
+  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const opt = (cls, s) => (s ? `<p class="${cls}">${esc(s)}</p>` : '');
+
+  // 表紙：タイトルの最後の行は明るい緑
+  const c = POST.cover;
+  const lines = String(c.title).split('\n');
+  const title = lines.map((l, i) => (i === lines.length - 1 && lines.length > 1 ? `<span class="hl">${esc(l)}</span>` : esc(l))).join('\n');
+  const showChar = CHAR && c.character !== false;
+  const cover = document.createElement('section');
+  cover.className = 'slide cover';
+  cover.innerHTML = `<div class="bar"></div>` +
+    (showChar ? `<div class="circle"></div><div class="stage"><img class="char${c.characterFlip ? ' flip' : ''}" src="${CHAR}" alt="">` +
+      (STICKER ? `<img class="sticker" src="${STICKER}" alt="">` : '') + `</div>` : '') +
+    `<div class="top"><div class="fit"><p class="pill">${esc(TAG)}</p><h1>${title}</h1>` + opt('sub', c.subtitle) + opt('date', c.date) + `</div></div>` +
+    `<p class="go">${esc(c.swipe || 'スワイプして読む →')}</p><p class="brand">${esc(BRAND)}</p>`;
+  root.appendChild(cover);
+
+  // 2枚目以降：slides の type ごとの中身
+  const RENDER = {
+    facts: (s) => `<dl class="facts">${(s.items || []).map((it) => `<dt>${esc(it.label)}</dt><dd>${esc(it.value)}</dd>`).join('')}</dl>`,
+    bars: (s) => {
+      const max = Math.max(...s.bars.map((b) => b.value));
+      const cols = s.bars.map((b) => {
+        const col = color(b.color, 'gray');
+        return `<div class="col"><span class="val" style="color:${col}">${esc(b.display ?? b.value)}</span>` +
+          `<div class="bar" style="background:${col};height:${(b.value / max) * 82}%"></div></div>`;
+      }).join('');
+      return `<div class="bars">${cols}</div><div class="bars-labels">${s.bars.map((b) => `<span>${esc(b.label)}</span>`).join('')}</div>`;
+    },
+    compare: (s) => `<div class="cards">${(s.cards || []).map((k) => {
+      const col = color(k.color);
+      return `<div class="card"><span class="label" style="color:${col}">${esc(k.label)}</span><span class="value" style="color:${col}">${esc(k.value)}</span></div>`;
+    }).join('')}</div>`,
+    bignum: (s) => opt('text', s.text) + `<p class="bignum">${esc(s.number)}</p>` +
+      (s.people ? `<div class="people">${Array.from({ length: s.people.total }, (_, i) =>
+        `<div class="p${i >= s.people.total - (s.people.mark || 1) ? ' on' : ''}"><i></i><b></b></div>`).join('')}</div>` : ''),
+    actions: (s) => `<ol class="actions">${(s.items || []).map((t, i) => `<li><span class="n">${i + 1}</span><span class="t">${esc(t)}</span></li>`).join('')}</ol>` +
+      ((s.note || s.source) ? `<div class="actions-end">${opt('note', s.note)}${opt('note', s.source)}</div>` : ''),
+  };
+
+  const n = 1 + POST.slides.length;
+  POST.slides.forEach((s, i) => {
+    const render = RENDER[s.type];
+    if (!render) throw new Error('slides の type が正しくありません: ' + s.type);
+    const last = i === POST.slides.length - 1;
+    const el = document.createElement('section');
+    // スライドの class は t-○○（中身の部品の class とぶつからないように）
+    el.className = 'slide t-' + s.type + (last ? ' last' : '');
+    el.innerHTML = `<div class="head"><p class="pill">${esc(TAG)}</p><h2>${esc(s.heading)}</h2></div>` +
+      `<div class="body"><div class="fit">${opt('lead', s.lead)}${render(s)}${opt('after', s.foot)}</div></div>` +
+      (last ? '' : `<span class="swipe">スワイプ →</span>`) +
+      `<div class="foot"><span class="brand">${esc(BRAND)}</span><span class="page">${i + 2} / ${n}</span></div>`;
+    root.appendChild(el);
+  });
+
+  window.slideCount = n;
+  // 文字が多くて、下のスワイプ・ボタン・かいたろ君に重なるときは、そのスライドだけ自動で少し縮める
+  const fitSlide = (el) => {
+    const fit = el.querySelector('.fit');
+    const cov = el.classList.contains('cover');
+    const bottom = cov ? (showChar ? 660 : 1080) : el.classList.contains('last') ? 1230 : 1180;
+    const right = cov && showChar ? 800 : 1020;
+    let z = 1;
+    fit.style.zoom = z;
+    const over = () => {
+      const r = fit.getBoundingClientRect();
+      const wide = cov ? Math.max(...[...fit.children].map((k) => {
+        const g = document.createRange(); g.selectNodeContents(k); return g.getBoundingClientRect().right;
+      })) : r.right;
+      return r.bottom > bottom || wide > right;
+    };
+    while (over() && z > 0.6) {
+      z = Math.round((z - 0.04) * 100) / 100;
+      fit.style.zoom = z;
+    }
+  };
+  window.showSlide = (i) => {
+    document.querySelectorAll('.slide').forEach((el, k) => el.classList.toggle('active', k === i));
+    fitSlide(document.querySelectorAll('.slide')[i]);
+  };
+  window.showSlide(0);
+</script>
+</body>
+</html>

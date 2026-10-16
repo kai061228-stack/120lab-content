@@ -7,8 +7,8 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const { catKey, ORDER } = require('./queue-lib');
-// 縦長（9:16）にするときの上下の余白の色（表紙の色。栄養以外のイレギュラー発信も栄養と同じ黄色）
-const PAD = { exercise: '0xC9531A', knowledge: '0x1F4E8C', awareness: '0x1E5A40', nutrition: '0xF2B705', special: '0xF2B705' };
+// 縦長（9:16）にするときの上下の余白の色（表紙の色。栄養以外のイレギュラー発信も栄養と同じ黄色。健康ニュースは黄緑）
+const PAD = { exercise: '0xC9531A', knowledge: '0x1F4E8C', awareness: '0x1E5A40', nutrition: '0xF2B705', news: '0x96D21E', special: '0xF2B705' };
 const FIRST = 3;      // 表紙の表示秒数
 const EACH = 6;       // 2枚目以降の表示秒数（読む時間）
 const FADE = 0.5;     // 切り替えのフェード秒数
@@ -39,7 +39,7 @@ function ensureFfmpeg() {
   execSync('sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg', { stdio: 'inherit' });
 }
 
-// BGM は assets/bgm/カテゴリーの英語キー.mp3（運動 exercise・知識 knowledge・啓発 awareness・栄養 nutrition）
+// BGM は assets/bgm/カテゴリーの英語キー.mp3（運動 exercise・知識 knowledge・啓発 awareness・栄養 nutrition・健康ニュース news）
 // 20時の枠（栄養など）で専用の曲がまだないときは、運動と同じ exercise.mp3 を使う
 // （専用の曲に替えるときは、assets/bgm/nutrition.mp3 のように置くだけでよい）
 function bgmFile(cat) {
@@ -69,7 +69,7 @@ function makeReel(postDir) {
 
   const filters = [];
   imgs.forEach((_, i) => {
-    filters.push(`[${i}:v]scale=1080:1350,pad=1080:1920:0:285:color=${PAD[cat]},setsar=1,fps=30,format=yuv420p[v${i}]`);
+    filters.push(`[${i}:v]scale=1080:1350,pad=1080:1920:0:285:color=${PAD[cat] || PAD.special},setsar=1,fps=30,format=yuv420p[v${i}]`);
   });
   let last = 'v0';
   let offset = 0;

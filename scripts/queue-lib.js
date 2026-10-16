@@ -6,10 +6,12 @@ const path = require('path');
 const POSTS = path.join(__dirname, '..', 'posts');
 // 朝5時の枠：運動 → 知識 → 啓発 のローテーション
 const ORDER = ['exercise', 'knowledge', 'awareness'];
-const LABEL = { exercise: '運動', knowledge: '知識', awareness: '啓発', nutrition: '栄養' };
+const LABEL = { exercise: '運動', knowledge: '知識', awareness: '啓発', nutrition: '栄養', news: '健康ニュース' };
 const CAT = { '運動': 'exercise', '運動系': 'exercise', '知識': 'knowledge', '知識系': 'knowledge', '啓発': 'awareness', '啓発系': 'awareness' };
 // 20時の枠：運動・知識・啓発以外のイレギュラー発信（栄養枠・○○week など）。色やBGMを決めてあるものはここに書く
-const SPECIAL = { '栄養': 'nutrition' };
+const SPECIAL = { '栄養': 'nutrition', '健康ニュース': 'news' };
+// カテゴリーごとのひな形（templates/○○.html）。書いていないカテゴリーは carousel
+const TEMPLATE = { news: 'news' };
 
 // カテゴリー名 → 英語キー（運動・知識・啓発と SPECIAL 以外は 'special'）
 const catKey = (category) => CAT[category] || SPECIAL[category] || 'special';
@@ -43,4 +45,4 @@ function loadPosts() {
     .sort((a, b) => a.folder.localeCompare(b.folder));
 }
 
-module.exports = { POSTS, ORDER, LABEL, CAT, SPECIAL, SLOTS, catKey, slotOf, jstDate, addDays, isYmd, loadPosts };
+module.exports = { POSTS, ORDER, LABEL, CAT, SPECIAL, TEMPLATE, SLOTS, catKey, slotOf, jstDate, addDays, isYmd, loadPosts };
