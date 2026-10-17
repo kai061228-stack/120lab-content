@@ -1,43 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-10-17",
+  "from": "2026-10-18",
   "days": [
-    {
-      "date": "2026-10-17",
-      "post": {
-        "folder": "2026-09-26-genen",
-        "category": "知識",
-        "categoryKey": "knowledge",
-        "title": "今日から\nできる減塩",
-        "subtitle": "食塩のとりすぎと血圧",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-genen/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-genen/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-genen/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-genen/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-genen/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-genen/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-genen/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "目標量を知る",
-            "今の量を知る",
-            "とりすぎに注意",
-            "計量して控えめに",
-            "酸味・薬味を活用"
-          ],
-          "note": "食事の指導を受けている方は、\n医師の指示に従ってください。"
-        },
-        "sources": [
-          "農林水産省",
-          "船橋市"
-        ],
-        "sourcesText": "参考：農林水産省「食塩の取りすぎに注意」、船橋市「減塩のすすめ」"
-      }
-    },
     {
       "date": "2026-10-18",
       "post": {
@@ -282,6 +247,40 @@
           "消費者庁"
         ],
         "sourcesText": "参考：長寿科学振興財団「健康長寿ネット」、消費者庁「冬季に多発する高齢者の入浴中の事故に御注意ください！」"
+      }
+    },
+    {
+      "date": "2026-10-25",
+      "post": {
+        "folder": "2026-10-11-tsue-tsukikata",
+        "category": "運動",
+        "categoryKey": "exercise",
+        "title": "杖の\n正しいつき方",
+        "subtitle": "持つ手・歩く順番・階段",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-tsue-tsukikata/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-tsue-tsukikata/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-tsue-tsukikata/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-tsue-tsukikata/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-tsue-tsukikata/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-tsue-tsukikata/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-tsue-tsukikata/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "痛くない側で持つ",
+            "杖→痛い足→反対",
+            "慣れたら2動作",
+            "杖は一歩分前",
+            "階段は順番に注意"
+          ],
+          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "テクノエイド協会"
+        ],
+        "sourcesText": "参考：テクノエイド協会「歩行補助用具の活用」"
       }
     }
   ]

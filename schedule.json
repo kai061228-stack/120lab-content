@@ -135,7 +135,8 @@
     "2026-10-18": {
       "folder": "2026-09-26-mimamori",
       "category": "啓発",
-      "reason": "日付指定"
+      "reason": "日付指定",
+      "posted": true
     },
     "2026-10-19": {
       "folder": "2026-09-26-tachiagari",
