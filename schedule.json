@@ -378,7 +378,10 @@
       "folder": "2026-10-11-vitamin-07-niacin",
       "category": "栄養",
       "reason": "日付指定",
-      "posted": true
+      "posted": true,
+      "extra": [
+        "2026-10-17-news-karui-katsudo"
+      ]
     },
     "2026-10-19": {
       "folder": "2026-10-11-vitamin-08-d",
