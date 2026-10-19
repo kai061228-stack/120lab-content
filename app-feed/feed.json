@@ -1,43 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-10-19",
+  "from": "2026-10-20",
   "days": [
-    {
-      "date": "2026-10-19",
-      "post": {
-        "folder": "2026-09-26-tachiagari",
-        "category": "運動",
-        "categoryKey": "exercise",
-        "title": "立ち上がりが\n楽になるコツ",
-        "subtitle": "足を引いて、おじぎをして",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tachiagari/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tachiagari/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tachiagari/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tachiagari/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tachiagari/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tachiagari/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8019d62a255eb7e1c86273aa6f63eeb2972eab96/posts/2026-09-26-tachiagari/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "浅く座り直す",
-            "足を手前に引く",
-            "おじぎして立つ",
-            "支えを使う",
-            "立ち座りの練習"
-          ],
-          "note": "ひざや腰に痛みがある方は、\nかかりつけ医にご相談ください。"
-        },
-        "sources": [
-          "福祉医療機構 WAM NET",
-          "日本整形外科学会"
-        ],
-        "sourcesText": "参考：福祉医療機構 WAM NET「立ち上がり動作」、日本整形外科学会「ロコモONLINE」"
-      }
-    },
     {
       "date": "2026-10-20",
       "post": {
@@ -281,6 +246,41 @@
           "厚生労働省 e-ヘルスネット"
         ],
         "sourcesText": "参考：日本高血圧学会「家庭で血圧を測定しましょう」「高血圧管理・治療ガイドライン2025」、厚生労働省 e-ヘルスネット「血圧」"
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "post": {
+        "folder": "2026-10-11-hie-suwatte",
+        "category": "啓発",
+        "categoryKey": "awareness",
+        "title": "座ったまま\n足を動かそう",
+        "subtitle": "長く座る日のひと工夫",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-hie-suwatte/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-hie-suwatte/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-hie-suwatte/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-hie-suwatte/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-hie-suwatte/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-hie-suwatte/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-hie-suwatte/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "同じ姿勢を続けない",
+            "足の指を動かす",
+            "かかと上げ下ろし",
+            "ときどき歩く",
+            "足先を覆う"
+          ],
+          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "厚生労働省",
+          "長寿科学振興財団"
+        ],
+        "sourcesText": "参考：厚生労働省「深部静脈血栓症/肺塞栓症（いわゆるエコノミークラス症候群）の予防Q&A」、長寿科学振興財団「健康長寿ネット」"
       }
     }
   ]
