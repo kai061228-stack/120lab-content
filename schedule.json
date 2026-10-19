@@ -396,7 +396,10 @@
       "folder": "2026-10-11-vitamin-09-k",
       "category": "栄養",
       "reason": "日付指定",
-      "posted": true
+      "posted": true,
+      "extra": [
+        "2026-10-20-news-sagi-ai"
+      ]
     },
     "2026-10-21": {
       "folder": "2026-10-11-vitamin-10-b12",
