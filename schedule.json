@@ -153,7 +153,8 @@
     "2026-10-21": {
       "folder": "2026-10-11-mizu-fuyu",
       "category": "啓発",
-      "reason": "日付指定"
+      "reason": "日付指定",
+      "posted": true
     },
     "2026-10-22": {
       "folder": "2026-10-11-tsue-nagasa",
