@@ -26,7 +26,7 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const {
-  POSTS, ORDER, LABEL, CAT, NEWS, NEWS_SLOT, NEWS_LIFE, NEWS_GRACE, APP_NEWS_DAYS,
+  POSTS, ORDER, LABEL, CAT, NEWS, NEWS_SLOT, NEWS_LIFE, APP_NEWS_DAYS,
   jstDate, jstMinutes, addDays, isYmd, loadPosts,
 } = require('./queue-lib');
 
@@ -219,7 +219,7 @@ function buildEvening({ today, prevDays, posts, warnings }) {
 
 // 気になるニュース（ストック式）の、ひとつの分野の予定を作る
 //   ・投稿済みは、実際に投稿した日に固定する。今日より前で投稿されなかった予定は missed として残し、その投稿はストックに戻す
-//   ・予定が入っている今日は変えない。今日が空いていれば、投稿する時刻＋NEWS_GRACE 分までのあいだだけ入れる
+//   ・予定が入っている今日は変えない（時刻を過ぎても、予備の起動で出せる）。今日が空いていれば、投稿する時刻より前のときだけ入れる
 //   ・空いている日に、作った日の古いものから1日1件ずつ入れる（作った日より前の日には入れない）
 //   ・作った日から NEWS_LIFE 日を過ぎる日には入れない（期限切れ）
 function buildNews({ slot, today, now, prevDays, posts, warnings }) {
@@ -265,7 +265,7 @@ function buildNews({ slot, today, now, prevDays, posts, warnings }) {
     stock.push(p);
   }
   stock.sort((a, b) => a.created.localeCompare(b.created) || a.folder.localeCompare(b.folder));
-  const closed = jstDate(now) > today || (jstDate(now) === today && jstMinutes(now) >= time + NEWS_GRACE);
+  const closed = jstDate(now) > today || (jstDate(now) === today && jstMinutes(now) >= time);
   let d = closed ? addDays(today, 1) : today;
   while (stock.length) {
     if (days[d]) { d = addDays(d, 1); continue; }
