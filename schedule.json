@@ -465,5 +465,8 @@
       "category": "血液検査",
       "reason": "日付指定"
     }
-  }
+  },
+  "newsCare": {},
+  "newsHealth": {},
+  "newsAi": {}
 }

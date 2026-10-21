@@ -1,7 +1,9 @@
 // 使い方: npm run queue
-// 予定表（schedule.json）とアプリ用データを作り直し、これから2週間の投稿予定（朝5時・20時）とカテゴリーごとのストック数を表示します
-const { loadPosts, jstDate, addDays, ORDER, LABEL } = require('./queue-lib');
-const { updateFiles, report } = require('./schedule-lib');
+// 予定表（schedule.json）とアプリ用データを作り直し、これから2週間の投稿予定（朝5時・20時）・カテゴリーごとのストック数・
+// 気になるニュースの予定・アプリ用ニュースを表示します
+const fs = require('fs');
+const { loadPosts, jstDate, addDays, ORDER, LABEL, NEWS, SLOTS } = require('./queue-lib');
+const { updateFiles, report, SLOT_KEY, NEWS_FEED_FILE } = require('./schedule-lib');
 
 const today = jstDate();
 const r = updateFiles({ today });
@@ -39,3 +41,23 @@ for (const day of eveDays) {
   const w = week[new Date(day + 'T00:00:00Z').getUTCDay()];
   console.log(`  ${day}(${w})  ${e.category}  ${e.folder}${e.posted ? '（投稿済み）' : ''}`);
 }
+
+// 気になるニュース（ストック式）：分野ごとに毎日1件、作った日の古いものから。期限（作った日から10日）を過ぎたものは出ない
+for (const [slot, { label }] of Object.entries(NEWS)) {
+  const sched = r.schedule[SLOT_KEY[slot]] || {};
+  const stock = posts.filter((p) => !p.posted && p.slot === slot).length;
+  const list = Object.keys(sched).filter((d) => d >= today && !sched[d].missed);
+  console.log(`\n■ ${SLOTS[slot]}（schedule.json の ${SLOT_KEY[slot]}・未投稿 ${stock}件）`);
+  if (!list.length) console.log('  予定なし（お休み）');
+  for (const day of list) {
+    const e = sched[day];
+    const w = week[new Date(day + 'T00:00:00Z').getUTCDay()];
+    console.log(`  ${day}(${w})  ${e.folder}（${e.posted ? '投稿済み' : `期限 ${e.expires}`}）`);
+  }
+}
+
+// アプリ用ニュース（app-feed/news.json）
+const appNews = JSON.parse(fs.readFileSync(NEWS_FEED_FILE, 'utf8')).items;
+console.log(`\n■ アプリ用ニュース（app-feed/news.json・${appNews.length}件）`);
+if (!appNews.length) console.log('  なし');
+appNews.forEach((n) => console.log(`  ${n.startDate}〜${n.endDate}  ${n.category}  ${n.folder}`));

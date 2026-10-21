@@ -9,12 +9,20 @@ on:
     # GitHub の定時起動は遅れることがあるため、外部サービスからも 20:00 に slot=evening で起動するとよい
     - cron: '0 11 * * *'
     - cron: '40 11 * * *'
+    # 気になるニュース（ストック式）：医療・介護 12:00（予備 12:30）、健康 12:15（予備 12:45）、AI 18:00（予備 18:40）
+    # 外部サービスからも、それぞれの時刻に slot=news-care / news-health / news-ai で起動するとよい
+    - cron: '0 3 * * *'
+    - cron: '30 3 * * *'
+    - cron: '15 3 * * *'
+    - cron: '45 3 * * *'
+    - cron: '0 9 * * *'
+    - cron: '40 9 * * *'
   workflow_dispatch:
     inputs:
       slot:
-        description: '投稿する枠（morning＝朝5時の枠、evening＝20時の枠。外部サービスからの朝の起動は空欄のままでよい）'
+        description: '投稿する枠（morning＝朝5時、evening＝20時、news-care＝医療・介護ニュース12時、news-health＝健康ニュース12時15分、news-ai＝AIニュース18時。外部サービスからの朝の起動は空欄のままでよい）'
         type: choice
-        options: [morning, evening]
+        options: [morning, evening, news-care, news-health, news-ai]
         default: morning
       folder:
         description: '投稿するフォルダ名（空欄なら予定表の今日の1件）例: 2026-09-28-hiza-taisou'
@@ -43,8 +51,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      # 枠：手動・外部サービスの起動は slot の入力（空欄なら morning）、GitHub の定時起動は 11時台（UTC）の cron なら evening
-      SLOT: ${{ inputs.slot || (startsWith(github.event.schedule, '20 20') && 'morning') || (github.event.schedule && 'evening') || 'morning' }}
+      # 枠：手動・外部サービスの起動は slot の入力（空欄なら morning）
+      # GitHub の定時起動は cron で決める（20:20 UTC → morning、3時台 UTC → news-care・news-health、9時台 UTC → news-ai、それ以外 → evening）
+      SLOT: ${{ inputs.slot || (startsWith(github.event.schedule, '20 20') && 'morning') || ((github.event.schedule == '0 3 * * *' || github.event.schedule == '30 3 * * *') && 'news-care') || ((github.event.schedule == '15 3 * * *' || github.event.schedule == '45 3 * * *') && 'news-health') || (endsWith(github.event.schedule, ' 9 * * *') && 'news-ai') || (github.event.schedule && 'evening') || 'morning' }}
     steps:
       # 起動したときのコミットではなく、main の最新を取る
       # （前の実行がまだ動いている間に起動した場合でも、その実行の投稿記録を見て二重投稿しないように）
@@ -94,14 +103,15 @@ jobs:
       # 失敗してもワークフローは失敗にしない（ログと posted.json の youtubeError に残す）
       # リールが投稿済みで動画をまだ作っていない実行（YouTube だけ出すとき）のために、ffmpeg を先に入れておく
       # （YouTube のステップの5分に、用意の時間を含めないため）
+      # 気になるニュースの枠（news-○○）は YouTube に上げない（YouTube の1日の上限に余裕を持たせるため）
       - name: ffmpeg を用意する
-        if: always()
+        if: always() && !startsWith(env.SLOT, 'news-')
         continue-on-error: true
         timeout-minutes: 10
         # GitHub Releases の静的ビルドを使う（apt-get は遅いことがあるため。失敗したときだけ apt-get）
         run: node -e "require('./scripts/reel').ensureFfmpeg()"
       - name: YouTube ショートにアップロードする
-        if: always()
+        if: always() && !startsWith(env.SLOT, 'news-')
         continue-on-error: true
         timeout-minutes: 5
         env:

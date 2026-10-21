@@ -6,13 +6,14 @@
 //   DRY_RUN=1 を付けると、タイトル・説明・動画の長さを表示するだけでアップロードしない（DATE=YYYY-MM-DD でその日の予定を確認できる）
 // 動画は同じ実行の中でリール用に作った posts/フォルダ名/reel.mp4 を使う（なければ作る）
 // アップロード後は posted.json に youtubeId を記録する（記録があればアップロードしない）
+// 気になるニュース（ストック式。post.json に "newsCategory" があるもの）はアップロードしない
 // YT_OUT_DIR があれば、動画・タイトル・説明文をそこに書き出す（Actions の成果物として手動投稿に使う）
 // 必要な環境変数: YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN（npm run youtube-auth で取得）
 //                YT_PRIVACY（private / unlisted / public。初期値は private）
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
-const { jstDate } = require('./queue-lib');
+const { jstDate, NEWS_SLOT } = require('./queue-lib');
 const { buildSchedule, slotDays } = require('./schedule-lib');
 const { makeReel } = require('./reel');
 const { reelCaption } = require('./publish');
@@ -186,6 +187,8 @@ async function main() {
   if (rec && rec.youtubeId) { console.log(`▼ ${folder}：YouTube はアップロード済みのため何もしません（https://youtu.be/${rec.youtubeId}）`); return; }
 
   const post = JSON.parse(fs.readFileSync(path.join(dir, 'post.json'), 'utf8'));
+  // 気になるニュース（ストック式）は、YouTube の上限に余裕を持たせるため Instagram・Threads だけにする
+  if (NEWS_SLOT[post.newsCategory]) { console.log(`▼ ${folder}：気になるニュース（${post.newsCategory}）は YouTube にはアップロードしません`); return; }
   const caption = fs.readFileSync(path.join(dir, 'caption.txt'), 'utf8').trim();
   const title = buildTitle(post);
   const description = buildDescription(caption);

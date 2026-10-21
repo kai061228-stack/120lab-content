@@ -16,17 +16,27 @@
 //   ・投稿済みは、実際に投稿した日に固定する。今日より前で投稿されなかった予定は missed として記録に残す
 //   ・まだの投稿は、post.json の "publishDate" の日にだけ入れる（ローテーションや繰り上げはしない）
 //   ・publishDate がない・過ぎている・同じ日にほかの投稿があるときは、予定に入れずに知らせる
+//
+// 気になるニュース（ストック式。post.json に "newsCategory" があるもの）は、分野ごとに別の予定にする（buildNews）
+//   医療・介護 → newsCare（12:00）、健康 → newsHealth（12:15）、AI → newsAi（18:00）
+//   ・毎日1件ずつ、作った日の古いものから出す。ストックがない日はお休み
+//   ・作った日から10日（NEWS_LIFE）を過ぎたものは出さない
+// アプリ用ニュース（app-feed/news.json）は、"app": true のニュース（AI 以外）を、作った日の翌日から10日後まで載せる
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
-const { POSTS, ORDER, LABEL, CAT, jstDate, addDays, isYmd, loadPosts } = require('./queue-lib');
+const {
+  POSTS, ORDER, LABEL, CAT, NEWS, NEWS_SLOT, NEWS_LIFE, NEWS_GRACE, APP_NEWS_DAYS,
+  jstDate, jstMinutes, addDays, isYmd, loadPosts,
+} = require('./queue-lib');
 
 // 枠 → schedule.json の中の場所
-const SLOT_KEY = { morning: 'days', evening: 'evening' };
+const SLOT_KEY = { morning: 'days', evening: 'evening', 'news-care': 'newsCare', 'news-health': 'newsHealth', 'news-ai': 'newsAi' };
 
 const ROOT = path.join(__dirname, '..');
 const SCHEDULE_FILE = path.join(ROOT, 'schedule.json');
 const FEED_FILE = path.join(ROOT, 'app-feed', 'feed.json');
+const NEWS_FEED_FILE = path.join(ROOT, 'app-feed', 'news.json');
 const FEED_DAYS = 8; // 今日から7日先まで
 
 function readSchedule() {
@@ -58,7 +68,8 @@ function prevCategory(days, d) {
 }
 
 // 予定表を作る（ファイルには書かない）。warnings は運営者に知らせること、moves は日付が変わった投稿
-function buildSchedule({ today = jstDate(), prev = readSchedule(), posts: allPosts = loadPosts() } = {}) {
+// now はストック式のニュースで「今日の投稿時刻を過ぎたか」を見るのに使う
+function buildSchedule({ today = jstDate(), now = new Date(), prev = readSchedule(), posts: allPosts = loadPosts() } = {}) {
   const posts = allPosts.filter((p) => p.slot === 'morning');
   const byFolder = new Map(posts.map((p) => [p.folder, p]));
   const prevDays = prev.days || {};
@@ -155,7 +166,12 @@ function buildSchedule({ today = jstDate(), prev = readSchedule(), posts: allPos
   }
 
   const evening = buildEvening({ today, prevDays: prev.evening || {}, posts: allPosts.filter((p) => p.slot === 'evening'), warnings });
-  return { schedule: { days: sortKeys(days), evening }, warnings, moves };
+  const news = {};
+  for (const slot of Object.keys(NEWS)) {
+    const key = SLOT_KEY[slot];
+    news[key] = buildNews({ slot, today, now, prevDays: prev[key] || {}, posts: allPosts.filter((p) => p.slot === slot), warnings });
+  }
+  return { schedule: { days: sortKeys(days), evening, ...news }, warnings, moves };
 }
 
 function sortKeys(obj) {
@@ -201,10 +217,79 @@ function buildEvening({ today, prevDays, posts, warnings }) {
   return sortKeys(days);
 }
 
+// 気になるニュース（ストック式）の、ひとつの分野の予定を作る
+//   ・投稿済みは、実際に投稿した日に固定する。今日より前で投稿されなかった予定は missed として残し、その投稿はストックに戻す
+//   ・予定が入っている今日は変えない。今日が空いていれば、投稿する時刻＋NEWS_GRACE 分までのあいだだけ入れる
+//   ・空いている日に、作った日の古いものから1日1件ずつ入れる（作った日より前の日には入れない）
+//   ・作った日から NEWS_LIFE 日を過ぎる日には入れない（期限切れ）
+function buildNews({ slot, today, now, prevDays, posts, warnings }) {
+  const { label, time } = NEWS[slot];
+  const days = {};
+  const assigned = new Set();
+  const byFolder = new Map(posts.map((p) => [p.folder, p]));
+  const expires = (p) => addDays(p.created, NEWS_LIFE);
+  const entry = (p, reason, extra = {}) => ({ folder: p.folder, category: label, reason, created: p.created, expires: expires(p), ...extra });
+
+  // 投稿済み：実際に投稿した日に固定
+  const postedByDay = {};
+  for (const p of posts) {
+    if (p.posted && p.posted.postedAt) (postedByDay[jstDate(p.posted.postedAt)] ||= []).push(p);
+  }
+  for (const [d, list] of Object.entries(postedByDay)) {
+    list.sort((a, b) => String(a.posted.postedAt).localeCompare(String(b.posted.postedAt)));
+    days[d] = entry(list[0], (prevDays[d] && prevDays[d].folder === list[0].folder && prevDays[d].reason) || '投稿済み', { posted: true });
+    const extra = list.slice(1).map((p) => p.folder);
+    if (extra.length) days[d].extra = extra;
+    list.forEach((p) => assigned.add(p.folder));
+  }
+
+  // 今日より前：記録として残す（投稿されなかった予定は missed）
+  for (const [d, pe] of Object.entries(prevDays)) {
+    if (d >= today || days[d]) continue;
+    const { posted, extra, ...rest } = pe;
+    days[d] = { ...rest, missed: true };
+  }
+
+  // 予定が入っている今日は変えない
+  const pe = prevDays[today];
+  if (!days[today] && pe && !pe.missed) {
+    const p = byFolder.get(pe.folder);
+    if (p && !p.posted && isYmd(p.created) && expires(p) >= today) { days[today] = entry(p, pe.reason); assigned.add(p.folder); }
+  }
+
+  // ストック（作った日の古い順）を、空いている日に入れる
+  const stock = [];
+  for (const p of posts) {
+    if (p.posted || assigned.has(p.folder)) continue;
+    if (!isYmd(p.created)) { warnings.push(`${p.folder}：作った日がわかりません。post.json に "created" を書いてください（${label}ニュース）`); continue; }
+    stock.push(p);
+  }
+  stock.sort((a, b) => a.created.localeCompare(b.created) || a.folder.localeCompare(b.folder));
+  const closed = jstDate(now) > today || (jstDate(now) === today && jstMinutes(now) >= time + NEWS_GRACE);
+  let d = closed ? addDays(today, 1) : today;
+  while (stock.length) {
+    if (days[d]) { d = addDays(d, 1); continue; }
+    while (stock.length && expires(stock[0]) < d) {
+      const x = stock.shift();
+      // 期限が7日より前に切れたものは、毎回知らせない
+      if (expires(x) >= addDays(today, -7)) {
+        warnings.push(expires(x) < today
+          ? `${x.folder}：賞味期限（${expires(x)}）を過ぎたため投稿しません（${label}ニュース）`
+          : `${x.folder}：賞味期限（${expires(x)}）までに順番が来ないため投稿しません（${label}ニュース）`);
+      }
+    }
+    if (!stock.length) break;
+    if (stock[0].created > d) { d = stock[0].created; continue; }
+    days[d] = entry(stock.shift(), 'ストック');
+    d = addDays(d, 1);
+  }
+  return sortKeys(days);
+}
+
 // 予定表の、その日のその枠の項目（なければ null）
 function slotDays(schedule, slot = 'morning') {
   const key = SLOT_KEY[slot];
-  if (!key) throw new Error(`枠の指定が正しくありません: ${slot}（morning か evening）`);
+  if (!key) throw new Error(`枠の指定が正しくありません: ${slot}（${Object.keys(SLOT_KEY).join('・')}）`);
   return schedule[key] || {};
 }
 
@@ -242,15 +327,24 @@ function parseSources(caption) {
   return { names: [...new Set(names)], text: line };
 }
 
-function feedPost(folder) {
-  const dir = path.join(POSTS, folder);
-  const post = JSON.parse(fs.readFileSync(path.join(dir, 'post.json'), 'utf8'));
-  const imgDir = path.join(dir, 'images');
+// 画像URL（表示順）
+function imageUrls(folder) {
+  const imgDir = path.join(POSTS, folder, 'images');
   const jpgs = fs.existsSync(imgDir) ? fs.readdirSync(imgDir).filter((f) => f.endsWith('.jpg')).sort() : [];
   const ref = imagesRef(folder);
   const base = `https://raw.githubusercontent.com/${repoName()}/${ref}/posts/${encodeURIComponent(folder)}/images/`;
-  const capFile = path.join(dir, 'caption.txt');
-  const src = parseSources(fs.existsSync(capFile) ? fs.readFileSync(capFile, 'utf8') : post.caption || '');
+  return jpgs.map((f) => base + f);
+}
+
+// キャプションの「参考：」の行（caption.txt がなければ post.json の caption）
+function sourcesOf(folder, post) {
+  const capFile = path.join(POSTS, folder, 'caption.txt');
+  return parseSources(fs.existsSync(capFile) ? fs.readFileSync(capFile, 'utf8') : post.caption || '');
+}
+
+function feedPost(folder) {
+  const post = JSON.parse(fs.readFileSync(path.join(POSTS, folder, 'post.json'), 'utf8'));
+  const src = sourcesOf(folder, post);
   const cat = CAT[post.category] || 'awareness';
   return {
     folder,
@@ -258,11 +352,40 @@ function feedPost(folder) {
     categoryKey: cat,
     title: post.cover.title,
     subtitle: post.cover.subtitle || '',
-    images: jpgs.map((f) => base + f),
+    images: imageUrls(folder),
     summary: { title: post.summary.title, items: post.summary.items, note: post.summary.note || '' },
     sources: src.names,
     sourcesText: src.text,
   };
+}
+
+// アプリ用ニュース：post.json に "app": true がある、ストック式のニュース（AI 以外）
+//   表示開始日は作った日の翌日（アプリで0時に切り替わるように）、表示終了日はその APP_NEWS_DAYS 日後
+//   表示終了日を過ぎたものは入れない（毎日作り直すので、自動で消える）。Instagram に投稿したかどうかは関係ない
+function buildNewsFeed(today = jstDate(), posts = loadPosts(), warnings = []) {
+  const items = [];
+  for (const p of posts) {
+    const { app, newsCategory } = p.post;
+    if (!app || !NEWS_SLOT[newsCategory]) continue;
+    if (newsCategory === 'AI') { warnings.push(`${p.folder}：AI のニュースはアプリに載せません（"app" は使われません）`); continue; }
+    if (!isYmd(p.created)) { warnings.push(`${p.folder}：作った日がわからないため、アプリに載せられません`); continue; }
+    const startDate = addDays(p.created, 1);
+    const endDate = addDays(startDate, APP_NEWS_DAYS);
+    if (endDate < today) continue;
+    const src = sourcesOf(p.folder, p.post);
+    items.push({
+      folder: p.folder,
+      title: p.post.cover.title,
+      category: newsCategory,
+      images: imageUrls(p.folder),
+      sources: src.names,
+      sourcesText: src.text,
+      startDate,
+      endDate,
+    });
+  }
+  items.sort((a, b) => a.startDate.localeCompare(b.startDate) || a.folder.localeCompare(b.folder));
+  return { version: 1, timezone: 'Asia/Tokyo', from: today, items };
 }
 
 // アプリの「今日の学び」は朝5時の枠（schedule.days）だけ。20時の枠（schedule.evening）は載せない
@@ -287,6 +410,7 @@ function updateFiles({ today = jstDate() } = {}) {
   const r = buildSchedule({ today });
   writeJson(SCHEDULE_FILE, r.schedule);
   writeJson(FEED_FILE, buildFeed(r.schedule, today));
+  writeJson(NEWS_FEED_FILE, buildNewsFeed(today, loadPosts(), r.warnings));
   return r;
 }
 
@@ -296,4 +420,7 @@ function report({ warnings, moves }) {
   warnings.forEach((w) => console.log(`  ⚠ ${w}`));
 }
 
-module.exports = { SCHEDULE_FILE, FEED_FILE, readSchedule, buildSchedule, slotDays, buildFeed, updateFiles, report, parseSources };
+module.exports = {
+  SCHEDULE_FILE, FEED_FILE, NEWS_FEED_FILE, SLOT_KEY,
+  readSchedule, buildSchedule, slotDays, buildFeed, buildNewsFeed, updateFiles, report, parseSources,
+};

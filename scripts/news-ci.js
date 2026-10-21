@@ -5,10 +5,12 @@
 //   node scripts/news-ci.js timing                           → 今（日本時間）投稿してよいか（now / wait 秒数 / pending 投稿する時刻）
 //   node scripts/news-ci.js pending                          → 翌朝7時待ちで、投稿する時刻になったフォルダ名
 //   node scripts/news-ci.js links フォルダ名                  → 投稿のリンク（Markdown）
+//   node scripts/news-ci.js stock フォルダ名                  → ストック式のニュース（"newsCategory" あり）なら、投稿予定のコメント（Markdown）。ちがえば何も出さない
 // 環境変数：GITHUB_REPOSITORY、SHA（画像URLの SHA）、REEL_URL・RELEASE_URL（リール動画）、DRY_OK（dry_run の結果）、IG_ACCESS_TOKEN（links）
 const fs = require('fs');
 const path = require('path');
-const { POSTS, catKey } = require('./queue-lib');
+const { POSTS, catKey, NEWS_SLOT, SLOTS } = require('./queue-lib');
+const { buildSchedule, SLOT_KEY } = require('./schedule-lib');
 const { buildThreadTexts } = require('./threads-lib');
 const { buildTitle } = require('./youtube');
 
@@ -19,6 +21,31 @@ const isNews = (folder) => {
   return fs.existsSync(f) && catKey(read(f).category) === 'news';
 };
 const posted = (folder) => fs.existsSync(path.join(POSTS, folder, 'posted.json'));
+// ストック式のニュース（"newsCategory" で分野が決まっているもの）の枠。ちがえば null
+const stockSlot = (post) => NEWS_SLOT[post.newsCategory] || null;
+const onApp = (post) => Boolean(post.app) && post.newsCategory !== 'AI';
+
+// ストック式のニュースの投稿予定（予定に入っていなければ day は null）
+function stockPlan(folder) {
+  const post = read(path.join(POSTS, folder, 'post.json'));
+  const slot = stockSlot(post);
+  if (!slot) return null;
+  const sched = buildSchedule().schedule[SLOT_KEY[slot]] || {};
+  const day = Object.keys(sched).find((d) => sched[d].folder === folder && !sched[d].missed) || null;
+  return { post, slot, day };
+}
+
+// マージしたときのコメント（ストック式のニュースだけ。ちがえば空）
+function stock(folder) {
+  const plan = stockPlan(folder);
+  if (!plan) return '';
+  const { post, slot, day } = plan;
+  const lines = [`📦 ストックに入りました（${post.newsCategory}・posts/${folder}）。すぐには投稿しません`];
+  if (day) lines.push(`- 投稿予定：**${day} ${SLOTS[slot]}**（Instagram・Threads。YouTube には上げません）`);
+  else lines.push('- ⚠ **投稿予定に入っていません**。賞味期限（作った日から10日）を過ぎたか、期限までに順番が来ない見込みです');
+  lines.push(`- アプリ：${onApp(post) ? '載せます（作った日の翌日から10日間）' : '載せません'}`);
+  return lines.join('\n');
+}
 
 // 変更したファイルの一覧から、健康ニュースのフォルダを選ぶ
 function folders(files) {
@@ -82,9 +109,14 @@ function comment(folder) {
   const out = [
     '<!-- news-preview -->',
     `## 📰 健康ニュースのプレビュー：${folder}`,
-    `- 予定日（publishDate）：${post.publishDate || '⚠ ありません'}`,
     `- ${dry}`,
-    '- マージすると、そのまま本番で投稿します（22時〜翌6時のマージは翌朝7時、19時30分〜20時30分のマージは20時30分）',
+    ...(stockSlot(post) ? [
+      `- 分野：${post.newsCategory}（作った日 ${post.created || folder.slice(0, 10)}）／アプリ：${onApp(post) ? '載せる' : '載せない'}`,
+      `- マージするとストックに入り、${SLOTS[stockSlot(post)]}の枠で古いものから順に投稿します（YouTube には上げません）`,
+    ] : [
+      `- 予定日（publishDate）：${post.publishDate || '⚠ ありません'}`,
+      '- マージすると、そのまま本番で投稿します（22時〜翌6時のマージは翌朝7時、19時30分〜20時30分のマージは20時30分）',
+    ]),
     '',
     '### 画像',
     pngs.map((f) => `<img src="${img(f)}" width="270" alt="${f}">`).join(' ') || '⚠ 画像がありません',
@@ -149,8 +181,9 @@ async function main() {
     console.log(`action=${r.action}\nwait=${r.wait || 0}\npost_at=${r.postAt || ''}\nlabel=${r.label}`);
   } else if (cmd === 'pending') console.log(pending().join('\n'));
   else if (cmd === 'links') console.log(await links(arg));
-  else throw new Error('使い方: node scripts/news-ci.js folders|comment|timing|pending|links [フォルダ名]');
+  else if (cmd === 'stock') { const s = stock(arg); if (s) console.log(s); }
+  else throw new Error('使い方: node scripts/news-ci.js folders|comment|timing|pending|links|stock [フォルダ名]');
 }
 
-module.exports = { folders, timing, pending, comment, links, PENDING };
+module.exports = { folders, timing, pending, comment, links, stock, stockPlan, PENDING };
 if (require.main === module) main().catch((e) => { console.error('✖ ' + e.message); process.exit(1); });

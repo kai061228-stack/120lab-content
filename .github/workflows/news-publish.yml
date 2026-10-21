@@ -7,6 +7,8 @@ name: 健康ニュースの本番投稿
 #   19:30〜20:30 にマージ → 20:30 まで待ってから
 #   それ以外 → すぐ
 # 健康ニュース以外のプルリクエストでは何もしない
+# 気になるニュース（ストック式。post.json に "newsCategory" があるもの）は、ここでは投稿しない
+#   マージ＝ストックに入る。投稿は instagram.yml の news-care・news-health・news-ai の枠が予定表どおりに行う（投稿予定をコメントするだけ）
 on:
   pull_request:
     types: [closed]
@@ -49,6 +51,13 @@ jobs:
           if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
             folder=$(gh pr diff "$NUM" --name-only | node scripts/news-ci.js folders | head -1)
             [ -z "$folder" ] && { echo "健康ニュースのフォルダがないため、何もしません"; echo "folder=" >> "$GITHUB_OUTPUT"; exit 0; }
+            node scripts/news-ci.js stock "$folder" > "$RUNNER_TEMP/stock.md"
+            if [ -s "$RUNNER_TEMP/stock.md" ]; then
+              cat "$RUNNER_TEMP/stock.md"
+              gh pr comment "$NUM" --body-file "$RUNNER_TEMP/stock.md"
+              echo "folder=" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
             node scripts/news-ci.js timing > "$RUNNER_TEMP/timing.txt"
             cat "$RUNNER_TEMP/timing.txt" >> "$GITHUB_OUTPUT"
             action=$(grep '^action=' "$RUNNER_TEMP/timing.txt" | cut -d= -f2)
