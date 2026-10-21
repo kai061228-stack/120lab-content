@@ -471,12 +471,13 @@
   },
   "newsCare": {},
   "newsHealth": {
-    "2026-10-22": {
+    "2026-10-21": {
       "folder": "2026-10-21-news-hataraku",
       "category": "健康",
-      "reason": "ストック",
+      "reason": "投稿済み",
       "created": "2026-10-21",
-      "expires": "2026-10-31"
+      "expires": "2026-10-31",
+      "posted": true
     }
   },
   "newsAi": {}
