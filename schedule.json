@@ -471,7 +471,15 @@
       "reason": "日付指定"
     }
   },
-  "newsCare": {},
+  "newsCare": {
+    "2026-10-22": {
+      "folder": "2026-10-22-news-jiko",
+      "category": "医療・介護",
+      "reason": "ストック",
+      "created": "2026-10-22",
+      "expires": "2026-11-01"
+    }
+  },
   "newsHealth": {
     "2026-10-21": {
       "folder": "2026-10-21-news-hataraku",
