@@ -18,7 +18,7 @@
 //   ・publishDate がない・過ぎている・同じ日にほかの投稿があるときは、予定に入れずに知らせる
 //
 // 気になるニュース（ストック式。post.json に "newsCategory" があるもの）は、分野ごとに別の予定にする（buildNews）
-//   医療・介護 → newsCare（12:00）、健康 → newsHealth（12:15）、AI → newsAi（18:00）
+//   医療・介護 → newsCare（20:15）、健康 → newsHealth（20:30）、AI → newsAi（20:45）
 //   ・毎日1件ずつ、作った日の古いものから出す。ストックがない日はお休み
 //   ・作った日から10日（NEWS_LIFE）を過ぎたものは出さない
 // アプリ用ニュース（app-feed/news.json）は、"app": true のニュース（AI 以外）を、作った日の翌日から10日後まで載せる

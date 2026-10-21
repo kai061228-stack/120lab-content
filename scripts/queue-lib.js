@@ -17,18 +17,18 @@ const TEMPLATE = { news: 'news' };
 const catKey = (category) => CAT[category] || SPECIAL[category] || 'special';
 // 投稿する枠：'morning'（朝5時）か 'evening'（20時）
 const slotOf = (category) => (CAT[category] ? 'morning' : 'evening');
-const SLOTS = { morning: '朝5時', evening: '20時', 'news-care': '12時（医療・介護ニュース）', 'news-health': '12時15分（健康ニュース）', 'news-ai': '18時（AIニュース）' };
+const SLOTS = { morning: '朝5時', evening: '20時', 'news-care': '20時15分（医療・介護ニュース）', 'news-health': '20時30分（健康ニュース）', 'news-ai': '20時45分（AIニュース）' };
 
 // 気になるニュース（ストック式）：post.json の "newsCategory" で枠が決まる（"newsCategory" がない健康ニュースは今までどおり20時の枠）
 //   time は投稿する時刻（日本時間・0時からの分）。作った日に入れられるのは、この時刻＋NEWS_GRACE 分まで（予備の起動が間に合うように）
 const NEWS = {
-  'news-care': { label: '医療・介護', time: 12 * 60 },
-  'news-health': { label: '健康', time: 12 * 60 + 15 },
-  'news-ai': { label: 'AI', time: 18 * 60 },
+  'news-care': { label: '医療・介護', time: 20 * 60 + 15 },
+  'news-health': { label: '健康', time: 20 * 60 + 30 },
+  'news-ai': { label: 'AI', time: 20 * 60 + 45 },
 };
 const NEWS_SLOT = Object.fromEntries(Object.entries(NEWS).map(([k, v]) => [v.label, k]));
 const NEWS_LIFE = 10; // 賞味期限：作った日から10日後まで投稿する（10/21に作ったら10/31まで）
-const NEWS_GRACE = 60;
+const NEWS_GRACE = 90; // 予備の起動（1時間後）が遅れても間に合うように
 const APP_NEWS_DAYS = 10; // アプリ：作った日の翌日から、その10日後まで表示する
 // 投稿する枠（post.json 全体から決める）
 const slotOfPost = (post) => NEWS_SLOT[post.newsCategory] || slotOf(post.category);
