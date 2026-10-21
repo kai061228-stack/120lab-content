@@ -1,12 +1,12 @@
 ---
-description: 「気になるニュース」（医療・介護／健康／AI。ストック式）を、出典のURLか朝ラジオのメモから作ってストックに入れるまで
+description: 「気になるニュース」（医療・介護／健康／AI）を、出典のURLか朝ラジオのメモから作って投稿するまで
 argument-hint: 出典のURL、または「②」などで始まる朝ラジオのメモ（日付・分野・見出し・要約・出典のリンク）。アプリにも載せるときは最後に「アプリにも」
 ---
 
 「気になるニュース」の投稿を作ります。出典：$ARGUMENTS
 
 CLAUDE.md の「気になるニュース」「情報の根拠」「健康情報のルール」「文体」を必ず守ってください。見本は posts/2026-10-16-news-tairyoku です（ただし publishDate は使わず、newsCategory・created を書く）。
-作ったニュースはストックに入り、分野ごとの枠（医療・介護 20:15／健康 20:30／AI 20:45）で古いものから自動で投稿されます。**Claude が投稿を起動することはしません**（急ぎで今すぐ出したいと運営者に言われたときだけ、CLAUDE.md の手動の投稿を行う）。
+運営者の OK（クラウドではプルリクエストのマージ）が出たら、時間に関係なくすぐ Instagram・Threads に投稿します（YouTube には上げません）。アプリ（"app": true）には作った日の翌日0時から載ります。
 返事・報告はすべて日本語で書きます。下の **【止まる】** では、必ず運営者の返事を待ってから次へ進みます。
 
 ## 0. PC かクラウドかを確かめる
@@ -68,26 +68,24 @@ CLAUDE.md の「気になるニュース」「情報の根拠」「健康情報�
   - Threads 3投稿の文（threads.json がなければ `scripts/threads-lib.js` の buildThreadTexts で作られる文を出して見せる）
   - 使った一次資料と、数字ごとの出典（朝ラジオのメモから作ったときは、メモの数字と一次資料の数字が合っていたか・食い違っていたか）
   - 分野（newsCategory）・アプリに載せるか（app）
-  - 投稿予定日（`npm run queue` の、その分野の枠の予定。賞味期限までに順番が来ない見込みなら、そのことも伝える）
+  - 「確認OK」のあと、すぐ Instagram・Threads に投稿すること（YouTube には上げない。アプリは作った日の翌日0時から）
   - リール動画（`npm run reel -- posts/フォルダ名` で作った reel.mp4 を開いてもらう）
 - 直す点を言われたら直して、render して、もう一度見せる
 - 運営者が「確認OK」と言うまで、commit・push はしない
 
-### A-5. 「確認OK」のあと：push してストックに入れ、dry_run で確かめる
+### A-5. 「確認OK」のあと：push して、すぐ投稿する
 
 - `npm run queue` を実行して、その分野の枠の予定とアプリ用ニュースを確かめる
 - `git add -A` → `git commit` → `git push`（ref/ など投稿に関係ないものは入れない）。push した時点でストックに入る
-- 予定日の確認：`gh workflow run instagram.yml -f slot=枠 -f dry_run=true -f date=予定日`（枠は news-care・news-health・news-ai）
-- 実行が終わるのを待ち（`gh run watch`）、ログでこのフォルダが選ばれていること、Instagram・Threads の文に問題がないことを確かめる
-- 結果と投稿予定（日付・時刻）を報告して終わる。**投稿は予定表どおりに自動で行うので、Claude は投稿を起動しない**
-  - 運営者に「今すぐ出して」と言われたときだけ、`gh workflow run instagram.yml -f slot=枠 -f folder=フォルダ名` で投稿し、リンクを報告する
+- `gh workflow run instagram.yml -f slot=枠 -f folder=フォルダ名` で、すぐ投稿する（枠は news-care・news-health・news-ai）
+- 実行が終わるのを待ち（`gh run watch`）、`git pull` して posted.json・threads-posted.json を確かめ、各投稿のリンクを報告する
   - Threads が途中で止まったときは、**【止まる】** 続きを出す前に運営者に確認する（OK が出たら `gh workflow run threads-thread.yml -f folder=フォルダ名 -f dry_run=false` で続きから出す）
 
 ---
 
 ## B. クラウドの流れ（gh が使えない。プルリクエストで確認する）
 
-確認は GitHub のプルリクエストで行い、**マージ＝OK（ストックに入る）** になります。Claude はマージしません。
+確認は GitHub のプルリクエストで行い、**マージ＝本番OK（すぐ投稿）** になります。Claude は、運営者に頼まれたときだけマージします。
 
 ### B-4. ブランチに commit して push する
 
@@ -106,11 +104,12 @@ CLAUDE.md の「気になるニュース」「情報の根拠」「健康情報�
 - 運営者に次を伝える
   - プルリクエストのリンク（わからなければ https://github.com/kai061228-stack/120lab-content/pulls ）
   - キャプションの全文、Threads 3投稿の文、使った一次資料と数字ごとの出典（朝ラジオのメモから作ったときは、メモの数字との食い違い）、分野・アプリに載せるか
-  - 「コメントの画像と動画を確認して、よければマージしてください。マージするとストックに入り、〇〇の枠で古いものから順に投稿されます（YouTube には上げません）」
+  - 「コメントの画像と動画を確認して、よければマージしてください。マージすると、すぐ Instagram・Threads に投稿します（YouTube には上げません）」
 - 直す点を言われたら、同じブランチで直して commit・push する（プレビューのコメントが作り直される）
 
 ### B-6. マージのあと（Actions が自動で行う）
 
-- ワークフロー「健康ニュースの本番投稿」（.github/workflows/news-publish.yml）は、投稿はせず、投稿予定（日付と枠）とアプリに載せるかをプルリクエストにコメントする
-- 投稿は予定日に instagram.yml（slot=news-care・news-health・news-ai）が行う。運営者に聞かれたら、`npm run queue` の結果か schedule.json で予定を伝える
+- ワークフロー「健康ニュースの本番投稿」（.github/workflows/news-publish.yml）が、instagram.yml を slot＝分野の枠・folder＝フォルダ名で起動して、すぐ投稿する（時間に関係なく）
+- 終わると、各投稿のリンク（Instagram・Threads）がプルリクエストにコメントされる。運営者に聞かれたら、そのコメントを読んで伝える
+- すぐの投稿が失敗したときは、ストックに残り、その分野の枠で予定表どおりに出る
 - Threads が途中で止まったときは、**【止まる】** 続きは自動では出さない。運営者の OK が出たら、GitHub のアプリかブラウザで Actions →「Threads 連投」→ Run workflow（folder=フォルダ名、dry_run を外す）を実行してもらう

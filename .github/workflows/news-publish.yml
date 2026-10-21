@@ -7,8 +7,10 @@ name: 健康ニュースの本番投稿
 #   19:30〜20:30 にマージ → 20:30 まで待ってから
 #   それ以外 → すぐ
 # 健康ニュース以外のプルリクエストでは何もしない
-# 気になるニュース（ストック式。post.json に "newsCategory" があるもの）は、ここでは投稿しない
-#   マージ＝ストックに入る。投稿は instagram.yml の news-care・news-health・news-ai の枠が予定表どおりに行う（投稿予定をコメントするだけ）
+# 気になるニュース（post.json に "newsCategory" があるもの）は、マージしたら時間に関係なくすぐ投稿する
+#   instagram.yml を slot=news-care・news-health・news-ai（分野で決まる）・folder=フォルダ名 で起動する（Instagram・Threads。YouTube には上げない）
+#   アプリ（"app": true のもの）は、作った日の翌日0時から載る（app-feed/news.json の startDate。投稿予定表の更新が作り直す）
+#   すぐの投稿が失敗したときは、ストックに残るので、その分野の枠（instagram.yml の定時起動）が予定表どおりに出す
 on:
   pull_request:
     types: [closed]
@@ -51,11 +53,16 @@ jobs:
           if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
             folder=$(gh pr diff "$NUM" --name-only | node scripts/news-ci.js folders | head -1)
             [ -z "$folder" ] && { echo "健康ニュースのフォルダがないため、何もしません"; echo "folder=" >> "$GITHUB_OUTPUT"; exit 0; }
-            node scripts/news-ci.js stock "$folder" > "$RUNNER_TEMP/stock.md"
-            if [ -s "$RUNNER_TEMP/stock.md" ]; then
+            slot=$(node scripts/news-ci.js slot "$folder")
+            if [ -n "$slot" ]; then
+              # 気になるニュース：時間に関係なく、すぐ投稿する
+              node scripts/news-ci.js stock "$folder" > "$RUNNER_TEMP/stock.md"
               cat "$RUNNER_TEMP/stock.md"
               gh pr comment "$NUM" --body-file "$RUNNER_TEMP/stock.md"
-              echo "folder=" >> "$GITHUB_OUTPUT"
+              echo "folder=$folder" >> "$GITHUB_OUTPUT"
+              echo "pr=$NUM" >> "$GITHUB_OUTPUT"
+              echo "slot=$slot" >> "$GITHUB_OUTPUT"
+              echo "action=now" >> "$GITHUB_OUTPUT"
               exit 0
             fi
             node scripts/news-ci.js timing > "$RUNNER_TEMP/timing.txt"
@@ -90,9 +97,10 @@ jobs:
         if: steps.plan.outputs.folder != '' && steps.plan.outputs.action != 'pending'
         env:
           FOLDER: ${{ steps.plan.outputs.folder }}
+          SLOT: ${{ steps.plan.outputs.slot || 'evening' }}
         run: |
           before=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-          gh workflow run instagram.yml -f slot=evening -f folder="$FOLDER" -f dry_run=false
+          gh workflow run instagram.yml -f slot="$SLOT" -f folder="$FOLDER" -f dry_run=false
           id=""
           for i in $(seq 1 30); do
             sleep 10
