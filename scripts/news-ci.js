@@ -5,7 +5,8 @@
 //   node scripts/news-ci.js timing                           → 今（日本時間）投稿してよいか（now / wait 秒数 / pending 投稿する時刻）
 //   node scripts/news-ci.js pending                          → 翌朝7時待ちで、投稿する時刻になったフォルダ名
 //   node scripts/news-ci.js links フォルダ名                  → 投稿のリンク（Markdown）
-//   node scripts/news-ci.js stock フォルダ名                  → ストック式のニュース（"newsCategory" あり）なら、投稿予定のコメント（Markdown）。ちがえば何も出さない
+//   node scripts/news-ci.js stock フォルダ名                  → ストック式のニュース（"newsCategory" あり）なら、マージしたときのコメント（Markdown）。ちがえば何も出さない
+//   node scripts/news-ci.js slot フォルダ名                   → ストック式のニュースなら、投稿する枠（news-care・news-health・news-ai）。ちがえば何も出さない
 // 環境変数：GITHUB_REPOSITORY、SHA（画像URLの SHA）、REEL_URL・RELEASE_URL（リール動画）、DRY_OK（dry_run の結果）、IG_ACCESS_TOKEN（links）
 const fs = require('fs');
 const path = require('path');
@@ -36,15 +37,22 @@ function stockPlan(folder) {
 }
 
 // マージしたときのコメント（ストック式のニュースだけ。ちがえば空）
+//   マージしたら、すぐ Instagram・Threads に投稿する（news-publish.yml）。アプリは作った日の翌日0時から
 function stock(folder) {
-  const plan = stockPlan(folder);
-  if (!plan) return '';
-  const { post, slot, day } = plan;
-  const lines = [`📦 ストックに入りました（${post.newsCategory}・posts/${folder}）。すぐには投稿しません`];
-  if (day) lines.push(`- 投稿予定：**${day} ${SLOTS[slot]}**（Instagram・Threads。YouTube には上げません）`);
-  else lines.push('- ⚠ **投稿予定に入っていません**。賞味期限（作った日から10日）を過ぎたか、期限までに順番が来ない見込みです');
-  lines.push(`- アプリ：${onApp(post) ? '載せます（作った日の翌日から10日間）' : '載せません'}`);
-  return lines.join('\n');
+  const post = read(path.join(POSTS, folder, 'post.json'));
+  if (!stockSlot(post)) return '';
+  return [
+    `📦 マージしたので、すぐ Instagram・Threads に投稿します（${post.newsCategory}・posts/${folder}。YouTube には上げません）`,
+    `- アプリ：${onApp(post) ? `載せます（${appStart(post, folder)} の0時から10日間）` : '載せません'}`,
+  ].join('\n');
+}
+
+// アプリに出し始める日（作った日の翌日）
+function appStart(post, folder) {
+  const created = post.created || folder.slice(0, 10);
+  const d = new Date(created + 'T00:00:00Z');
+  d.setUTCDate(d.getUTCDate() + 1);
+  return d.toISOString().slice(0, 10);
 }
 
 // 変更したファイルの一覧から、健康ニュースのフォルダを選ぶ
@@ -112,7 +120,7 @@ function comment(folder) {
     `- ${dry}`,
     ...(stockSlot(post) ? [
       `- 分野：${post.newsCategory}（作った日 ${post.created || folder.slice(0, 10)}）／アプリ：${onApp(post) ? '載せる' : '載せない'}`,
-      `- マージするとストックに入り、${SLOTS[stockSlot(post)]}の枠で古いものから順に投稿します（YouTube には上げません）`,
+      `- マージすると、すぐ Instagram・Threads に投稿します（YouTube には上げません）${onApp(post) ? `。アプリには ${appStart(post, folder)} の0時から載せます` : ''}`,
     ] : [
       `- 予定日（publishDate）：${post.publishDate || '⚠ ありません'}`,
       '- マージすると、そのまま本番で投稿します（22時〜翌6時のマージは翌朝7時、19時30分〜20時30分のマージは20時30分）',
@@ -167,7 +175,8 @@ async function links(folder) {
   else lines.push(`- ⚠ Instagram リール：投稿されていません${rec.reelError ? '（' + rec.reelError + '）' : ''}`);
   if (th && th.ids && th.ids.length >= 3) lines.push(`- Threads（3投稿）：${th.permalink || th.ids.join(', ')}`);
   else lines.push(`- ⚠ Threads：途中で止まりました（${th && th.ids ? th.ids.length : 0}/3）。続きは自動では出しません。出すときは Claude に「Threads の続きを出して」と頼むか、ワークフロー「Threads 連投」を folder=${folder} で実行してください`);
-  if (rec.youtubeId) lines.push(`- YouTube ショート：https://youtu.be/${rec.youtubeId}（${rec.youtubePrivacy || ''}）`);
+  if (stockSlot(read(path.join(dir, 'post.json')))) lines.push('- YouTube ショート：上げません（気になるニュース）');
+  else if (rec.youtubeId) lines.push(`- YouTube ショート：https://youtu.be/${rec.youtubeId}（${rec.youtubePrivacy || ''}）`);
   else lines.push(`- ⚠ YouTube ショート：アップロードされていません${rec.youtubeError ? '（' + rec.youtubeError + '）' : ''}`);
   return lines.join('\n');
 }
@@ -182,7 +191,8 @@ async function main() {
   } else if (cmd === 'pending') console.log(pending().join('\n'));
   else if (cmd === 'links') console.log(await links(arg));
   else if (cmd === 'stock') { const s = stock(arg); if (s) console.log(s); }
-  else throw new Error('使い方: node scripts/news-ci.js folders|comment|timing|pending|links|stock [フォルダ名]');
+  else if (cmd === 'slot') { const s = stockSlot(read(path.join(POSTS, arg, 'post.json'))); if (s) console.log(s); }
+  else throw new Error('使い方: node scripts/news-ci.js folders|comment|timing|pending|links|stock|slot [フォルダ名]');
 }
 
 module.exports = { folders, timing, pending, comment, links, stock, stockPlan, PENDING };
