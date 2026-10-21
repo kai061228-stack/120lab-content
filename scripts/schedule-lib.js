@@ -314,7 +314,7 @@ function imagesRef(folder) {
 
 // 「参考：消費者庁「…」（2020年）、東京消防庁「…」」→ ['消費者庁', '東京消防庁']
 function parseSources(caption) {
-  const line = caption.split('\n').find((l) => l.startsWith('参考：')) || '';
+  const line = caption.split(/\r?\n/).find((l) => l.startsWith('参考：')) || '';
   const parts = [];
   let depth = 0, buf = '';
   for (const ch of line.replace(/^参考：/, '')) {

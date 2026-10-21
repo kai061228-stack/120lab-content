@@ -2,5 +2,26 @@
   "version": 1,
   "timezone": "Asia/Tokyo",
   "from": "2026-10-21",
-  "items": []
+  "items": [
+    {
+      "folder": "2026-10-21-news-hataraku",
+      "title": "週1〜3回\n働く高齢者と\n健康",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/eadfd0cca6f179af302ba95542e1f059655f9be1/posts/2026-10-21-news-hataraku/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/eadfd0cca6f179af302ba95542e1f059655f9be1/posts/2026-10-21-news-hataraku/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/eadfd0cca6f179af302ba95542e1f059655f9be1/posts/2026-10-21-news-hataraku/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/eadfd0cca6f179af302ba95542e1f059655f9be1/posts/2026-10-21-news-hataraku/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/eadfd0cca6f179af302ba95542e1f059655f9be1/posts/2026-10-21-news-hataraku/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/eadfd0cca6f179af302ba95542e1f059655f9be1/posts/2026-10-21-news-hataraku/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/eadfd0cca6f179af302ba95542e1f059655f9be1/posts/2026-10-21-news-hataraku/images/07.jpg"
+      ],
+      "sources": [
+        "千葉大学"
+      ],
+      "sourcesText": "参考：千葉大学「就労している高齢者は、幸福感が高く、死亡リスクも低い傾向に」（2026年）",
+      "startDate": "2026-10-22",
+      "endDate": "2026-11-01"
+    }
+  ]
 }
