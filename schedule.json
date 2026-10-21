@@ -470,6 +470,14 @@
     }
   },
   "newsCare": {},
-  "newsHealth": {},
+  "newsHealth": {
+    "2026-10-22": {
+      "folder": "2026-10-21-news-hataraku",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-10-21",
+      "expires": "2026-10-31"
+    }
+  },
   "newsAi": {}
 }
