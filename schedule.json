@@ -489,6 +489,13 @@
       "created": "2026-10-21",
       "expires": "2026-10-31",
       "posted": true
+    },
+    "2026-10-22": {
+      "folder": "2026-10-22-news-kayoi",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-10-22",
+      "expires": "2026-11-01"
     }
   },
   "newsAi": {}
