@@ -511,5 +511,13 @@
       "posted": true
     }
   },
-  "newsAi": {}
+  "newsAi": {
+    "2026-10-24": {
+      "folder": "2026-10-24-news-ai-robot",
+      "category": "AI",
+      "reason": "ストック",
+      "created": "2026-10-24",
+      "expires": "2026-11-03"
+    }
+  }
 }
