@@ -1,43 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-10-23",
+  "from": "2026-10-24",
   "days": [
-    {
-      "date": "2026-10-23",
-      "post": {
-        "folder": "2026-10-11-ketsuatsu-hakarikata",
-        "category": "知識",
-        "categoryKey": "knowledge",
-        "title": "家庭血圧の\n正しい測り方",
-        "subtitle": "朝と晩、座って2回ずつ",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-ketsuatsu-hakarikata/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-ketsuatsu-hakarikata/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-ketsuatsu-hakarikata/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-ketsuatsu-hakarikata/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-ketsuatsu-hakarikata/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-ketsuatsu-hakarikata/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-ketsuatsu-hakarikata/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "上腕式の血圧計",
-            "朝は起きて1時間内",
-            "晩は寝る直前",
-            "座って1〜2分休む",
-            "記録して主治医へ"
-          ],
-          "note": "気になる数値が続くときは、\n主治医にご相談ください。"
-        },
-        "sources": [
-          "日本高血圧学会",
-          "厚生労働省 e-ヘルスネット"
-        ],
-        "sourcesText": "参考：日本高血圧学会「家庭で血圧を測定しましょう」、厚生労働省 e-ヘルスネット「血圧」"
-      }
-    },
     {
       "date": "2026-10-24",
       "post": {
@@ -281,6 +246,40 @@
           "環境省"
         ],
         "sourcesText": "参考：厚生労働省「健康づくりのための睡眠ガイド2023」、環境省「紫外線環境保健マニュアル2008」"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "post": {
+        "folder": "2026-10-11-hokouki-tsukaikata",
+        "category": "運動",
+        "categoryKey": "exercise",
+        "title": "歩行器の\n安全な使い方",
+        "subtitle": "高さ・置く位置・ブレーキ",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-hokouki-tsukaikata/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-hokouki-tsukaikata/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-hokouki-tsukaikata/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-hokouki-tsukaikata/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-hokouki-tsukaikata/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-hokouki-tsukaikata/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-hokouki-tsukaikata/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "高さを合わせる",
+            "一歩分前に置く",
+            "体重をかけて足を",
+            "歩行車は中に入る",
+            "ブレーキを確認"
+          ],
+          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "テクノエイド協会"
+        ],
+        "sourcesText": "参考：テクノエイド協会「歩行補助用具の活用」"
       }
     }
   ]
