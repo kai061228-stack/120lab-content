@@ -499,6 +499,13 @@
       "created": "2026-10-22",
       "expires": "2026-11-01",
       "posted": true
+    },
+    "2026-10-23": {
+      "folder": "2026-10-23-news-fumin",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-10-23",
+      "expires": "2026-11-02"
     }
   },
   "newsAi": {}
