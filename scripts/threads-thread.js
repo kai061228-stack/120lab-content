@@ -17,6 +17,10 @@ const DRY = process.env.DRY_RUN === '1' || process.env.DRY_RUN === 'true';
 const MAX_CHARS = 500;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// 返信（2・3投稿目）の前に待つ秒数。続けて投稿すると Threads に断られることがあるため（THREADS_GAP_SEC で変えられる）
+const GAP_SEC = Number(process.env.THREADS_GAP_SEC || 60);
+// 返信の投稿が断られたときは、この秒数待ってから1回だけやり直す
+const RETRY_SEC = 120;
 
 async function api(method, pathname, params = {}) {
   const url = new URL(API + pathname);
@@ -45,6 +49,14 @@ async function waitReady(id) {
     await sleep(5000);
   }
   throw new Error('投稿の準備が時間内に終わりませんでした: ' + id);
+}
+
+// 1件を投稿する（コンテナを作る → 準備を待つ → 公開する）
+async function postOne(params) {
+  const me = await api('GET', '/me', { fields: 'id' });
+  const c = await api('POST', `/${me.id}/threads`, params);
+  await waitReady(c.id);
+  return api('POST', `/${me.id}/threads_publish`, { creation_id: c.id });
 }
 
 // 1投稿目の動画の公開URLを用意する
@@ -111,9 +123,19 @@ async function main() {
     } else {
       params = { media_type: 'TEXT', text: texts[i], reply_to_id: rec.ids[i - 1] };
     }
-    const c = await api('POST', `/${me.id}/threads`, params);
-    await waitReady(c.id);
-    const done = await api('POST', `/${me.id}/threads_publish`, { creation_id: c.id });
+    if (i > 0) {
+      console.log(`  ${i + 1}投稿目の前に ${GAP_SEC} 秒待ちます`);
+      await sleep(GAP_SEC * 1000);
+    }
+    let done;
+    try {
+      done = await postOne(params);
+    } catch (e) {
+      if (i === 0) throw e;
+      console.log(`  ${i + 1}投稿目が断られたため、${RETRY_SEC} 秒待ってやり直します（${e.message}）`);
+      await sleep(RETRY_SEC * 1000);
+      done = await postOne(params);
+    }
     rec.ids.push(done.id);
     if (i === 0) rec.postedAt = new Date().toISOString();
     save();

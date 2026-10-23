@@ -266,6 +266,7 @@
   - 各500字以内。トピックタグ（#）は3投稿を通して1つだけ。「詳しくは〇〇で」などの誘導は入れない
 - 実行：`gh workflow run threads-thread.yml -f folder=フォルダ名 -f dry_run=true`（確認）→ `-f dry_run=false`（本番）
 - 投稿後は threads-posted.json が追加される（二重投稿の防止。途中で失敗したら続きから投稿される）
+- 2・3投稿目（返信）の前に60秒待つ（続けて投稿すると Threads に断られ、3投稿目で止まることがあったため。scripts/threads-thread.js の GAP_SEC、環境変数 THREADS_GAP_SEC で変えられる）。返信が断られたときは、120秒待って1回だけやり直す
 
 ## トークンの延長（自動）
 
