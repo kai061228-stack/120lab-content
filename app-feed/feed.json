@@ -1,43 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-10-24",
+  "from": "2026-10-25",
   "days": [
-    {
-      "date": "2026-10-24",
-      "post": {
-        "folder": "2026-10-11-hie-kufu",
-        "category": "啓発",
-        "categoryKey": "awareness",
-        "title": "冷えやすい\n季節の工夫",
-        "subtitle": "服装とお風呂のひと工夫",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-hie-kufu/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-hie-kufu/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-hie-kufu/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-hie-kufu/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-hie-kufu/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-hie-kufu/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9dece45bff9171c705fd0752b2e0f433bfb0da48/posts/2026-10-11-hie-kufu/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "冷え症を知る",
-            "気になる症状は受診",
-            "下半身を厚めに",
-            "締めつけない",
-            "お湯は41℃以下"
-          ],
-          "note": "症状が気になる方は、\nかかりつけ医にご相談ください。"
-        },
-        "sources": [
-          "長寿科学振興財団",
-          "消費者庁"
-        ],
-        "sourcesText": "参考：長寿科学振興財団「健康長寿ネット」、消費者庁「冬季に多発する高齢者の入浴中の事故に御注意ください！」"
-      }
-    },
     {
       "date": "2026-10-25",
       "post": {
@@ -280,6 +245,40 @@
           "テクノエイド協会"
         ],
         "sourcesText": "参考：テクノエイド協会「歩行補助用具の活用」"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "post": {
+        "folder": "2026-10-11-taijuu",
+        "category": "知識",
+        "categoryKey": "knowledge",
+        "title": "体重は\n健康のものさし",
+        "subtitle": "やせすぎにも気をつけて",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-taijuu/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-taijuu/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-taijuu/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-taijuu/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-taijuu/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-taijuu/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-taijuu/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "BMIを計算する",
+            "21.5〜24.9",
+            "やせにも注意",
+            "急な減少に気づく",
+            "体重を記録する"
+          ],
+          "note": "急に体重が減ったときは、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "厚生労働省"
+        ],
+        "sourcesText": "参考：厚生労働省「日本人の食事摂取基準（2025年版）」「基本チェックリスト」"
       }
     }
   ]
