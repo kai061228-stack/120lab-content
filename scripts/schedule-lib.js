@@ -21,7 +21,7 @@
 //   医療・介護 → newsCare（20:15）、健康 → newsHealth（20:30）、AI → newsAi（20:45）
 //   ・毎日1件ずつ、作った日の古いものから出す。ストックがない日はお休み
 //   ・作った日から10日（NEWS_LIFE）を過ぎたものは出さない
-// アプリ用ニュース（app-feed/news.json）は、"app": true のニュース（AI 以外）を、作った日の翌日から10日後まで載せる
+// アプリ用ニュース（app-feed/news.json）は、"app": true のニュース（医療・介護／健康／AI）を、作った日の翌日から10日後まで載せる
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
@@ -359,7 +359,7 @@ function feedPost(folder) {
   };
 }
 
-// アプリ用ニュース：post.json に "app": true がある、ストック式のニュース（AI 以外）
+// アプリ用ニュース：post.json に "app": true がある、ストック式のニュース（医療・介護／健康／AI）
 //   表示開始日は作った日の翌日（アプリで0時に切り替わるように）、表示終了日はその APP_NEWS_DAYS 日後
 //   表示終了日を過ぎたものは入れない（毎日作り直すので、自動で消える）。Instagram に投稿したかどうかは関係ない
 function buildNewsFeed(today = jstDate(), posts = loadPosts(), warnings = []) {
@@ -367,7 +367,6 @@ function buildNewsFeed(today = jstDate(), posts = loadPosts(), warnings = []) {
   for (const p of posts) {
     const { app, newsCategory } = p.post;
     if (!app || !NEWS_SLOT[newsCategory]) continue;
-    if (newsCategory === 'AI') { warnings.push(`${p.folder}：AI のニュースはアプリに載せません（"app" は使われません）`); continue; }
     if (!isYmd(p.created)) { warnings.push(`${p.folder}：作った日がわからないため、アプリに載せられません`); continue; }
     const startDate = addDays(p.created, 1);
     const endDate = addDays(startDate, APP_NEWS_DAYS);

@@ -150,7 +150,7 @@
 - アプリは端末の日付（日本時間）と同じ date の項目を表示する。0時に切り替わっても、7日分入っているので更新を待たなくてよい
 - アプリの「今日の学び」に載せるのは朝5時の枠の投稿だけ。20時の枠（栄養など）・気になるニュースは feed.json に入れない
 - アプリ用ニュースは `app-feed/news.json`（アプリが読むURL：https://raw.githubusercontent.com/kai061228-stack/120lab-content/main/app-feed/news.json）
-  - 入るのは、post.json に "app": true がある気になるニュース（ストック式）だけ。**AI のニュースは対象外**（"app" を書いても入らない）
+  - 入るのは、post.json に "app": true がある気になるニュース（ストック式）だけ（医療・介護／健康／AI のどれも入る）。どれに付けるかは「アプリに載せる決まり」を参照
   - items の各項目：folder、title（表紙タイトル。改行は \n）、category（医療・介護／健康）、images（画像URL・表示順。SHA で固定）、sources（参考の機関名）、sourcesText（参考の行）、startDate（表示開始日）、endDate（表示終了日）
   - startDate は作った日（"created"）の翌日、endDate は startDate の10日後。アプリは startDate ≦ 今日 ≦ endDate のものを表示する
   - Instagram に投稿したかどうかは関係ない（期限切れで投稿しなかったものも、作った日で決まる期間はアプリに出る）
@@ -187,7 +187,7 @@
   - "category": "健康ニュース"
   - "newsCategory"：**"医療・介護"・"健康"・"AI" のどれか**（これで枠が決まる。書かないと今までどおり20時の枠の扱いになるので、必ず書く）
   - "created"：作った日（"YYYY-MM-DD"。書かなければフォルダ名の日付）
-  - "app": true：アプリにも載せるとき（下の「アプリ用ニュース」。AI は対象外）
+  - "app": true：アプリにも載せるとき（下の「アプリに載せる決まり」で決める）
 - 予定表は schedule.json の "newsCare"・"newsHealth"・"newsAi"。`npm run queue` で枠ごとの予定・ストック数・アプリ用ニュースを確認できる
 - 確認（投稿はしない）：PC では `node scripts/publish.js --which --slot news-care --date YYYY-MM-DD`（news-health・news-ai も同じ）。Actions では `gh workflow run instagram.yml -f slot=news-care -f dry_run=true -f date=YYYY-MM-DD`
 - 外部サービスからも、20:15 に `slot=news-care`、20:30 に `slot=news-health`、20:45 に `slot=news-ai` で instagram.yml を起動するとよい（GitHub の定時起動は遅れることがあるため）
@@ -196,9 +196,18 @@
 
 ### 朝にニュースを頼むときの言い方
 
-- `/news ②……（朝ラジオのメモ）` または `/news 出典のURL` → Instagram・Threads に出す（アプリには載せない）
-- 最後に **「アプリにも」** を付ける（例：`/news ②…… アプリにも`）→ "app": true を付ける（AI のニュースのときは付けずに、その旨を伝える）
-- あとから付ける・外すとき：「（フォルダ名か見出し）をアプリにも」「（フォルダ名か見出し）はアプリから外して」
+- `/news ②……（朝ラジオのメモ）` または `/news 出典のURL` → Instagram・Threads に出す。アプリに載せるか（"app": true）は、下の「アプリに載せる決まり」で Claude が決める
+- 運営者が「アプリにも」「アプリには載せない」と書いたときは、決まりよりそちらに従う
+- あとから付ける・外すとき：「（フォルダ名か見出し）をアプリにも」「（フォルダ名か見出し）はアプリから外して」→ それに従う
+
+### アプリに載せる決まり（"app": true）
+
+- 健康：すべて "app": true を付ける
+- 医療・介護、AI：高齢者やその家族の暮らしに関わる内容なら、Claude が判断して "app": true を付ける
+  - 載せる例：介護保険や医療費などの制度の変更、見守り・服薬・詐欺対策など高齢者の生活に役立つ AI や機器の話題
+  - 載せない例：専門職向けの話題（加算・報酬・業務・事業所の運営など）、企業や業界の動き、AI の開発や技術の話
+- ニュースを作るたびに、「アプリに載せる／載せない」とその理由を一言で報告する
+- 運営者が「これはアプリから外して」「これもアプリに」と言ったら、それに従う
 - 分野（newsCategory）は、メモの「分野」から決める（医療・介護／健康／AI）。URL だけのときは Claude が内容から決めて報告する。決めてほしいときは「分野：AI」のように書く
 - 介護保険など制度の話でも、メモの分野が「医療・介護」なら医療・介護の枠にする
 

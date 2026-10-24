@@ -24,7 +24,7 @@ const isNews = (folder) => {
 const posted = (folder) => fs.existsSync(path.join(POSTS, folder, 'posted.json'));
 // ストック式のニュース（"newsCategory" で分野が決まっているもの）の枠。ちがえば null
 const stockSlot = (post) => NEWS_SLOT[post.newsCategory] || null;
-const onApp = (post) => Boolean(post.app) && post.newsCategory !== 'AI';
+const onApp = (post) => Boolean(post.app) && Boolean(stockSlot(post));
 
 // ストック式のニュースの投稿予定（予定に入っていなければ day は null）
 function stockPlan(folder) {

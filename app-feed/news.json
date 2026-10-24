@@ -22,6 +22,66 @@
       "sourcesText": "参考：千葉大学「就労している高齢者は、幸福感が高く、死亡リスクも低い傾向に」（2026年）",
       "startDate": "2026-10-22",
       "endDate": "2026-11-01"
+    },
+    {
+      "folder": "2026-10-22-news-kayoi",
+      "title": "通いの場に\n長く通う人の\n体の力",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2222e67bc25afffff78dc0f06370d8736d575028/posts/2026-10-22-news-kayoi/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2222e67bc25afffff78dc0f06370d8736d575028/posts/2026-10-22-news-kayoi/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2222e67bc25afffff78dc0f06370d8736d575028/posts/2026-10-22-news-kayoi/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2222e67bc25afffff78dc0f06370d8736d575028/posts/2026-10-22-news-kayoi/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2222e67bc25afffff78dc0f06370d8736d575028/posts/2026-10-22-news-kayoi/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2222e67bc25afffff78dc0f06370d8736d575028/posts/2026-10-22-news-kayoi/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2222e67bc25afffff78dc0f06370d8736d575028/posts/2026-10-22-news-kayoi/images/07.jpg"
+      ],
+      "sources": [
+        "埼玉県立大学"
+      ],
+      "sourcesText": "参考：埼玉県立大学「『通いの場』の長期参加者にみられた運動機能の維持・改善」（2026年）",
+      "startDate": "2026-10-23",
+      "endDate": "2026-11-02"
+    },
+    {
+      "folder": "2026-10-23-news-fumin",
+      "title": "夜眠れないと\n人との\nつながりは？",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/326c4b73a4e79257766c0be61e9be2bf5ef1306b/posts/2026-10-23-news-fumin/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/326c4b73a4e79257766c0be61e9be2bf5ef1306b/posts/2026-10-23-news-fumin/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/326c4b73a4e79257766c0be61e9be2bf5ef1306b/posts/2026-10-23-news-fumin/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/326c4b73a4e79257766c0be61e9be2bf5ef1306b/posts/2026-10-23-news-fumin/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/326c4b73a4e79257766c0be61e9be2bf5ef1306b/posts/2026-10-23-news-fumin/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/326c4b73a4e79257766c0be61e9be2bf5ef1306b/posts/2026-10-23-news-fumin/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/326c4b73a4e79257766c0be61e9be2bf5ef1306b/posts/2026-10-23-news-fumin/images/07.jpg"
+      ],
+      "sources": [
+        "大阪公立大学（論文：BMC Geriatrics"
+      ],
+      "sourcesText": "参考：大阪公立大学（論文：BMC Geriatrics「Association between insomnia symptoms and social frailty in community-dwelling adults aged 75 years and older」2026年）",
+      "startDate": "2026-10-24",
+      "endDate": "2026-11-03"
+    },
+    {
+      "folder": "2026-10-24-news-ai-robot",
+      "title": "会話する\nAIロボットが\n健康を応援",
+      "category": "AI",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ecfd90f42f5a8d1448a6283622e67d1eee6ef96/posts/2026-10-24-news-ai-robot/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ecfd90f42f5a8d1448a6283622e67d1eee6ef96/posts/2026-10-24-news-ai-robot/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ecfd90f42f5a8d1448a6283622e67d1eee6ef96/posts/2026-10-24-news-ai-robot/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ecfd90f42f5a8d1448a6283622e67d1eee6ef96/posts/2026-10-24-news-ai-robot/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ecfd90f42f5a8d1448a6283622e67d1eee6ef96/posts/2026-10-24-news-ai-robot/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ecfd90f42f5a8d1448a6283622e67d1eee6ef96/posts/2026-10-24-news-ai-robot/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ecfd90f42f5a8d1448a6283622e67d1eee6ef96/posts/2026-10-24-news-ai-robot/images/07.jpg"
+      ],
+      "sources": [
+        "国立長寿医療研究センター"
+      ],
+      "sourcesText": "参考：国立長寿医療研究センター「フレイル・サルコペニア予防を見据え、対話型AIロボットによる健康行動支援の共同研究を開始」（2026年）",
+      "startDate": "2026-10-25",
+      "endDate": "2026-11-04"
     }
   ]
 }

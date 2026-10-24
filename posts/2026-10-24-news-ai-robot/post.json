@@ -2,6 +2,7 @@
   "category": "健康ニュース",
   "newsCategory": "AI",
   "created": "2026-10-24",
+  "app": true,
   "cover": {
     "title": "会話する\nAIロボットが\n健康を応援",
     "subtitle": "国立長寿医療研究センターほか",
