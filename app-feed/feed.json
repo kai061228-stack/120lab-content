@@ -1,42 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-10-25",
+  "from": "2026-10-26",
   "days": [
-    {
-      "date": "2026-10-25",
-      "post": {
-        "folder": "2026-10-11-tsue-tsukikata",
-        "category": "運動",
-        "categoryKey": "exercise",
-        "title": "杖の\n正しいつき方",
-        "subtitle": "持つ手・歩く順番・階段",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-tsue-tsukikata/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-tsue-tsukikata/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-tsue-tsukikata/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-tsue-tsukikata/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-tsue-tsukikata/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-tsue-tsukikata/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-tsue-tsukikata/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "痛くない側で持つ",
-            "杖→痛い足→反対",
-            "慣れたら2動作",
-            "杖は一歩分前",
-            "階段は順番に注意"
-          ],
-          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
-        },
-        "sources": [
-          "テクノエイド協会"
-        ],
-        "sourcesText": "参考：テクノエイド協会「歩行補助用具の活用」"
-      }
-    },
     {
       "date": "2026-10-26",
       "post": {
@@ -279,6 +245,40 @@
           "厚生労働省"
         ],
         "sourcesText": "参考：厚生労働省「日本人の食事摂取基準（2025年版）」「基本チェックリスト」"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "post": {
+        "folder": "2026-10-11-suimin",
+        "category": "啓発",
+        "categoryKey": "awareness",
+        "title": "ぐっすり眠る\n毎日のコツ",
+        "subtitle": "寝床の時間・昼寝・寝室",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-suimin/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-suimin/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-suimin/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-suimin/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-suimin/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-suimin/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-suimin/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "眠った時間＋30分",
+            "長い昼寝は避ける",
+            "眠れなければ離れる",
+            "カフェインと寝酒",
+            "暗い寝室と足元灯"
+          ],
+          "note": "眠れない日が続く方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "厚生労働省"
+        ],
+        "sourcesText": "参考：厚生労働省「健康づくりのための睡眠ガイド2023」"
       }
     }
   ]
