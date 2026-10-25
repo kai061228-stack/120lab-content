@@ -510,6 +510,13 @@
       "created": "2026-10-23",
       "expires": "2026-11-02",
       "posted": true
+    },
+    "2026-10-25": {
+      "folder": "2026-10-24-news-mci",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-10-24",
+      "expires": "2026-11-03"
     }
   },
   "newsAi": {
