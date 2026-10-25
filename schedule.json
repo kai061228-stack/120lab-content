@@ -484,6 +484,13 @@
       "created": "2026-10-22",
       "expires": "2026-11-01",
       "posted": true
+    },
+    "2026-10-25": {
+      "folder": "2026-10-25-news-sougei-hiyou",
+      "category": "医療・介護",
+      "reason": "ストック",
+      "created": "2026-10-25",
+      "expires": "2026-11-04"
     }
   },
   "newsHealth": {
