@@ -103,6 +103,27 @@
       "sourcesText": "参考：国立長寿医療研究センター「多因子介入で認知機能改善が期待されるMCIサブグループを発見」（2026年）",
       "startDate": "2026-10-25",
       "endDate": "2026-11-04"
+    },
+    {
+      "folder": "2026-10-25-news-4pun",
+      "title": "1日4分の\n家での筋トレ\n立つ力に差",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/891ac75318ed732f22f7fdff49018079cbe5c86e/posts/2026-10-25-news-4pun/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/891ac75318ed732f22f7fdff49018079cbe5c86e/posts/2026-10-25-news-4pun/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/891ac75318ed732f22f7fdff49018079cbe5c86e/posts/2026-10-25-news-4pun/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/891ac75318ed732f22f7fdff49018079cbe5c86e/posts/2026-10-25-news-4pun/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/891ac75318ed732f22f7fdff49018079cbe5c86e/posts/2026-10-25-news-4pun/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/891ac75318ed732f22f7fdff49018079cbe5c86e/posts/2026-10-25-news-4pun/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/891ac75318ed732f22f7fdff49018079cbe5c86e/posts/2026-10-25-news-4pun/images/07.jpg"
+      ],
+      "sources": [
+        "PLOS ONE",
+        "ペンシルベニア州立大学"
+      ],
+      "sourcesText": "参考：PLOS ONE「Brief daily functional strength training to improve functional performance in older adults with mobility disability: A randomized trial」（2026年）、ペンシルベニア州立大学（2026年）",
+      "startDate": "2026-10-26",
+      "endDate": "2026-11-05"
     }
   ]
 }

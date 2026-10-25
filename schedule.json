@@ -527,6 +527,13 @@
       "created": "2026-10-24",
       "expires": "2026-11-03",
       "posted": true
+    },
+    "2026-10-26": {
+      "folder": "2026-10-25-news-4pun",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-10-25",
+      "expires": "2026-11-04"
     }
   },
   "newsAi": {
