@@ -189,7 +189,8 @@
     "2026-10-27": {
       "folder": "2026-10-11-hie-suwatte",
       "category": "啓発",
-      "reason": "日付指定"
+      "reason": "日付指定",
+      "posted": true
     },
     "2026-10-28": {
       "folder": "2026-10-11-hokouki-erabikata",
