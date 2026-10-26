@@ -166,6 +166,28 @@
       "sourcesText": "参考：厚生労働省「第137回社会保障審議会介護保険部会 資料2 要介護認定について」（2026年）",
       "startDate": "2026-10-28",
       "endDate": "2026-11-07"
+    },
+    {
+      "folder": "2026-10-27-news-sarcopenia",
+      "title": "年をとって\n力が落ちるのは\n筋肉だけ？",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/d69fac498daa317fa92aa068188cf1cf3ca104af/posts/2026-10-27-news-sarcopenia/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/d69fac498daa317fa92aa068188cf1cf3ca104af/posts/2026-10-27-news-sarcopenia/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/d69fac498daa317fa92aa068188cf1cf3ca104af/posts/2026-10-27-news-sarcopenia/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/d69fac498daa317fa92aa068188cf1cf3ca104af/posts/2026-10-27-news-sarcopenia/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/d69fac498daa317fa92aa068188cf1cf3ca104af/posts/2026-10-27-news-sarcopenia/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/d69fac498daa317fa92aa068188cf1cf3ca104af/posts/2026-10-27-news-sarcopenia/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/d69fac498daa317fa92aa068188cf1cf3ca104af/posts/2026-10-27-news-sarcopenia/images/07.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/d69fac498daa317fa92aa068188cf1cf3ca104af/posts/2026-10-27-news-sarcopenia/images/08.jpg"
+      ],
+      "sources": [
+        "クイーンズランド大学（News-Medical",
+        "The Lancet Healthy Longevity"
+      ],
+      "sourcesText": "参考：クイーンズランド大学（News-Medical「Sarcopenia should be treated as a motor system disease」2026年）、The Lancet Healthy Longevity（2026年）",
+      "startDate": "2026-10-28",
+      "endDate": "2026-11-07"
     }
   ]
 }

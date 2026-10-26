@@ -558,6 +558,13 @@
       "created": "2026-10-26",
       "expires": "2026-11-05",
       "posted": true
+    },
+    "2026-10-27": {
+      "folder": "2026-10-27-news-sarcopenia",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-10-27",
+      "expires": "2026-11-06"
     }
   },
   "newsAi": {
