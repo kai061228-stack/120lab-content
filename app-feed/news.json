@@ -124,6 +124,27 @@
       "sourcesText": "参考：PLOS ONE「Brief daily functional strength training to improve functional performance in older adults with mobility disability: A randomized trial」（2026年）、ペンシルベニア州立大学（2026年）",
       "startDate": "2026-10-26",
       "endDate": "2026-11-05"
+    },
+    {
+      "folder": "2026-10-26-news-parkinson",
+      "title": "パーキンソン病\nよく動く人は\n進みがゆるやか",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/bd3499647314911a517e16b9a6c9afc38f7479ef/posts/2026-10-26-news-parkinson/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/bd3499647314911a517e16b9a6c9afc38f7479ef/posts/2026-10-26-news-parkinson/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/bd3499647314911a517e16b9a6c9afc38f7479ef/posts/2026-10-26-news-parkinson/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/bd3499647314911a517e16b9a6c9afc38f7479ef/posts/2026-10-26-news-parkinson/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/bd3499647314911a517e16b9a6c9afc38f7479ef/posts/2026-10-26-news-parkinson/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/bd3499647314911a517e16b9a6c9afc38f7479ef/posts/2026-10-26-news-parkinson/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/bd3499647314911a517e16b9a6c9afc38f7479ef/posts/2026-10-26-news-parkinson/images/07.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/bd3499647314911a517e16b9a6c9afc38f7479ef/posts/2026-10-26-news-parkinson/images/08.jpg"
+      ],
+      "sources": [
+        "米国神経学会（AAN）"
+      ],
+      "sourcesText": "参考：米国神経学会（AAN）「Greater physical activity associated with slower progression in Parkinson's」（2026年）",
+      "startDate": "2026-10-27",
+      "endDate": "2026-11-06"
     }
   ]
 }
