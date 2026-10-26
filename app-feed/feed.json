@@ -1,43 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-10-26",
+  "from": "2026-10-27",
   "days": [
-    {
-      "date": "2026-10-26",
-      "post": {
-        "folder": "2026-10-11-ketsuatsu-suuchi",
-        "category": "知識",
-        "categoryKey": "knowledge",
-        "title": "血圧の数値\nどう見る？",
-        "subtitle": "家庭血圧の目安を知ろう",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-ketsuatsu-suuchi/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-ketsuatsu-suuchi/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-ketsuatsu-suuchi/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-ketsuatsu-suuchi/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-ketsuatsu-suuchi/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-ketsuatsu-suuchi/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-ketsuatsu-suuchi/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "目安は135/85",
-            "病院より5低い",
-            "目標は主治医と",
-            "記録を主治医へ",
-            "めまいは相談"
-          ],
-          "note": "気になる数値が続くときは、\n主治医にご相談ください。"
-        },
-        "sources": [
-          "日本高血圧学会",
-          "厚生労働省 e-ヘルスネット"
-        ],
-        "sourcesText": "参考：日本高血圧学会「家庭で血圧を測定しましょう」「高血圧管理・治療ガイドライン2025」、厚生労働省 e-ヘルスネット「血圧」"
-      }
-    },
     {
       "date": "2026-10-27",
       "post": {
@@ -279,6 +244,42 @@
           "厚生労働省"
         ],
         "sourcesText": "参考：厚生労働省「健康づくりのための睡眠ガイド2023」"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "post": {
+        "folder": "2026-10-11-kataashi",
+        "category": "運動",
+        "categoryKey": "exercise",
+        "title": "片脚立ちで\nバランス力",
+        "subtitle": "支え方を変えて少しずつ",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-kataashi/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-kataashi/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-kataashi/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-kataashi/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-kataashi/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-kataashi/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-kataashi/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "靴下で気づく",
+            "両手で支えて",
+            "片手・指先へ",
+            "左右1分ずつ",
+            "つかまれる場所で"
+          ],
+          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "日本整形外科学会",
+          "日本理学療法士協会",
+          "長寿科学振興財団"
+        ],
+        "sourcesText": "参考：日本整形外科学会「ロコトレ」、日本理学療法士協会「理学療法ハンドブック 転倒予防」、長寿科学振興財団「健康長寿ネット」"
       }
     }
   ]
