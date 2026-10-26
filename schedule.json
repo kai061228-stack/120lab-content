@@ -533,12 +533,13 @@
         "2026-10-25-news-4pun"
       ]
     },
-    "2026-10-27": {
+    "2026-10-26": {
       "folder": "2026-10-26-news-parkinson",
       "category": "健康",
-      "reason": "ストック",
+      "reason": "投稿済み",
       "created": "2026-10-26",
-      "expires": "2026-11-05"
+      "expires": "2026-11-05",
+      "posted": true
     }
   },
   "newsAi": {
