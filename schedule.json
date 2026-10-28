@@ -582,7 +582,8 @@
       "category": "健康",
       "reason": "ストック",
       "created": "2026-10-28",
-      "expires": "2026-11-07"
+      "expires": "2026-11-07",
+      "posted": true
     }
   },
   "newsAi": {
