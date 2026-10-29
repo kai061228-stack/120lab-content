@@ -1,44 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-10-29",
+  "from": "2026-10-30",
   "days": [
-    {
-      "date": "2026-10-29",
-      "post": {
-        "folder": "2026-10-11-myakuhaku",
-        "category": "知識",
-        "categoryKey": "knowledge",
-        "title": "自分で脈を\n測ってみよう",
-        "subtitle": "手首で15秒、リズムを確認",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-myakuhaku/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-myakuhaku/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-myakuhaku/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-myakuhaku/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-myakuhaku/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-myakuhaku/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-myakuhaku/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "手首の親指側",
-            "15秒ふれる",
-            "1分60〜100回",
-            "リズムを確認",
-            "乱れたら受診"
-          ],
-          "note": "動悸やめまいがある方は、\n主治医にご相談ください。"
-        },
-        "sources": [
-          "新潟県",
-          "熊本市",
-          "長寿科学振興財団"
-        ],
-        "sourcesText": "参考：新潟県「脈の日・心房細動週間」、熊本市「自己検脈」、長寿科学振興財団「健康長寿ネット」"
-      }
-    },
     {
       "date": "2026-10-30",
       "post": {
@@ -281,6 +245,41 @@
           "厚生労働省"
         ],
         "sourcesText": "参考：長寿科学振興財団「健康長寿ネット」、厚生労働省「日本人の食事摂取基準（2025年版）」"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "post": {
+        "folder": "2026-10-11-ashikubi",
+        "category": "運動",
+        "categoryKey": "exercise",
+        "title": "足首を\n柔らかく",
+        "subtitle": "ふくらはぎを伸ばす・かかと上げ",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashikubi/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashikubi/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashikubi/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashikubi/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashikubi/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashikubi/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashikubi/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "踏み出す力に関係",
+            "机に手をついて",
+            "ふくらはぎ30秒",
+            "かかと上げ下げ",
+            "痛くない強さで"
+          ],
+          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "日本理学療法士協会",
+          "基山町"
+        ],
+        "sourcesText": "参考：日本理学療法士協会「理学療法ハンドブック」、基山町「毎日のびのびストレッチ」"
       }
     }
   ]

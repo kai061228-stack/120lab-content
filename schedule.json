@@ -525,6 +525,13 @@
       "created": "2026-10-28",
       "expires": "2026-11-07",
       "posted": true
+    },
+    "2026-10-30": {
+      "folder": "2026-10-29-news-caremane-kousin",
+      "category": "医療・介護",
+      "reason": "ストック",
+      "created": "2026-10-29",
+      "expires": "2026-11-08"
     }
   },
   "newsHealth": {
