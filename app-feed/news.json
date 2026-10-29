@@ -231,6 +231,29 @@
       "sourcesText": "参考：厚生労働省「第137回社会保障審議会介護保険部会 資料1 持続可能性の確保（給付と負担）について」（2026年）",
       "startDate": "2026-10-29",
       "endDate": "2026-11-08"
+    },
+    {
+      "folder": "2026-10-29-news-tairyoku-peak",
+      "title": "体力の山は\n35歳ごろ\n遅すぎはない",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8771c88fb1b98158cab865e24d4660796919fb17/posts/2026-10-29-news-tairyoku-peak/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8771c88fb1b98158cab865e24d4660796919fb17/posts/2026-10-29-news-tairyoku-peak/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8771c88fb1b98158cab865e24d4660796919fb17/posts/2026-10-29-news-tairyoku-peak/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8771c88fb1b98158cab865e24d4660796919fb17/posts/2026-10-29-news-tairyoku-peak/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8771c88fb1b98158cab865e24d4660796919fb17/posts/2026-10-29-news-tairyoku-peak/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8771c88fb1b98158cab865e24d4660796919fb17/posts/2026-10-29-news-tairyoku-peak/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8771c88fb1b98158cab865e24d4660796919fb17/posts/2026-10-29-news-tairyoku-peak/images/07.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8771c88fb1b98158cab865e24d4660796919fb17/posts/2026-10-29-news-tairyoku-peak/images/08.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8771c88fb1b98158cab865e24d4660796919fb17/posts/2026-10-29-news-tairyoku-peak/images/09.jpg"
+      ],
+      "sources": [
+        "カロリンスカ研究所",
+        "Journal of Cachexia, Sarcopenia and Muscle"
+      ],
+      "sourcesText": "参考：カロリンスカ研究所「Long-term study reveals physical ability peaks at age 35」（2025年）、Journal of Cachexia, Sarcopenia and Muscle（2025年）",
+      "startDate": "2026-10-30",
+      "endDate": "2026-11-09"
     }
   ]
 }
