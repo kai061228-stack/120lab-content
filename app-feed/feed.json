@@ -1,43 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-10-30",
+  "from": "2026-10-31",
   "days": [
-    {
-      "date": "2026-10-30",
-      "post": {
-        "folder": "2026-10-11-nikkouyoku",
-        "category": "啓発",
-        "categoryKey": "awareness",
-        "title": "日の光を\n上手に浴びよう",
-        "subtitle": "体内時計と骨のために",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-nikkouyoku/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-nikkouyoku/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-nikkouyoku/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-nikkouyoku/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-nikkouyoku/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-nikkouyoku/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/a333c3e8cff6cb73750850786ffa24fce36e9165/posts/2026-10-11-nikkouyoku/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "朝日を浴びる",
-            "日中は外へ",
-            "骨のビタミンD",
-            "手の甲を15分",
-            "正午前後は避ける"
-          ],
-          "note": "光を避けるよう指示がある方は、\n主治医にご相談ください。"
-        },
-        "sources": [
-          "厚生労働省",
-          "環境省"
-        ],
-        "sourcesText": "参考：厚生労働省「健康づくりのための睡眠ガイド2023」、環境省「紫外線環境保健マニュアル2008」"
-      }
-    },
     {
       "date": "2026-10-31",
       "post": {
@@ -280,6 +245,42 @@
           "基山町"
         ],
         "sourcesText": "参考：日本理学療法士協会「理学療法ハンドブック」、基山町「毎日のびのびストレッチ」"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "post": {
+        "folder": "2026-10-11-goen-haien",
+        "category": "知識",
+        "categoryKey": "knowledge",
+        "title": "誤嚥性肺炎を\n知ろう",
+        "subtitle": "むせないこともある肺炎",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-goen-haien/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-goen-haien/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-goen-haien/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-goen-haien/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-goen-haien/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-goen-haien/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-goen-haien/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "気管に入って起こる",
+            "飲み込む力が弱まる",
+            "むせない誤嚥も",
+            "熱が出ないことも",
+            "口のケアと食後の姿勢"
+          ],
+          "note": "気になる変化があれば、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "長寿科学振興財団",
+          "日本理学療法士協会",
+          "厚生労働省"
+        ],
+        "sourcesText": "参考：長寿科学振興財団「健康長寿ネット」、日本理学療法士協会「理学療法ハンドブック」、厚生労働省「高齢者の肺炎球菌ワクチン」"
       }
     }
   ]
