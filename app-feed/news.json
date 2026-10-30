@@ -254,6 +254,27 @@
       "sourcesText": "参考：カロリンスカ研究所「Long-term study reveals physical ability peaks at age 35」（2025年）、Journal of Cachexia, Sarcopenia and Muscle（2025年）",
       "startDate": "2026-10-30",
       "endDate": "2026-11-09"
+    },
+    {
+      "folder": "2026-10-30-news-fukurahagi",
+      "title": "ふくらはぎ\n細くなると\n転びやすい？",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/1ffd5a51f96bed8006c0f801949839bddeb94062/posts/2026-10-30-news-fukurahagi/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/1ffd5a51f96bed8006c0f801949839bddeb94062/posts/2026-10-30-news-fukurahagi/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/1ffd5a51f96bed8006c0f801949839bddeb94062/posts/2026-10-30-news-fukurahagi/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/1ffd5a51f96bed8006c0f801949839bddeb94062/posts/2026-10-30-news-fukurahagi/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/1ffd5a51f96bed8006c0f801949839bddeb94062/posts/2026-10-30-news-fukurahagi/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/1ffd5a51f96bed8006c0f801949839bddeb94062/posts/2026-10-30-news-fukurahagi/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/1ffd5a51f96bed8006c0f801949839bddeb94062/posts/2026-10-30-news-fukurahagi/images/07.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/1ffd5a51f96bed8006c0f801949839bddeb94062/posts/2026-10-30-news-fukurahagi/images/08.jpg"
+      ],
+      "sources": [
+        "JAMA Network Open"
+      ],
+      "sourcesText": "参考：JAMA Network Open「Longitudinal Change in Calf Circumference and Incident Falls in Older Adults」（2026年）",
+      "startDate": "2026-10-31",
+      "endDate": "2026-11-10"
     }
   ]
 }

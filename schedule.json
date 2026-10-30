@@ -604,6 +604,13 @@
       "created": "2026-10-29",
       "expires": "2026-11-08",
       "posted": true
+    },
+    "2026-10-31": {
+      "folder": "2026-10-30-news-fukurahagi",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-10-30",
+      "expires": "2026-11-09"
     }
   },
   "newsAi": {
