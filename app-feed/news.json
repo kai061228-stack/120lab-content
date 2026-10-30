@@ -275,6 +275,28 @@
       "sourcesText": "参考：JAMA Network Open「Longitudinal Change in Calf Circumference and Incident Falls in Older Adults」（2026年）",
       "startDate": "2026-10-31",
       "endDate": "2026-11-10"
+    },
+    {
+      "folder": "2026-10-30-news-voista",
+      "title": "AIと会話\n本人の思いを\nケアに生かす",
+      "category": "AI",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e52b3107191532234cc25bee128b04a4a2ae489d/posts/2026-10-30-news-voista/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e52b3107191532234cc25bee128b04a4a2ae489d/posts/2026-10-30-news-voista/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e52b3107191532234cc25bee128b04a4a2ae489d/posts/2026-10-30-news-voista/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e52b3107191532234cc25bee128b04a4a2ae489d/posts/2026-10-30-news-voista/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e52b3107191532234cc25bee128b04a4a2ae489d/posts/2026-10-30-news-voista/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e52b3107191532234cc25bee128b04a4a2ae489d/posts/2026-10-30-news-voista/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e52b3107191532234cc25bee128b04a4a2ae489d/posts/2026-10-30-news-voista/images/07.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e52b3107191532234cc25bee128b04a4a2ae489d/posts/2026-10-30-news-voista/images/08.jpg"
+      ],
+      "sources": [
+        "NTTデータ",
+        "介護ニュースJoint"
+      ],
+      "sourcesText": "参考：NTTデータ「生成AIとの日々の対話で、一人一人に寄り添うケアを支援」（2026年）、介護ニュースJoint（2026年）",
+      "startDate": "2026-10-31",
+      "endDate": "2026-11-10"
     }
   ]
 }

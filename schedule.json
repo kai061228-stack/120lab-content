@@ -617,6 +617,13 @@
       "created": "2026-10-24",
       "expires": "2026-11-03",
       "posted": true
+    },
+    "2026-10-31": {
+      "folder": "2026-10-30-news-voista",
+      "category": "AI",
+      "reason": "ストック",
+      "created": "2026-10-30",
+      "expires": "2026-11-09"
     }
   }
 }
