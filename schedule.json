@@ -488,7 +488,10 @@
       "folder": "2026-10-11-blood-08-hb",
       "category": "血液検査",
       "reason": "日付指定",
-      "posted": true
+      "posted": true,
+      "extra": [
+        "2026-11-01-app-shoukai"
+      ]
     }
   },
   "newsCare": {
