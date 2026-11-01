@@ -189,6 +189,8 @@ async function main() {
   const post = JSON.parse(fs.readFileSync(path.join(dir, 'post.json'), 'utf8'));
   // 気になるニュース（ストック式）は、YouTube の上限に余裕を持たせるため Instagram・Threads だけにする
   if (NEWS_SLOT[post.newsCategory]) { console.log(`▼ ${folder}：気になるニュース（${post.newsCategory}）は YouTube にはアップロードしません`); return; }
+  // post.json に "youtube": false がある投稿（アプリ紹介など）は YouTube に上げない
+  if (post.youtube === false) { console.log(`▼ ${folder}：post.json の youtube: false のため、YouTube にはアップロードしません`); return; }
   const caption = fs.readFileSync(path.join(dir, 'caption.txt'), 'utf8').trim();
   const title = buildTitle(post);
   const description = buildDescription(caption);
