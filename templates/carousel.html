@@ -61,11 +61,11 @@
   .point .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .point .photo.contain img { object-fit: contain; }
 
-  /* ポイント（スマホ画面）：imageLayout "phone" で、左に文・右に縦長の画面を大きく出す */
+  /* ポイント（スマホ画面）：imageLayout "phone" で、左に文・右にスマホの画面（縦横比はスマホと同じ 9:19.5 ほど）を大きく出す */
   .point.phone .fit { width: 520px; }
   .point.phone h2 { font-size: 80px; margin-bottom: 32px; }
   .point.phone p { font-size: 46px; line-height: 1.6; max-width: 520px; }
-  .point.phone .screen { position: absolute; right: 80px; top: 150px; bottom: 200px; width: 410px; border-radius: 44px; overflow: hidden; background: #fff; border: 10px solid var(--ink); box-shadow: 0 16px 40px rgba(0,0,0,0.18); }
+  .point.phone .screen { position: absolute; right: 80px; top: 150px; width: 440px; height: 933px; border-radius: 44px; overflow: hidden; background: #fff; border: 10px solid var(--ink); box-shadow: 0 16px 40px rgba(0,0,0,0.18); }
   .point.phone .screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
   .point.phone .screen.contain img { object-fit: contain; }
 
