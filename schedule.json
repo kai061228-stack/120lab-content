@@ -615,6 +615,13 @@
       "extra": [
         "2026-10-30-news-fukurahagi"
       ]
+    },
+    "2026-11-02": {
+      "folder": "2026-11-02-news-samusa",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-11-02",
+      "expires": "2026-11-12"
     }
   },
   "newsAi": {

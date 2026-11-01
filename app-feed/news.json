@@ -277,6 +277,28 @@
       "sourcesText": "参考：NTTデータ「生成AIとの日々の対話で、一人一人に寄り添うケアを支援」（2026年）、介護ニュースJoint（2026年）",
       "startDate": "2026-10-31",
       "endDate": "2026-11-10"
+    },
+    {
+      "folder": "2026-11-02-news-samusa",
+      "title": "冬の骨折\n雪より\n寒さに注意？",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/07.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/08.jpg"
+      ],
+      "sources": [
+        "信州大学",
+        "Environmental Research"
+      ],
+      "sourcesText": "参考：信州大学「高齢者の大腿骨近位部骨折、『雪』より『寒さ』が影響？」（2026年）、Environmental Research（2026年）",
+      "startDate": "2026-11-03",
+      "endDate": "2026-11-13"
     }
   ]
 }
