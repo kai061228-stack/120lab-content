@@ -69,6 +69,13 @@
   .point.phone .screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
   .point.phone .screen.contain img { object-fit: contain; }
 
+  /* ポイント（書類の画面）：imageLayout "paper" で、上に文・下に横長の書類（PDFなど）を大きく出す */
+  .point.paper .num { width: 96px; height: 96px; font-size: 52px; margin-bottom: 20px; }
+  .point.paper h2 { font-size: 80px; margin-bottom: 16px; }
+  .point.paper p { font-size: 44px; line-height: 1.5; max-width: 880px; }
+  .point.paper .doc { position: absolute; left: 100px; right: 100px; top: 500px; bottom: 190px; border-radius: 24px; overflow: hidden; background: #fff; box-shadow: 0 12px 36px rgba(0,0,0,0.16); }
+  .point.paper .doc img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+
   /* まとめ */
   .summary h2 { font-size: 84px; font-weight: 900; color: var(--head); margin-bottom: 64px; }
   .summary ul { list-style: none; }
@@ -151,14 +158,17 @@
   // ポイント
   // num：番号の丸に出す文字（書かなければ 1, 2, 3…、false で消す）
   // imageLayout "phone"：スマホの画面のスクショを右に縦長で大きく出す
+  // imageLayout "paper"：PDFなど横長の書類を、文の下に大きく出す
   POST.points.forEach((p, i) => {
     const img = p.image && IMAGES[p.image];
     const phone = img && p.imageLayout === 'phone';
+    const paper = img && p.imageLayout === 'paper';
     const num = p.num === false ? '' : `<div class="num">${esc(p.num == null ? i + 1 : p.num)}</div>`;
     bodies.push({
-      cls: 'point' + (phone ? ' phone' : img ? ' has-img' : ''),
+      cls: 'point' + (phone ? ' phone' : paper ? ' paper' : img ? ' has-img' : ''),
       html: `<div class="fit">${num}<h2>${esc(p.heading)}</h2><p>${esc(p.body)}</p></div>` +
-        (phone ? `<div class="screen${p.imageFit === 'contain' ? ' contain' : ''}"><img src="${img}" alt=""></div>`
+        (paper ? `<div class="doc"><img src="${img}" alt=""></div>`
+          : phone ? `<div class="screen${p.imageFit === 'contain' ? ' contain' : ''}"><img src="${img}" alt=""></div>`
           : img ? `<div class="photo${p.imageFit === 'contain' ? ' contain' : ''}"><img src="${img}" alt=""></div>` : '')
     });
   });
@@ -201,7 +211,8 @@
   const limitFor = (el) =>
     el.classList.contains('with-char') ? 730 :
     el.classList.contains('cover') ? 1150 :
-    el.classList.contains('has-img') ? 770 : 1165;
+    el.classList.contains('has-img') ? 770 :
+    el.classList.contains('paper') ? 480 : 1165;
   const fitSlide = (el) => {
     const fit = el.querySelector('.fit');
     if (!fit) return;

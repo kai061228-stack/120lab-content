@@ -37,11 +37,10 @@
     },
     {
       "num": "③",
-      "heading": "正確に\n伝えられる",
-      "body": "記録をPDFの\nレポートに。\n受診のときや\n家族・ケアマネに\n見せられます",
+      "heading": "正確に伝えられる",
+      "body": "記録をPDFのレポートに。\n受診や家族・ケアマネに見せられます",
       "image": "app-pdf.png",
-      "imageLayout": "phone",
-      "imageFit": "contain"
+      "imageLayout": "paper"
     }
   ],
   "summary": {
