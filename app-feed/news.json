@@ -1,28 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-02",
+  "from": "2026-11-03",
   "items": [
-    {
-      "folder": "2026-10-22-news-kayoi",
-      "title": "通いの場に\n長く通う人の\n体の力",
-      "category": "健康",
-      "images": [
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2222e67bc25afffff78dc0f06370d8736d575028/posts/2026-10-22-news-kayoi/images/01.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2222e67bc25afffff78dc0f06370d8736d575028/posts/2026-10-22-news-kayoi/images/02.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2222e67bc25afffff78dc0f06370d8736d575028/posts/2026-10-22-news-kayoi/images/03.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2222e67bc25afffff78dc0f06370d8736d575028/posts/2026-10-22-news-kayoi/images/04.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2222e67bc25afffff78dc0f06370d8736d575028/posts/2026-10-22-news-kayoi/images/05.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2222e67bc25afffff78dc0f06370d8736d575028/posts/2026-10-22-news-kayoi/images/06.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2222e67bc25afffff78dc0f06370d8736d575028/posts/2026-10-22-news-kayoi/images/07.jpg"
-      ],
-      "sources": [
-        "埼玉県立大学"
-      ],
-      "sourcesText": "参考：埼玉県立大学「『通いの場』の長期参加者にみられた運動機能の維持・改善」（2026年）",
-      "startDate": "2026-10-23",
-      "endDate": "2026-11-02"
-    },
     {
       "folder": "2026-10-23-news-fumin",
       "title": "夜眠れないと\n人との\nつながりは？",

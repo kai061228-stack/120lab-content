@@ -1,42 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-02",
+  "from": "2026-11-03",
   "days": [
-    {
-      "date": "2026-11-02",
-      "post": {
-        "folder": "2026-10-11-suimin",
-        "category": "啓発",
-        "categoryKey": "awareness",
-        "title": "ぐっすり眠る\n毎日のコツ",
-        "subtitle": "寝床の時間・昼寝・寝室",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-suimin/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-suimin/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-suimin/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-suimin/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-suimin/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-suimin/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-suimin/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "眠った時間＋30分",
-            "長い昼寝は避ける",
-            "眠れなければ離れる",
-            "カフェインと寝酒",
-            "暗い寝室と足元灯"
-          ],
-          "note": "眠れない日が続く方は、\nかかりつけ医にご相談ください。"
-        },
-        "sources": [
-          "厚生労働省"
-        ],
-        "sourcesText": "参考：厚生労働省「健康づくりのための睡眠ガイド2023」"
-      }
-    },
     {
       "date": "2026-11-03",
       "post": {
@@ -283,6 +249,41 @@
           "横浜市保土ケ谷区"
         ],
         "sourcesText": "参考：長寿科学振興財団「健康長寿ネット」、日本理学療法士協会「理学療法ハンドブック」、横浜市保土ケ谷区「歩幅を意識しよう」"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "post": {
+        "folder": "2026-10-11-ninchisho",
+        "category": "知識",
+        "categoryKey": "knowledge",
+        "title": "認知症の\n基本を知る",
+        "subtitle": "もの忘れとの違いと相談先",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ninchisho/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ninchisho/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ninchisho/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ninchisho/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ninchisho/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ninchisho/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ninchisho/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "生活に支障が出る",
+            "原因は多くの病気",
+            "出来事ごと忘れる",
+            "早めの受診を",
+            "地域包括に相談"
+          ],
+          "note": "「もしかして」と思ったら、\nかかりつけ医などにご相談ください。"
+        },
+        "sources": [
+          "厚生労働省",
+          "長寿科学振興財団"
+        ],
+        "sourcesText": "参考：厚生労働省「認知症に関する相談について」、長寿科学振興財団「健康長寿ネット」"
       }
     }
   ]
