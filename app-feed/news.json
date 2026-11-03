@@ -1,28 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-03",
+  "from": "2026-11-04",
   "items": [
-    {
-      "folder": "2026-10-23-news-fumin",
-      "title": "夜眠れないと\n人との\nつながりは？",
-      "category": "健康",
-      "images": [
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/326c4b73a4e79257766c0be61e9be2bf5ef1306b/posts/2026-10-23-news-fumin/images/01.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/326c4b73a4e79257766c0be61e9be2bf5ef1306b/posts/2026-10-23-news-fumin/images/02.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/326c4b73a4e79257766c0be61e9be2bf5ef1306b/posts/2026-10-23-news-fumin/images/03.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/326c4b73a4e79257766c0be61e9be2bf5ef1306b/posts/2026-10-23-news-fumin/images/04.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/326c4b73a4e79257766c0be61e9be2bf5ef1306b/posts/2026-10-23-news-fumin/images/05.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/326c4b73a4e79257766c0be61e9be2bf5ef1306b/posts/2026-10-23-news-fumin/images/06.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/326c4b73a4e79257766c0be61e9be2bf5ef1306b/posts/2026-10-23-news-fumin/images/07.jpg"
-      ],
-      "sources": [
-        "大阪公立大学（論文：BMC Geriatrics"
-      ],
-      "sourcesText": "参考：大阪公立大学（論文：BMC Geriatrics「Association between insomnia symptoms and social frailty in community-dwelling adults aged 75 years and older」2026年）",
-      "startDate": "2026-10-24",
-      "endDate": "2026-11-03"
-    },
     {
       "folder": "2026-10-24-news-ai-robot",
       "title": "会話する\nAIロボットが\n健康を応援",

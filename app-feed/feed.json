@@ -1,44 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-03",
+  "from": "2026-11-04",
   "days": [
-    {
-      "date": "2026-11-03",
-      "post": {
-        "folder": "2026-10-11-kataashi",
-        "category": "運動",
-        "categoryKey": "exercise",
-        "title": "片脚立ちで\nバランス力",
-        "subtitle": "支え方を変えて少しずつ",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-kataashi/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-kataashi/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-kataashi/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-kataashi/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-kataashi/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-kataashi/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-kataashi/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "靴下で気づく",
-            "両手で支えて",
-            "片手・指先へ",
-            "左右1分ずつ",
-            "つかまれる場所で"
-          ],
-          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
-        },
-        "sources": [
-          "日本整形外科学会",
-          "日本理学療法士協会",
-          "長寿科学振興財団"
-        ],
-        "sourcesText": "参考：日本整形外科学会「ロコトレ」、日本理学療法士協会「理学療法ハンドブック 転倒予防」、長寿科学振興財団「健康長寿ネット」"
-      }
-    },
     {
       "date": "2026-11-04",
       "post": {
@@ -284,6 +248,42 @@
           "長寿科学振興財団"
         ],
         "sourcesText": "参考：厚生労働省「認知症に関する相談について」、長寿科学振興財団「健康長寿ネット」"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "post": {
+        "folder": "2026-10-11-fuyu-gaishutsu",
+        "category": "啓発",
+        "categoryKey": "awareness",
+        "title": "冬の外出\n転ばない工夫",
+        "subtitle": "雪や凍った道の歩き方",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-fuyu-gaishutsu/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-fuyu-gaishutsu/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-fuyu-gaishutsu/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-fuyu-gaishutsu/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-fuyu-gaishutsu/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-fuyu-gaishutsu/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-fuyu-gaishutsu/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "小さな歩幅で",
+            "靴裏全体で着地",
+            "滑りにくい靴",
+            "両手をあけて",
+            "余裕をもって"
+          ],
+          "note": "足腰に不安がある方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "札幌市消防局",
+          "東京消防庁",
+          "東京都生活文化局"
+        ],
+        "sourcesText": "参考：札幌市消防局「雪道での転倒事故にご注意！」、東京消防庁、東京都生活文化局"
       }
     }
   ]
