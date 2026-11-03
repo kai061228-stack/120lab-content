@@ -624,6 +624,13 @@
       "created": "2026-11-02",
       "expires": "2026-11-12",
       "posted": true
+    },
+    "2026-11-03": {
+      "folder": "2026-11-03-news-douga",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-11-03",
+      "expires": "2026-11-13"
     }
   },
   "newsAi": {
