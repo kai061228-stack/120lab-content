@@ -1,49 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-04",
+  "from": "2026-11-05",
   "items": [
-    {
-      "folder": "2026-10-24-news-ai-robot",
-      "title": "会話する\nAIロボットが\n健康を応援",
-      "category": "AI",
-      "images": [
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ecfd90f42f5a8d1448a6283622e67d1eee6ef96/posts/2026-10-24-news-ai-robot/images/01.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ecfd90f42f5a8d1448a6283622e67d1eee6ef96/posts/2026-10-24-news-ai-robot/images/02.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ecfd90f42f5a8d1448a6283622e67d1eee6ef96/posts/2026-10-24-news-ai-robot/images/03.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ecfd90f42f5a8d1448a6283622e67d1eee6ef96/posts/2026-10-24-news-ai-robot/images/04.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ecfd90f42f5a8d1448a6283622e67d1eee6ef96/posts/2026-10-24-news-ai-robot/images/05.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ecfd90f42f5a8d1448a6283622e67d1eee6ef96/posts/2026-10-24-news-ai-robot/images/06.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ecfd90f42f5a8d1448a6283622e67d1eee6ef96/posts/2026-10-24-news-ai-robot/images/07.jpg"
-      ],
-      "sources": [
-        "国立長寿医療研究センター"
-      ],
-      "sourcesText": "参考：国立長寿医療研究センター「フレイル・サルコペニア予防を見据え、対話型AIロボットによる健康行動支援の共同研究を開始」（2026年）",
-      "startDate": "2026-10-25",
-      "endDate": "2026-11-04"
-    },
-    {
-      "folder": "2026-10-24-news-mci",
-      "title": "運動と脳トレ\n合いやすい人\n血液にヒント",
-      "category": "健康",
-      "images": [
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/5dbcdf063081a2fc72168937ba964ba35ba58dad/posts/2026-10-24-news-mci/images/01.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/5dbcdf063081a2fc72168937ba964ba35ba58dad/posts/2026-10-24-news-mci/images/02.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/5dbcdf063081a2fc72168937ba964ba35ba58dad/posts/2026-10-24-news-mci/images/03.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/5dbcdf063081a2fc72168937ba964ba35ba58dad/posts/2026-10-24-news-mci/images/04.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/5dbcdf063081a2fc72168937ba964ba35ba58dad/posts/2026-10-24-news-mci/images/05.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/5dbcdf063081a2fc72168937ba964ba35ba58dad/posts/2026-10-24-news-mci/images/06.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/5dbcdf063081a2fc72168937ba964ba35ba58dad/posts/2026-10-24-news-mci/images/07.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/5dbcdf063081a2fc72168937ba964ba35ba58dad/posts/2026-10-24-news-mci/images/08.jpg"
-      ],
-      "sources": [
-        "国立長寿医療研究センター"
-      ],
-      "sourcesText": "参考：国立長寿医療研究センター「多因子介入で認知機能改善が期待されるMCIサブグループを発見」（2026年）",
-      "startDate": "2026-10-25",
-      "endDate": "2026-11-04"
-    },
     {
       "folder": "2026-10-25-news-4pun",
       "title": "1日4分の\n家での筋トレ\n立つ力に差",
