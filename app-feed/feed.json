@@ -1,43 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-06",
+  "from": "2026-11-07",
   "days": [
-    {
-      "date": "2026-11-06",
-      "post": {
-        "folder": "2026-10-11-ashikubi",
-        "category": "運動",
-        "categoryKey": "exercise",
-        "title": "足首を\n柔らかく",
-        "subtitle": "ふくらはぎを伸ばす・かかと上げ",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashikubi/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashikubi/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashikubi/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashikubi/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashikubi/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashikubi/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashikubi/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "踏み出す力に関係",
-            "机に手をついて",
-            "ふくらはぎ30秒",
-            "かかと上げ下げ",
-            "痛くない強さで"
-          ],
-          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
-        },
-        "sources": [
-          "日本理学療法士協会",
-          "基山町"
-        ],
-        "sourcesText": "参考：日本理学療法士協会「理学療法ハンドブック」、基山町「毎日のびのびストレッチ」"
-      }
-    },
     {
       "date": "2026-11-07",
       "post": {
@@ -281,6 +246,40 @@
           "難病情報センター"
         ],
         "sourcesText": "参考：難病情報センター「パーキンソン病（指定難病6）」"
+      }
+    },
+    {
+      "date": "2026-11-14",
+      "post": {
+        "folder": "2026-10-11-chiiki-houkatsu",
+        "category": "啓発",
+        "categoryKey": "awareness",
+        "title": "地域包括\n支援センター",
+        "subtitle": "高齢の方と家族の相談窓口",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-chiiki-houkatsu/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-chiiki-houkatsu/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-chiiki-houkatsu/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-chiiki-houkatsu/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-chiiki-houkatsu/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-chiiki-houkatsu/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-chiiki-houkatsu/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "高齢の方の相談窓口",
+            "専門職のチーム",
+            "困りごとを幅広く",
+            "要支援のケアプラン",
+            "成年後見・虐待対応"
+          ],
+          "note": "名前が市町村で違うことも。\n市町村の窓口で確かめましょう。"
+        },
+        "sources": [
+          "厚生労働省"
+        ],
+        "sourcesText": "参考：厚生労働省「地域包括支援センターの業務」「認知症に関する相談について」「介護サービス情報公表システム」"
       }
     }
   ]
