@@ -239,6 +239,28 @@
       "sourcesText": "参考：Communications Medicine「Cognitive frailty typologies and subsequent dementia in a large representative sample of the English population」（2026年）",
       "startDate": "2026-11-06",
       "endDate": "2026-11-16"
+    },
+    {
+      "folder": "2026-11-06-news-hosuu",
+      "title": "歩数と\n医療費の\n関係は？",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4b645fc98135bd6282ede1cb89e6a7ecc1f7e3fa/posts/2026-11-06-news-hosuu/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4b645fc98135bd6282ede1cb89e6a7ecc1f7e3fa/posts/2026-11-06-news-hosuu/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4b645fc98135bd6282ede1cb89e6a7ecc1f7e3fa/posts/2026-11-06-news-hosuu/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4b645fc98135bd6282ede1cb89e6a7ecc1f7e3fa/posts/2026-11-06-news-hosuu/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4b645fc98135bd6282ede1cb89e6a7ecc1f7e3fa/posts/2026-11-06-news-hosuu/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4b645fc98135bd6282ede1cb89e6a7ecc1f7e3fa/posts/2026-11-06-news-hosuu/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4b645fc98135bd6282ede1cb89e6a7ecc1f7e3fa/posts/2026-11-06-news-hosuu/images/07.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4b645fc98135bd6282ede1cb89e6a7ecc1f7e3fa/posts/2026-11-06-news-hosuu/images/08.jpg"
+      ],
+      "sources": [
+        "大阪公立大学の発表",
+        "SSM - Population Health"
+      ],
+      "sourcesText": "参考：大阪公立大学の発表（2026年）、SSM - Population Health「Non-linear association between mHealth-measured daily steps and subsequent healthcare expenditures among long-term app users in Osaka, Japan」（2026年）",
+      "startDate": "2026-11-07",
+      "endDate": "2026-11-17"
     }
   ]
 }

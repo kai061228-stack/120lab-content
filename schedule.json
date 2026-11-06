@@ -643,6 +643,13 @@
       "created": "2026-11-05",
       "expires": "2026-11-15",
       "posted": true
+    },
+    "2026-11-07": {
+      "folder": "2026-11-06-news-hosuu",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-11-06",
+      "expires": "2026-11-16"
     }
   },
   "newsAi": {
