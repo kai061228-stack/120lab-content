@@ -240,6 +240,29 @@
       "sourcesText": "参考：大阪公立大学の発表（2026年）、SSM - Population Health「Non-linear association between mHealth-measured daily steps and subsequent healthcare expenditures among long-term app users in Osaka, Japan」（2026年）",
       "startDate": "2026-11-07",
       "endDate": "2026-11-17"
+    },
+    {
+      "folder": "2026-11-07-news-shokuji",
+      "title": "健康的な\n食事の形は\nいろいろ",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/b773ada99f8b100ac7381aa11f58a8721ec9426b/posts/2026-11-07-news-shokuji/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/b773ada99f8b100ac7381aa11f58a8721ec9426b/posts/2026-11-07-news-shokuji/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/b773ada99f8b100ac7381aa11f58a8721ec9426b/posts/2026-11-07-news-shokuji/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/b773ada99f8b100ac7381aa11f58a8721ec9426b/posts/2026-11-07-news-shokuji/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/b773ada99f8b100ac7381aa11f58a8721ec9426b/posts/2026-11-07-news-shokuji/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/b773ada99f8b100ac7381aa11f58a8721ec9426b/posts/2026-11-07-news-shokuji/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/b773ada99f8b100ac7381aa11f58a8721ec9426b/posts/2026-11-07-news-shokuji/images/07.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/b773ada99f8b100ac7381aa11f58a8721ec9426b/posts/2026-11-07-news-shokuji/images/08.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/b773ada99f8b100ac7381aa11f58a8721ec9426b/posts/2026-11-07-news-shokuji/images/09.jpg"
+      ],
+      "sources": [
+        "Nature Communications",
+        "DZNEの発表"
+      ],
+      "sourcesText": "参考：Nature Communications「Associations between diet quality, epigenetic aging and epigenome in two population-based cohorts」（2026年）、DZNEの発表（2026年）",
+      "startDate": "2026-11-08",
+      "endDate": "2026-11-18"
     }
   ]
 }
