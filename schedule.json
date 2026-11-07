@@ -656,12 +656,13 @@
         "2026-11-06-news-hosuu"
       ]
     },
-    "2026-11-08": {
+    "2026-11-07": {
       "folder": "2026-11-07-news-shokuji",
       "category": "健康",
-      "reason": "ストック",
+      "reason": "投稿済み",
       "created": "2026-11-07",
-      "expires": "2026-11-17"
+      "expires": "2026-11-17",
+      "posted": true
     }
   },
   "newsAi": {
