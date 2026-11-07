@@ -549,12 +549,13 @@
       "expires": "2026-11-08",
       "posted": true
     },
-    "2026-11-08": {
+    "2026-11-07": {
       "folder": "2026-11-07-news-bcp",
       "category": "医療・介護",
-      "reason": "ストック",
+      "reason": "投稿済み",
       "created": "2026-11-07",
-      "expires": "2026-11-17"
+      "expires": "2026-11-17",
+      "posted": true
     }
   },
   "newsHealth": {
