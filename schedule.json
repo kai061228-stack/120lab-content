@@ -557,6 +557,13 @@
       "created": "2026-11-07",
       "expires": "2026-11-17",
       "posted": true
+    },
+    "2026-11-08": {
+      "folder": "2026-11-08-news-kousoku",
+      "category": "医療・介護",
+      "reason": "ストック",
+      "created": "2026-11-08",
+      "expires": "2026-11-18"
     }
   },
   "newsHealth": {
