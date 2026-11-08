@@ -1,42 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-08",
+  "from": "2026-11-09",
   "days": [
-    {
-      "date": "2026-11-08",
-      "post": {
-        "folder": "2026-10-11-ashi-tsume",
-        "category": "啓発",
-        "categoryKey": "awareness",
-        "title": "足の爪を\n守るケア",
-        "subtitle": "爪の切り方と足を見る習慣",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashi-tsume/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashi-tsume/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashi-tsume/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashi-tsume/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashi-tsume/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashi-tsume/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ashi-tsume/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "まっすぐ切る",
-            "白い部分を残す",
-            "乾いてから切る",
-            "足を毎日見る",
-            "変化は皮膚科へ"
-          ],
-          "note": "糖尿病などで治療中の方は、\n爪の変化を主治医にご相談ください。"
-        },
-        "sources": [
-          "日本フットケア・足病医学会"
-        ],
-        "sourcesText": "参考：日本フットケア・足病医学会「家庭でできる足のケア（爪ケア編）」「ホントは怖い爪のトラブル」"
-      }
-    },
     {
       "date": "2026-11-09",
       "post": {
@@ -276,6 +242,40 @@
           "消費者庁"
         ],
         "sourcesText": "参考：消費者庁「冬季に多発する高齢者の入浴中の事故に御注意ください！」"
+      }
+    },
+    {
+      "date": "2026-11-16",
+      "post": {
+        "folder": "2026-10-11-kenkoukotsu",
+        "category": "運動",
+        "categoryKey": "exercise",
+        "title": "肩甲骨を\n動かそう",
+        "subtitle": "肩まわりをほぐすストレッチ",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kenkoukotsu/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kenkoukotsu/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kenkoukotsu/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kenkoukotsu/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kenkoukotsu/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kenkoukotsu/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kenkoukotsu/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "背中を丸めない",
+            "ひじで円をかく",
+            "Y-Wの運動",
+            "タオルで前後運動",
+            "10〜15回から"
+          ],
+          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "日本理学療法士協会"
+        ],
+        "sourcesText": "参考：日本理学療法士協会「理学療法ハンドブック 肩関節周囲炎」"
       }
     }
   ]
