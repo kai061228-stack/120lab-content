@@ -1,43 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-10",
+  "from": "2026-11-11",
   "days": [
-    {
-      "date": "2026-11-10",
-      "post": {
-        "folder": "2026-10-11-ninchisho",
-        "category": "知識",
-        "categoryKey": "knowledge",
-        "title": "認知症の\n基本を知る",
-        "subtitle": "もの忘れとの違いと相談先",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ninchisho/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ninchisho/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ninchisho/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ninchisho/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ninchisho/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ninchisho/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/895bcbd879fe3abea9b6f86e49e05a97fa85bfe8/posts/2026-10-11-ninchisho/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "生活に支障が出る",
-            "原因は多くの病気",
-            "出来事ごと忘れる",
-            "早めの受診を",
-            "地域包括に相談"
-          ],
-          "note": "「もしかして」と思ったら、\nかかりつけ医などにご相談ください。"
-        },
-        "sources": [
-          "厚生労働省",
-          "長寿科学振興財団"
-        ],
-        "sourcesText": "参考：厚生労働省「認知症に関する相談について」、長寿科学振興財団「健康長寿ネット」"
-      }
-    },
     {
       "date": "2026-11-11",
       "post": {
@@ -274,6 +239,40 @@
           "日本理学療法士協会"
         ],
         "sourcesText": "参考：日本理学療法士協会「理学療法ハンドブック 脳卒中」（日本脳卒中協会の資料より）"
+      }
+    },
+    {
+      "date": "2026-11-18",
+      "post": {
+        "folder": "2026-10-11-kaigo-hoken",
+        "category": "啓発",
+        "categoryKey": "awareness",
+        "title": "介護保険の\n使い方",
+        "subtitle": "申請からサービス開始まで",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/863fdd5d774af3ac0e8ab7835ea2f57fdc668303/posts/2026-10-11-kaigo-hoken/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/863fdd5d774af3ac0e8ab7835ea2f57fdc668303/posts/2026-10-11-kaigo-hoken/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/863fdd5d774af3ac0e8ab7835ea2f57fdc668303/posts/2026-10-11-kaigo-hoken/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/863fdd5d774af3ac0e8ab7835ea2f57fdc668303/posts/2026-10-11-kaigo-hoken/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/863fdd5d774af3ac0e8ab7835ea2f57fdc668303/posts/2026-10-11-kaigo-hoken/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/863fdd5d774af3ac0e8ab7835ea2f57fdc668303/posts/2026-10-11-kaigo-hoken/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/863fdd5d774af3ac0e8ab7835ea2f57fdc668303/posts/2026-10-11-kaigo-hoken/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "市区町村で申請",
+            "調査と意見書",
+            "原則30日で結果",
+            "ケアプランを作る",
+            "負担は1〜3割"
+          ],
+          "note": "非該当でも、市区町村の\nサービスを使えることがあります。"
+        },
+        "sources": [
+          "厚生労働省"
+        ],
+        "sourcesText": "参考：厚生労働省「介護サービス情報公表システム」"
       }
     }
   ]
