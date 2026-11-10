@@ -279,7 +279,8 @@
     "2026-11-11": {
       "folder": "2026-10-11-fuyu-gaishutsu",
       "category": "啓発",
-      "reason": "日付指定"
+      "reason": "日付指定",
+      "posted": true
     },
     "2026-11-12": {
       "folder": "2026-10-11-okiagari",
