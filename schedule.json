@@ -577,6 +577,13 @@
       "created": "2026-11-10",
       "expires": "2026-11-20",
       "posted": true
+    },
+    "2026-11-13": {
+      "folder": "2026-11-12-news-jiko",
+      "category": "医療・介護",
+      "reason": "ストック",
+      "created": "2026-11-12",
+      "expires": "2026-11-22"
     }
   },
   "newsHealth": {
