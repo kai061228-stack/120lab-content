@@ -291,7 +291,8 @@
     "2026-11-13": {
       "folder": "2026-10-11-parkinson",
       "category": "知識",
-      "reason": "日付指定"
+      "reason": "日付指定",
+      "posted": true
     },
     "2026-11-14": {
       "folder": "2026-10-11-chiiki-houkatsu",
