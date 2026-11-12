@@ -685,12 +685,13 @@
       "expires": "2026-11-17",
       "posted": true
     },
-    "2026-11-13": {
+    "2026-11-12": {
       "folder": "2026-11-12-news-tanpaku",
       "category": "健康",
-      "reason": "ストック",
+      "reason": "投稿済み",
       "created": "2026-11-12",
-      "expires": "2026-11-22"
+      "expires": "2026-11-22",
+      "posted": true
     }
   },
   "newsAi": {
