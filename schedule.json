@@ -701,6 +701,13 @@
       "created": "2026-11-12",
       "expires": "2026-11-22",
       "posted": true
+    },
+    "2026-11-14": {
+      "folder": "2026-11-13-news-bmi",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-11-13",
+      "expires": "2026-11-23"
     }
   },
   "newsAi": {

@@ -1,30 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-13",
+  "from": "2026-11-14",
   "items": [
-    {
-      "folder": "2026-11-02-news-samusa",
-      "title": "冬の骨折\n雪より\n寒さに注意？",
-      "category": "健康",
-      "images": [
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/01.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/02.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/03.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/04.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/05.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/06.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/07.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/98f10b0df30ea84101aa04a26ead043596021430/posts/2026-11-02-news-samusa/images/08.jpg"
-      ],
-      "sources": [
-        "信州大学",
-        "Environmental Research"
-      ],
-      "sourcesText": "参考：信州大学「高齢者の大腿骨近位部骨折、『雪』より『寒さ』が影響？」（2026年）、Environmental Research（2026年）",
-      "startDate": "2026-11-03",
-      "endDate": "2026-11-13"
-    },
     {
       "folder": "2026-11-03-news-douga",
       "title": "家の運動は\n見慣れた動画で\n自分のペース",
@@ -132,6 +110,28 @@
       "sourcesText": "参考：Cell Press Blue「The hallmarks of protein and amino acid restriction in aging and longevity」（2026年）",
       "startDate": "2026-11-13",
       "endDate": "2026-11-23"
+    },
+    {
+      "folder": "2026-11-13-news-bmi",
+      "title": "認知症と\n体重の\n関係は？",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/07.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/08.jpg"
+      ],
+      "sources": [
+        "Journal of Alzheimer's Disease",
+        "コロンビア大学の発表"
+      ],
+      "sourcesText": "参考：Journal of Alzheimer's Disease「Body mass index and mortality in incident dementia」（2026年）、コロンビア大学の発表（2026年）",
+      "startDate": "2026-11-14",
+      "endDate": "2026-11-24"
     }
   ]
 }
