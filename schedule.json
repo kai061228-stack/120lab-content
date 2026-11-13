@@ -707,7 +707,8 @@
       "category": "健康",
       "reason": "ストック",
       "created": "2026-11-13",
-      "expires": "2026-11-23"
+      "expires": "2026-11-23",
+      "posted": true
     }
   },
   "newsAi": {
