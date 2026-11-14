@@ -1,42 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-14",
+  "from": "2026-11-15",
   "days": [
-    {
-      "date": "2026-11-14",
-      "post": {
-        "folder": "2026-10-11-chiiki-houkatsu",
-        "category": "啓発",
-        "categoryKey": "awareness",
-        "title": "地域包括\n支援センター",
-        "subtitle": "高齢の方と家族の相談窓口",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-chiiki-houkatsu/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-chiiki-houkatsu/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-chiiki-houkatsu/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-chiiki-houkatsu/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-chiiki-houkatsu/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-chiiki-houkatsu/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-chiiki-houkatsu/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "高齢の方の相談窓口",
-            "専門職のチーム",
-            "困りごとを幅広く",
-            "要支援のケアプラン",
-            "成年後見・虐待対応"
-          ],
-          "note": "名前が市町村で違うことも。\n市町村の窓口で確かめましょう。"
-        },
-        "sources": [
-          "厚生労働省"
-        ],
-        "sourcesText": "参考：厚生労働省「地域包括支援センターの業務」「認知症に関する相談について」「介護サービス情報公表システム」"
-      }
-    },
     {
       "date": "2026-11-15",
       "post": {
@@ -273,6 +239,41 @@
           "厚生労働省"
         ],
         "sourcesText": "参考：厚生労働省「健康づくりのための睡眠ガイド2023」「急性呼吸器感染症（ARI）総合対策に関するQ&A」"
+      }
+    },
+    {
+      "date": "2026-11-22",
+      "post": {
+        "folder": "2026-10-11-youtsu-taisou",
+        "category": "運動",
+        "categoryKey": "exercise",
+        "title": "腰痛を防ぐ\n体操",
+        "subtitle": "座ってできる・寝てできる",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-youtsu-taisou/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-youtsu-taisou/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-youtsu-taisou/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-youtsu-taisou/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-youtsu-taisou/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-youtsu-taisou/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-youtsu-taisou/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "安静にしすぎない",
+            "座って左右に",
+            "お尻で円をかく",
+            "お尻上げ5秒",
+            "体に近づけて持つ"
+          ],
+          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "日本理学療法士協会",
+          "日本整形外科学会"
+        ],
+        "sourcesText": "参考：日本理学療法士協会「理学療法ハンドブック 腰痛」、日本整形外科学会「腰痛」"
       }
     }
   ]
