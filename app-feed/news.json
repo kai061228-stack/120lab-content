@@ -132,6 +132,27 @@
       "sourcesText": "参考：Journal of Alzheimer's Disease「Body mass index and mortality in incident dementia」（2026年）、コロンビア大学の発表（2026年）",
       "startDate": "2026-11-14",
       "endDate": "2026-11-24"
+    },
+    {
+      "folder": "2026-11-14-news-ha",
+      "title": "歯の数と\n認知症の\n関係は？",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/377bcfcd13203e399c8dec374c49c0d5a2d7e2a2/posts/2026-11-14-news-ha/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/377bcfcd13203e399c8dec374c49c0d5a2d7e2a2/posts/2026-11-14-news-ha/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/377bcfcd13203e399c8dec374c49c0d5a2d7e2a2/posts/2026-11-14-news-ha/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/377bcfcd13203e399c8dec374c49c0d5a2d7e2a2/posts/2026-11-14-news-ha/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/377bcfcd13203e399c8dec374c49c0d5a2d7e2a2/posts/2026-11-14-news-ha/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/377bcfcd13203e399c8dec374c49c0d5a2d7e2a2/posts/2026-11-14-news-ha/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/377bcfcd13203e399c8dec374c49c0d5a2d7e2a2/posts/2026-11-14-news-ha/images/07.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/377bcfcd13203e399c8dec374c49c0d5a2d7e2a2/posts/2026-11-14-news-ha/images/08.jpg"
+      ],
+      "sources": [
+        "東北大学 プレスリリース"
+      ],
+      "sourcesText": "参考：東北大学 プレスリリース「歯の喪失、認知症の主要リスク因子に匹敵」（2026年）",
+      "startDate": "2026-11-15",
+      "endDate": "2026-11-25"
     }
   ]
 }

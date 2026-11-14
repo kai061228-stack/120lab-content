@@ -710,6 +710,13 @@
       "created": "2026-11-13",
       "expires": "2026-11-23",
       "posted": true
+    },
+    "2026-11-15": {
+      "folder": "2026-11-14-news-ha",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-11-14",
+      "expires": "2026-11-24"
     }
   },
   "newsAi": {
