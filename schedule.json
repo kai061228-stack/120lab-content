@@ -587,6 +587,13 @@
       "created": "2026-11-12",
       "expires": "2026-11-22",
       "posted": true
+    },
+    "2026-11-15": {
+      "folder": "2026-11-14-news-yuryo",
+      "category": "医療・介護",
+      "reason": "ストック",
+      "created": "2026-11-14",
+      "expires": "2026-11-24"
     }
   },
   "newsHealth": {
