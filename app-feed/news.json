@@ -153,6 +153,26 @@
       "sourcesText": "参考：厚生労働省「第138回社会保障審議会介護保険部会 資料3 有料老人ホームに係る登録制の施行に向けた対応について」（2026年）",
       "startDate": "2026-11-15",
       "endDate": "2026-11-25"
+    },
+    {
+      "folder": "2026-11-15-news-gaishutsu",
+      "title": "足腰の痛み\n外出控えの\n影響は？",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9154c20a42a763b4226de732f48941505bb66270/posts/2026-11-15-news-gaishutsu/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9154c20a42a763b4226de732f48941505bb66270/posts/2026-11-15-news-gaishutsu/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9154c20a42a763b4226de732f48941505bb66270/posts/2026-11-15-news-gaishutsu/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9154c20a42a763b4226de732f48941505bb66270/posts/2026-11-15-news-gaishutsu/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9154c20a42a763b4226de732f48941505bb66270/posts/2026-11-15-news-gaishutsu/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9154c20a42a763b4226de732f48941505bb66270/posts/2026-11-15-news-gaishutsu/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/9154c20a42a763b4226de732f48941505bb66270/posts/2026-11-15-news-gaishutsu/images/07.jpg"
+      ],
+      "sources": [
+        "大阪公立大学"
+      ],
+      "sourcesText": "参考：大阪公立大学「足腰の痛みによる高齢者の外出控えと自立した生活維持力の低下との関連を示唆」（2026年）",
+      "startDate": "2026-11-16",
+      "endDate": "2026-11-26"
     }
   ]
 }

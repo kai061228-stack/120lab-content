@@ -722,6 +722,13 @@
       "extra": [
         "2026-11-14-news-ha"
       ]
+    },
+    "2026-11-15": {
+      "folder": "2026-11-15-news-gaishutsu",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-11-15",
+      "expires": "2026-11-25"
     }
   },
   "newsAi": {
