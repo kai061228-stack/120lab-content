@@ -309,7 +309,8 @@
     "2026-11-16": {
       "folder": "2026-10-11-kenkoukotsu",
       "category": "運動",
-      "reason": "日付指定"
+      "reason": "日付指定",
+      "posted": true
     },
     "2026-11-17": {
       "folder": "2026-10-11-nousocchu",
