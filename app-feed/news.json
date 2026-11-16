@@ -1,29 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-16",
+  "from": "2026-11-17",
   "items": [
-    {
-      "folder": "2026-11-05-news-ninchi-frail",
-      "title": "体の衰えに\nもの忘れが\n重なると？",
-      "category": "健康",
-      "images": [
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e4bdc37a03a548cd3fb05c9a7f6a67f806e6fee5/posts/2026-11-05-news-ninchi-frail/images/01.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e4bdc37a03a548cd3fb05c9a7f6a67f806e6fee5/posts/2026-11-05-news-ninchi-frail/images/02.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e4bdc37a03a548cd3fb05c9a7f6a67f806e6fee5/posts/2026-11-05-news-ninchi-frail/images/03.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e4bdc37a03a548cd3fb05c9a7f6a67f806e6fee5/posts/2026-11-05-news-ninchi-frail/images/04.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e4bdc37a03a548cd3fb05c9a7f6a67f806e6fee5/posts/2026-11-05-news-ninchi-frail/images/05.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e4bdc37a03a548cd3fb05c9a7f6a67f806e6fee5/posts/2026-11-05-news-ninchi-frail/images/06.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e4bdc37a03a548cd3fb05c9a7f6a67f806e6fee5/posts/2026-11-05-news-ninchi-frail/images/07.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e4bdc37a03a548cd3fb05c9a7f6a67f806e6fee5/posts/2026-11-05-news-ninchi-frail/images/08.jpg"
-      ],
-      "sources": [
-        "Communications Medicine"
-      ],
-      "sourcesText": "参考：Communications Medicine「Cognitive frailty typologies and subsequent dementia in a large representative sample of the English population」（2026年）",
-      "startDate": "2026-11-06",
-      "endDate": "2026-11-16"
-    },
     {
       "folder": "2026-11-06-news-hosuu",
       "title": "歩数と\n医療費の\n関係は？",
@@ -173,6 +152,27 @@
       "sourcesText": "参考：大阪公立大学「足腰の痛みによる高齢者の外出控えと自立した生活維持力の低下との関連を示唆」（2026年）",
       "startDate": "2026-11-16",
       "endDate": "2026-11-26"
+    },
+    {
+      "folder": "2026-11-16-news-fukuatsu",
+      "title": "おなかの\n押す力と\n体の力",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2a1811fea08a56126b2e916211281628abbb5ffa/posts/2026-11-16-news-fukuatsu/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2a1811fea08a56126b2e916211281628abbb5ffa/posts/2026-11-16-news-fukuatsu/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2a1811fea08a56126b2e916211281628abbb5ffa/posts/2026-11-16-news-fukuatsu/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2a1811fea08a56126b2e916211281628abbb5ffa/posts/2026-11-16-news-fukuatsu/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2a1811fea08a56126b2e916211281628abbb5ffa/posts/2026-11-16-news-fukuatsu/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2a1811fea08a56126b2e916211281628abbb5ffa/posts/2026-11-16-news-fukuatsu/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2a1811fea08a56126b2e916211281628abbb5ffa/posts/2026-11-16-news-fukuatsu/images/07.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/2a1811fea08a56126b2e916211281628abbb5ffa/posts/2026-11-16-news-fukuatsu/images/08.jpg"
+      ],
+      "sources": [
+        "埼玉県立大学"
+      ],
+      "sourcesText": "参考：埼玉県立大学「地域在住高齢者における外腹部圧と呼吸機能および身体機能との関連」（2026年）",
+      "startDate": "2026-11-17",
+      "endDate": "2026-11-27"
     }
   ]
 }

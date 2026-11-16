@@ -1,42 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-16",
+  "from": "2026-11-17",
   "days": [
-    {
-      "date": "2026-11-16",
-      "post": {
-        "folder": "2026-10-11-kenkoukotsu",
-        "category": "運動",
-        "categoryKey": "exercise",
-        "title": "肩甲骨を\n動かそう",
-        "subtitle": "肩まわりをほぐすストレッチ",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kenkoukotsu/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kenkoukotsu/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kenkoukotsu/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kenkoukotsu/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kenkoukotsu/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kenkoukotsu/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kenkoukotsu/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "背中を丸めない",
-            "ひじで円をかく",
-            "Y-Wの運動",
-            "タオルで前後運動",
-            "10〜15回から"
-          ],
-          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
-        },
-        "sources": [
-          "日本理学療法士協会"
-        ],
-        "sourcesText": "参考：日本理学療法士協会「理学療法ハンドブック 肩関節周囲炎」"
-      }
-    },
     {
       "date": "2026-11-17",
       "post": {
@@ -277,6 +243,43 @@
           "日本理学療法士協会"
         ],
         "sourcesText": "参考：長寿科学振興財団「健康長寿ネット」、日本理学療法士協会「理学療法ハンドブック」"
+      }
+    },
+    {
+      "date": "2026-11-24",
+      "post": {
+        "folder": "2026-10-11-oosouji",
+        "category": "啓発",
+        "categoryKey": "awareness",
+        "title": "大掃除は\n無理せずに",
+        "subtitle": "高い所・洗剤・体力に注意",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-oosouji/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-oosouji/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-oosouji/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-oosouji/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-oosouji/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-oosouji/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-oosouji/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "転落事故に注意",
+            "安定した台で",
+            "濡れた床はふく",
+            "洗剤は混ぜない",
+            "無理をしない"
+          ],
+          "note": "作業中に痛みが出たら中止し、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "消費者庁",
+          "東京消防庁",
+          "国民生活センター",
+          "日本理学療法士協会"
+        ],
+        "sourcesText": "参考：消費者庁「年末年始、高齢者の事故に注意しましょう」、東京消防庁「掃除中の事故に注意」、国民生活センター、日本理学療法士協会"
       }
     }
   ]
