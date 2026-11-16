@@ -597,6 +597,13 @@
       "created": "2026-11-14",
       "expires": "2026-11-24",
       "posted": true
+    },
+    "2026-11-16": {
+      "folder": "2026-11-16-news-shogu",
+      "category": "医療・介護",
+      "reason": "ストック",
+      "created": "2026-11-16",
+      "expires": "2026-11-26"
     }
   },
   "newsHealth": {
