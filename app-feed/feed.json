@@ -1,42 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-17",
+  "from": "2026-11-18",
   "days": [
-    {
-      "date": "2026-11-17",
-      "post": {
-        "folder": "2026-10-11-nousocchu",
-        "category": "知識",
-        "categoryKey": "knowledge",
-        "title": "脳卒中の\nサインを知る",
-        "subtitle": "迷わず119番を",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-nousocchu/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-nousocchu/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-nousocchu/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-nousocchu/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-nousocchu/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-nousocchu/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-nousocchu/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "片側のまひ・しびれ",
-            "ろれつ・言葉の異変",
-            "目の異変・ふらつき",
-            "激しい頭痛",
-            "すぐに119番"
-          ],
-          "note": "「いつ・どこで・どんな様子か」を\n医師に伝えましょう。"
-        },
-        "sources": [
-          "日本理学療法士協会"
-        ],
-        "sourcesText": "参考：日本理学療法士協会「理学療法ハンドブック 脳卒中」（日本脳卒中協会の資料より）"
-      }
-    },
     {
       "date": "2026-11-18",
       "post": {
@@ -280,6 +246,40 @@
           "日本理学療法士協会"
         ],
         "sourcesText": "参考：消費者庁「年末年始、高齢者の事故に注意しましょう」、東京消防庁「掃除中の事故に注意」、国民生活センター、日本理学療法士協会"
+      }
+    },
+    {
+      "date": "2026-11-25",
+      "post": {
+        "folder": "2026-10-11-sesuji",
+        "category": "運動",
+        "categoryKey": "exercise",
+        "title": "背すじを\n伸ばす体操",
+        "subtitle": "猫背を防ぐ姿勢の習慣",
+        "images": [
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-sesuji/images/01.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-sesuji/images/02.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-sesuji/images/03.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-sesuji/images/04.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-sesuji/images/05.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-sesuji/images/06.jpg",
+          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-sesuji/images/07.jpg"
+        ],
+        "summary": {
+          "title": "今日からできること",
+          "items": [
+            "同じ姿勢を続けない",
+            "頭・背中・お尻を壁に",
+            "座って前後運動",
+            "胸を張る運動",
+            "首と肩はリラックス"
+          ],
+          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
+        },
+        "sources": [
+          "日本理学療法士協会"
+        ],
+        "sourcesText": "参考：日本理学療法士協会「理学療法ハンドブック」"
       }
     }
   ]
