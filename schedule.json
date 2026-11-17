@@ -756,6 +756,13 @@
       "created": "2026-11-16",
       "expires": "2026-11-26",
       "posted": true
+    },
+    "2026-11-18": {
+      "folder": "2026-11-17-news-sppb",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-11-17",
+      "expires": "2026-11-27"
     }
   },
   "newsAi": {
