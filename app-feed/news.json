@@ -172,6 +172,27 @@
       "sourcesText": "参考：BMC Geriatrics「Short physical performance battery and dementia in adults aged 60 years and older」（2026年）",
       "startDate": "2026-11-18",
       "endDate": "2026-11-28"
+    },
+    {
+      "folder": "2026-11-18-news-tansui",
+      "title": "炭水化物の\nかたよりと\nフレイル",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4c11e071e1a2e9757ca9d696cbd8f7145a70bc98/posts/2026-11-18-news-tansui/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4c11e071e1a2e9757ca9d696cbd8f7145a70bc98/posts/2026-11-18-news-tansui/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4c11e071e1a2e9757ca9d696cbd8f7145a70bc98/posts/2026-11-18-news-tansui/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4c11e071e1a2e9757ca9d696cbd8f7145a70bc98/posts/2026-11-18-news-tansui/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4c11e071e1a2e9757ca9d696cbd8f7145a70bc98/posts/2026-11-18-news-tansui/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4c11e071e1a2e9757ca9d696cbd8f7145a70bc98/posts/2026-11-18-news-tansui/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4c11e071e1a2e9757ca9d696cbd8f7145a70bc98/posts/2026-11-18-news-tansui/images/07.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4c11e071e1a2e9757ca9d696cbd8f7145a70bc98/posts/2026-11-18-news-tansui/images/08.jpg"
+      ],
+      "sources": [
+        "European Journal of Nutrition"
+      ],
+      "sourcesText": "参考：European Journal of Nutrition「Carbohydrate-to-fat ratio is positively associated with comprehensive frailty across protein-intake levels in older adults」（2026年）",
+      "startDate": "2026-11-19",
+      "endDate": "2026-11-29"
     }
   ]
 }

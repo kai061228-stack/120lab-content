@@ -768,6 +768,13 @@
       "extra": [
         "2026-11-17-news-sppb"
       ]
+    },
+    "2026-11-19": {
+      "folder": "2026-11-18-news-tansui",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-11-18",
+      "expires": "2026-11-28"
     }
   },
   "newsAi": {
