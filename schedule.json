@@ -616,12 +616,13 @@
       "expires": "2026-11-27",
       "posted": true
     },
-    "2026-11-19": {
+    "2026-11-18": {
       "folder": "2026-11-18-news-keiei",
       "category": "医療・介護",
-      "reason": "ストック",
+      "reason": "投稿済み",
       "created": "2026-11-18",
-      "expires": "2026-11-28"
+      "expires": "2026-11-28",
+      "posted": true
     }
   },
   "newsHealth": {
