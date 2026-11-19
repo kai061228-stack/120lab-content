@@ -333,7 +333,8 @@
     "2026-11-20": {
       "folder": "2026-10-11-hiza-oa",
       "category": "知識",
-      "reason": "日付指定"
+      "reason": "日付指定",
+      "posted": true
     },
     "2026-11-21": {
       "folder": "2026-10-11-fuyu-heya",
