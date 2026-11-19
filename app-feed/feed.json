@@ -1,44 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-19",
+  "from": "2026-11-20",
   "days": [
-    {
-      "date": "2026-11-19",
-      "post": {
-        "folder": "2026-10-11-kaidan",
-        "category": "運動",
-        "categoryKey": "exercise",
-        "title": "階段を\n安全に",
-        "subtitle": "上り下りのコツと練習",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kaidan/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kaidan/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kaidan/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kaidan/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kaidan/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kaidan/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-kaidan/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "階段は事故が多い",
-            "手すりを持つ",
-            "足元を明るく",
-            "物を置かない",
-            "踏み台で練習"
-          ],
-          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
-        },
-        "sources": [
-          "東京消防庁",
-          "消費者庁",
-          "日本理学療法士協会"
-        ],
-        "sourcesText": "参考：東京消防庁「救急搬送データからみる高齢者の事故」、消費者庁、日本理学療法士協会「理学療法ハンドブック」"
-      }
-    },
     {
       "date": "2026-11-20",
       "post": {
@@ -281,6 +245,10 @@
         ],
         "sourcesText": "参考：日本理学療法士協会「理学療法ハンドブック 糖尿病」"
       }
+    },
+    {
+      "date": "2026-11-27",
+      "post": null
     }
   ]
 }
