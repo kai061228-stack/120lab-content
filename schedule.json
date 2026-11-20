@@ -631,7 +631,8 @@
       "category": "医療・介護",
       "reason": "ストック",
       "created": "2026-11-20",
-      "expires": "2026-11-30"
+      "expires": "2026-11-30",
+      "posted": true
     }
   },
   "newsHealth": {
