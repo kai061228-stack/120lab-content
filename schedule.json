@@ -625,6 +625,13 @@
       "created": "2026-11-18",
       "expires": "2026-11-28",
       "posted": true
+    },
+    "2026-11-21": {
+      "folder": "2026-11-20-news-shoguyouken",
+      "category": "医療・介護",
+      "reason": "ストック",
+      "created": "2026-11-20",
+      "expires": "2026-11-30"
     }
   },
   "newsHealth": {
