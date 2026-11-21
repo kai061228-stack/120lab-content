@@ -1,42 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-21",
+  "from": "2026-11-22",
   "days": [
-    {
-      "date": "2026-11-21",
-      "post": {
-        "folder": "2026-10-11-fuyu-heya",
-        "category": "啓発",
-        "categoryKey": "awareness",
-        "title": "冬の部屋の\n温度と湿度",
-        "subtitle": "室温18℃・湿度50〜60%が目安",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-fuyu-heya/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-fuyu-heya/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-fuyu-heya/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-fuyu-heya/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-fuyu-heya/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-fuyu-heya/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-fuyu-heya/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "室温18℃以上",
-            "夜中・早朝の寒さ",
-            "湿度50〜60%",
-            "換気は少しずつ",
-            "暖房の火災に注意"
-          ],
-          "note": "持病のある方は、部屋の温度も\n主治医にご相談ください。"
-        },
-        "sources": [
-          "厚生労働省"
-        ],
-        "sourcesText": "参考：厚生労働省「健康づくりのための睡眠ガイド2023」「急性呼吸器感染症（ARI）総合対策に関するQ&A」"
-      }
-    },
     {
       "date": "2026-11-22",
       "post": {
@@ -218,6 +184,10 @@
     },
     {
       "date": "2026-11-28",
+      "post": null
+    },
+    {
+      "date": "2026-11-29",
       "post": null
     }
   ]
