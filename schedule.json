@@ -787,6 +787,13 @@
       "created": "2026-11-18",
       "expires": "2026-11-28",
       "posted": true
+    },
+    "2026-11-21": {
+      "folder": "2026-11-21-news-kyukyu",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-11-21",
+      "expires": "2026-12-01"
     }
   },
   "newsAi": {

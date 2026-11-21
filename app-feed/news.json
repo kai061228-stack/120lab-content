@@ -170,6 +170,28 @@
       "sourcesText": "参考：European Journal of Nutrition「Carbohydrate-to-fat ratio is positively associated with comprehensive frailty across protein-intake levels in older adults」（2026年）",
       "startDate": "2026-11-19",
       "endDate": "2026-11-29"
+    },
+    {
+      "folder": "2026-11-21-news-kyukyu",
+      "title": "家のどこで\n倒れると？\n救急の時間",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4a3e5d4ab9dc81fa3c5603c7800d7ef3fdf16cbb/posts/2026-11-21-news-kyukyu/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4a3e5d4ab9dc81fa3c5603c7800d7ef3fdf16cbb/posts/2026-11-21-news-kyukyu/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4a3e5d4ab9dc81fa3c5603c7800d7ef3fdf16cbb/posts/2026-11-21-news-kyukyu/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4a3e5d4ab9dc81fa3c5603c7800d7ef3fdf16cbb/posts/2026-11-21-news-kyukyu/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4a3e5d4ab9dc81fa3c5603c7800d7ef3fdf16cbb/posts/2026-11-21-news-kyukyu/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4a3e5d4ab9dc81fa3c5603c7800d7ef3fdf16cbb/posts/2026-11-21-news-kyukyu/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4a3e5d4ab9dc81fa3c5603c7800d7ef3fdf16cbb/posts/2026-11-21-news-kyukyu/images/07.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4a3e5d4ab9dc81fa3c5603c7800d7ef3fdf16cbb/posts/2026-11-21-news-kyukyu/images/08.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/4a3e5d4ab9dc81fa3c5603c7800d7ef3fdf16cbb/posts/2026-11-21-news-kyukyu/images/09.jpg"
+      ],
+      "sources": [
+        "BMC Emergency Medicine"
+      ],
+      "sourcesText": "参考：BMC Emergency Medicine「Incident location at home and emergency medical services on-scene time for older adults in Japan」（2026年）",
+      "startDate": "2026-11-22",
+      "endDate": "2026-12-02"
     }
   ]
 }
