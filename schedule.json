@@ -796,6 +796,13 @@
       "created": "2026-11-21",
       "expires": "2026-12-01",
       "posted": true
+    },
+    "2026-11-23": {
+      "folder": "2026-11-22-news-aisoudan",
+      "category": "健康",
+      "reason": "ストック",
+      "created": "2026-11-22",
+      "expires": "2026-12-02"
     }
   },
   "newsAi": {

@@ -192,6 +192,28 @@
       "sourcesText": "参考：BMC Emergency Medicine「Incident location at home and emergency medical services on-scene time for older adults in Japan」（2026年）",
       "startDate": "2026-11-22",
       "endDate": "2026-12-02"
+    },
+    {
+      "folder": "2026-11-22-news-aisoudan",
+      "title": "心の不調と\nAIへの\n悩み相談",
+      "category": "健康",
+      "images": [
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e58100513f87a046b64001e65d53bb2331bd284a/posts/2026-11-22-news-aisoudan/images/01.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e58100513f87a046b64001e65d53bb2331bd284a/posts/2026-11-22-news-aisoudan/images/02.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e58100513f87a046b64001e65d53bb2331bd284a/posts/2026-11-22-news-aisoudan/images/03.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e58100513f87a046b64001e65d53bb2331bd284a/posts/2026-11-22-news-aisoudan/images/04.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e58100513f87a046b64001e65d53bb2331bd284a/posts/2026-11-22-news-aisoudan/images/05.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e58100513f87a046b64001e65d53bb2331bd284a/posts/2026-11-22-news-aisoudan/images/06.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e58100513f87a046b64001e65d53bb2331bd284a/posts/2026-11-22-news-aisoudan/images/07.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e58100513f87a046b64001e65d53bb2331bd284a/posts/2026-11-22-news-aisoudan/images/08.jpg",
+        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/e58100513f87a046b64001e65d53bb2331bd284a/posts/2026-11-22-news-aisoudan/images/09.jpg"
+      ],
+      "sources": [
+        "東北大学 プレスリリース"
+      ],
+      "sourcesText": "参考：東北大学 プレスリリース「心の不調の強さは生成AIへの定期的な悩み相談と関連」（2026年）",
+      "startDate": "2026-11-23",
+      "endDate": "2026-12-03"
     }
   ]
 }
