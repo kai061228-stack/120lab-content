@@ -1,43 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-22",
+  "from": "2026-11-23",
   "days": [
-    {
-      "date": "2026-11-22",
-      "post": {
-        "folder": "2026-10-11-youtsu-taisou",
-        "category": "運動",
-        "categoryKey": "exercise",
-        "title": "腰痛を防ぐ\n体操",
-        "subtitle": "座ってできる・寝てできる",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-youtsu-taisou/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-youtsu-taisou/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-youtsu-taisou/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-youtsu-taisou/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-youtsu-taisou/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-youtsu-taisou/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-youtsu-taisou/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "安静にしすぎない",
-            "座って左右に",
-            "お尻で円をかく",
-            "お尻上げ5秒",
-            "体に近づけて持つ"
-          ],
-          "note": "痛みやふらつきがある方は、\nかかりつけ医にご相談ください。"
-        },
-        "sources": [
-          "日本理学療法士協会",
-          "日本整形外科学会"
-        ],
-        "sourcesText": "参考：日本理学療法士協会「理学療法ハンドブック 腰痛」、日本整形外科学会「腰痛」"
-      }
-    },
     {
       "date": "2026-11-23",
       "post": {
@@ -188,6 +153,10 @@
     },
     {
       "date": "2026-11-29",
+      "post": null
+    },
+    {
+      "date": "2026-11-30",
       "post": null
     }
   ]
