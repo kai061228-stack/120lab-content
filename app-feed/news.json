@@ -1,29 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-23",
+  "from": "2026-11-24",
   "items": [
-    {
-      "folder": "2026-11-12-news-tanpaku",
-      "title": "たんぱく質\n減らすと\n長生き？",
-      "category": "健康",
-      "images": [
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8b52b3992a37e0ff1123f0fbfb9f51c6e6a5df9d/posts/2026-11-12-news-tanpaku/images/01.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8b52b3992a37e0ff1123f0fbfb9f51c6e6a5df9d/posts/2026-11-12-news-tanpaku/images/02.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8b52b3992a37e0ff1123f0fbfb9f51c6e6a5df9d/posts/2026-11-12-news-tanpaku/images/03.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8b52b3992a37e0ff1123f0fbfb9f51c6e6a5df9d/posts/2026-11-12-news-tanpaku/images/04.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8b52b3992a37e0ff1123f0fbfb9f51c6e6a5df9d/posts/2026-11-12-news-tanpaku/images/05.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8b52b3992a37e0ff1123f0fbfb9f51c6e6a5df9d/posts/2026-11-12-news-tanpaku/images/06.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8b52b3992a37e0ff1123f0fbfb9f51c6e6a5df9d/posts/2026-11-12-news-tanpaku/images/07.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8b52b3992a37e0ff1123f0fbfb9f51c6e6a5df9d/posts/2026-11-12-news-tanpaku/images/08.jpg"
-      ],
-      "sources": [
-        "Cell Press Blue"
-      ],
-      "sourcesText": "参考：Cell Press Blue「The hallmarks of protein and amino acid restriction in aging and longevity」（2026年）",
-      "startDate": "2026-11-13",
-      "endDate": "2026-11-23"
-    },
     {
       "folder": "2026-11-13-news-bmi",
       "title": "認知症と\n体重の\n関係は？",
