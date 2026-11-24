@@ -1,30 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-24",
+  "from": "2026-11-25",
   "items": [
-    {
-      "folder": "2026-11-13-news-bmi",
-      "title": "認知症と\n体重の\n関係は？",
-      "category": "健康",
-      "images": [
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/01.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/02.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/03.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/04.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/05.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/06.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/07.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/8ac824ae12fa693aa67fc30fc65490ee27a36589/posts/2026-11-13-news-bmi/images/08.jpg"
-      ],
-      "sources": [
-        "Journal of Alzheimer's Disease",
-        "コロンビア大学の発表"
-      ],
-      "sourcesText": "参考：Journal of Alzheimer's Disease「Body mass index and mortality in incident dementia」（2026年）、コロンビア大学の発表（2026年）",
-      "startDate": "2026-11-14",
-      "endDate": "2026-11-24"
-    },
     {
       "folder": "2026-11-14-news-ha",
       "title": "歯の数と\n認知症の\n関係は？",

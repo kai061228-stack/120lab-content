@@ -1,45 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-24",
+  "from": "2026-11-25",
   "days": [
-    {
-      "date": "2026-11-24",
-      "post": {
-        "folder": "2026-10-11-oosouji",
-        "category": "啓発",
-        "categoryKey": "awareness",
-        "title": "大掃除は\n無理せずに",
-        "subtitle": "高い所・洗剤・体力に注意",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-oosouji/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-oosouji/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-oosouji/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-oosouji/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-oosouji/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-oosouji/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-oosouji/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "転落事故に注意",
-            "安定した台で",
-            "濡れた床はふく",
-            "洗剤は混ぜない",
-            "無理をしない"
-          ],
-          "note": "作業中に痛みが出たら中止し、\nかかりつけ医にご相談ください。"
-        },
-        "sources": [
-          "消費者庁",
-          "東京消防庁",
-          "国民生活センター",
-          "日本理学療法士協会"
-        ],
-        "sourcesText": "参考：消費者庁「年末年始、高齢者の事故に注意しましょう」、東京消防庁「掃除中の事故に注意」、国民生活センター、日本理学療法士協会"
-      }
-    },
     {
       "date": "2026-11-25",
       "post": {
@@ -126,6 +89,10 @@
     },
     {
       "date": "2026-12-01",
+      "post": null
+    },
+    {
+      "date": "2026-12-02",
       "post": null
     }
   ]
