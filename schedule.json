@@ -639,6 +639,13 @@
       "created": "2026-11-20",
       "expires": "2026-11-30",
       "posted": true
+    },
+    "2026-11-26": {
+      "folder": "2026-11-25-news-careplan",
+      "category": "医療・介護",
+      "reason": "ストック",
+      "created": "2026-11-25",
+      "expires": "2026-12-05"
     }
   },
   "newsHealth": {
