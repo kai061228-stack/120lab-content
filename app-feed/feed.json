@@ -1,42 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-26",
+  "from": "2026-11-27",
   "days": [
-    {
-      "date": "2026-11-26",
-      "post": {
-        "folder": "2026-10-11-tounyou-undou",
-        "category": "知識",
-        "categoryKey": "knowledge",
-        "title": "糖尿病と\n運動",
-        "subtitle": "血糖とインスリンのしくみ",
-        "images": [
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-tounyou-undou/images/01.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-tounyou-undou/images/02.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-tounyou-undou/images/03.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-tounyou-undou/images/04.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-tounyou-undou/images/05.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-tounyou-undou/images/06.jpg",
-          "https://raw.githubusercontent.com/kai061228-stack/120lab-content/29426cecd0994313afe0869658dc56d329eb9aaf/posts/2026-10-11-tounyou-undou/images/07.jpg"
-        ],
-        "summary": {
-          "title": "今日からできること",
-          "items": [
-            "ブドウ糖が筋肉へ",
-            "続けることが大切",
-            "1日合計20〜30分",
-            "筋トレも組み合わせ",
-            "治療中は食前を避ける"
-          ],
-          "note": "治療中の方は、運動の内容を\n主治医にご相談ください。"
-        },
-        "sources": [
-          "日本理学療法士協会"
-        ],
-        "sourcesText": "参考：日本理学療法士協会「理学療法ハンドブック 糖尿病」"
-      }
-    },
     {
       "date": "2026-11-27",
       "post": null
@@ -63,6 +29,10 @@
     },
     {
       "date": "2026-12-03",
+      "post": null
+    },
+    {
+      "date": "2026-12-04",
       "post": null
     }
   ]
