@@ -1,12 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-27",
+  "from": "2026-11-28",
   "days": [
-    {
-      "date": "2026-11-27",
-      "post": null
-    },
     {
       "date": "2026-11-28",
       "post": null
@@ -33,6 +29,10 @@
     },
     {
       "date": "2026-12-04",
+      "post": null
+    },
+    {
+      "date": "2026-12-05",
       "post": null
     }
   ]
