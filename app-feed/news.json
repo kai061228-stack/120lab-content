@@ -1,29 +1,8 @@
 {
   "version": 1,
   "timezone": "Asia/Tokyo",
-  "from": "2026-11-28",
+  "from": "2026-11-29",
   "items": [
-    {
-      "folder": "2026-11-17-news-sppb",
-      "title": "体の動きと\n認知症の\n関係は？",
-      "category": "健康",
-      "images": [
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/58f365b77f18d1ef7077105ce91c74327f9c6dda/posts/2026-11-17-news-sppb/images/01.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/58f365b77f18d1ef7077105ce91c74327f9c6dda/posts/2026-11-17-news-sppb/images/02.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/58f365b77f18d1ef7077105ce91c74327f9c6dda/posts/2026-11-17-news-sppb/images/03.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/58f365b77f18d1ef7077105ce91c74327f9c6dda/posts/2026-11-17-news-sppb/images/04.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/58f365b77f18d1ef7077105ce91c74327f9c6dda/posts/2026-11-17-news-sppb/images/05.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/58f365b77f18d1ef7077105ce91c74327f9c6dda/posts/2026-11-17-news-sppb/images/06.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/58f365b77f18d1ef7077105ce91c74327f9c6dda/posts/2026-11-17-news-sppb/images/07.jpg",
-        "https://raw.githubusercontent.com/kai061228-stack/120lab-content/58f365b77f18d1ef7077105ce91c74327f9c6dda/posts/2026-11-17-news-sppb/images/08.jpg"
-      ],
-      "sources": [
-        "BMC Geriatrics"
-      ],
-      "sourcesText": "参考：BMC Geriatrics「Short physical performance battery and dementia in adults aged 60 years and older」（2026年）",
-      "startDate": "2026-11-18",
-      "endDate": "2026-11-28"
-    },
     {
       "folder": "2026-11-18-news-tansui",
       "title": "炭水化物の\nかたよりと\nフレイル",
